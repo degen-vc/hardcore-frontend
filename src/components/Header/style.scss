@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    height: 40px;
+    padding: 0 15px;
+    
+    .logo{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        background: salmon;
+    }
+
+    .button{
+        padding: 5px 10px;
+        background: sandybrown;
+        border: 1px solid;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .navigation{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 300px;
+
+        .item{
+            border-bottom: transparent;
+            transition: 0.5s;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.6);
+            &:hover{
+                transform: scale(1.1);
+                color: rgba(0, 0, 0, 0.7);
+            }
+            &.active{
+                transform: scale(1.2);
+                color: rgba(0, 0, 0, 0.8);
+            }
+        }
+    }
+}
+.info{
+    margin-top: 10px;
+}
