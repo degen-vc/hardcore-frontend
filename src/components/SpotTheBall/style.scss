@@ -1,0 +1,44 @@
+.description{
+    padding: 40px;
+    background: black;
+    color: white;
+    text-align: center;
+
+    h1{
+        font-weight: 600;
+    }
+    h3{
+        font-weight: 300;
+    }
+    .description-item{
+        color: #BADA55;
+    }
+}
+
+.plugin{
+    margin: 50px auto;
+    height: 600px;
+    width: 1000px;
+    background: antiquewhite;
+}
+.white-description{
+    width: 800px;
+    margin: 50px auto 80px;
+    text-align: center;
+
+    div{
+        margin: 15px 0;
+    }
+    .button{
+        padding: 10px 30px 10px 30px;
+        font-size: 14px;
+        background-color: #EC2D44;
+        border-radius: 4px;
+        text-transform: none;
+        font-weight: normal;
+        text-decoration: none;
+        width: 60px;
+        margin: 0 auto;
+        color: white;
+    }
+}

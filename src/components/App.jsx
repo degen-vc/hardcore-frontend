@@ -13,12 +13,11 @@ class App extends Component {
     render() {
         return (
             <div className="project">
-                    <Header />
-                    <Route path="/spot" exact component={SpotTheBall} />
-                    <Route path="/nft" exact component={NFT} />
-                    <Route path="/vault" exact component={Vault} />
-                    <Footer />
-                    
+                <Header />
+                <Route path="/spot" exact component={SpotTheBall} />
+                <Route path="/nft" exact component={NFT} />
+                <Route path="/vault" exact component={Vault} />
+                <Footer />  
           </div>
         );
     }
