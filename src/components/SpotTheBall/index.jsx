@@ -1,15 +1,25 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
 import {testAction} from '../../actions';
-import './style.scss'
+import './style.scss';
+import SpotTheBallPlugin from './SpotTheBallPlugin';
 
 class SpotTheBall extends PureComponent{
   constructor(){
     super()
-    
+    this.state={
+      valueOfBall: ''
+    }
+    this.setValueBall = this.setValueBall.bind(this)
+  }
+
+  setValueBall(value){
+    this.setState({valueOfBall: value})
   }
   
     render(){
+    const {valueOfBall} = this.state
+      console.log('valueOfBall',valueOfBall)
         return (
             <main>
               <section>
@@ -22,7 +32,7 @@ class SpotTheBall extends PureComponent{
                   <div className='description-item'>4. Check if you are the winner after the judges have adjudicated!</div>
                 </div>
 
-                <div className='plugin'>Plugin</div>
+                <SpotTheBallPlugin setValueBall={this.setValueBall}/>
 
                 <div className='white-description'>
                   <div>
