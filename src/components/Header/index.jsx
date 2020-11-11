@@ -75,15 +75,14 @@ class Header extends PureComponent {
 
     render() {
         const { isProfileOpen, auth } = this.state;
-        console.log(auth)
         const { authorized } = this.props;
-        console.log(1111,authorized)
         return (
             <Fragment>
                 <header className='header'>
                     <div className='logo'>logo</div>
                     {authorized || auth ?
                         <nav className='navigation'>
+                            <NavLink to='/home' className='item'>Home</NavLink>
                             <NavLink to='/spot' className='item'>Spot the ball</NavLink>
                             <NavLink to='/vault' className='item'>Vault</NavLink>
                             <NavLink to='/nft' className='item'>NFT</NavLink>

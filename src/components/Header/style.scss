@@ -1,10 +1,12 @@
 .header{
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.2);
-    height: 40px;
+    width: calc(100% - 30px);
+    height: 60px;
     padding: 0 15px;
+    background: white;
     
     .logo{
         height: 25px;
@@ -25,7 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        width: 300px;
+        width: 400px;
 
         .item{
             border-bottom: transparent;
@@ -43,6 +45,16 @@
             }
         }
     }
+
+    @media screen and (max-width: 420px){
+        width: calc(100% - 20px);
+
+        .navigation{
+            width: 280px;
+            font-size: 12px;
+        }
+    }
+
 }
 .info{
     margin-top: 10px;

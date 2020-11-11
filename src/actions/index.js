@@ -16,14 +16,14 @@ export const getAuth = () => {
 }
 
 export const initMetamask = async () => {
-  const provider = await detectEthereumProvider();
-  console.log('asdjhaskjdlasjhdljaslh')
-  if (provider) {
-    // From now on, this should always be true:
-    // provider === window.ethereum
-    // startApp(provider); // initialize your app
-    console.log('here')
-  } else {
-    console.log('Please install MetaMask!');
-  }
+  // const provider = await detectEthereumProvider();
+  // console.log('asdjhaskjdlasjhdljaslh')
+  // if (provider) {
+  //   // From now on, this should always be true:
+  //   // provider === window.ethereum
+  //   // startApp(provider); // initialize your app
+  //   console.log('here')
+  // } else {
+  //   console.log('Please install MetaMask!');
+  // }
 }
