@@ -8,6 +8,12 @@
     font-size: 24px;
     text-align: center;
     color: #bada55;
+
+    @media screen and (max-width: 420px){
+      padding: 0 14px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
   }
 
   .shadow-wrap {
@@ -31,7 +37,35 @@
       font-size: 50px;
       font-weight: bold;
     }
+
+    @media screen and (max-width: 420px){
+      margin-top: 30px;
+
+      .title{
+        font-size: 22px;
+      }
+
+      .name{
+        font-size: 32px;
+      }
+
+      .red-text{
+        margin-top: 10px;
+        font-size: 28px;
+      }
+    }
+
   }
+
+  @media screen and (max-width: 420px){
+    height: 250px;
+    width: 100%;
+    padding-top: 100px;
+    background-size: cover;
+    background-position: 70%;
+    background-repeat: no-repeat;
+  }
+
 }
 .content-wrap {
   display: flex;
@@ -103,100 +137,216 @@
       font-size: 14px;
     }
   }
+
+  @media screen and (max-width: 420px){
+    flex-direction: column;
+    width: calc(100% - 20px);
+    margin: 30px 0 0 0;
+    padding: 0 10px;
+
+
+    .text-content{
+      .header-title{
+
+        .red-text{
+          font-size: 24px;
+        }
+        
+        .horizontal-line{
+          height: 28px;
+          margin: 0 12px;
+        }
+        
+        .description-title{
+          font-size: 16px;
+        }
+      }
+      .oclock-button{
+        width: 100px;
+        padding: 5px 0;
+        margin: 20px auto;
+        font-size: 14px;
+      }
+    }
+
+    .description-wrap{
+      margin-top: 20px;
+      width: 100%;
+
+      p{
+        font-size: 12px;
+        margin: 10px 0;
+        padding: 0 8px;
+      }
+    }
+    .clock-image{
+      height: 298px;
+      width: 100%;
+    }
+    .clock-description{
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      margin-top: 10px;
+
+      .title{
+        font-size: 22px;
+      }
+      .clock-title{
+        margin-top: 10px;
+        padding-right: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+
 }
 .paralax {
   background-image: url('../../assets/images/paralax-car.png');
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.steps {
   margin-top: 100px;
 
-  .title {
-    padding: 20px 0 80px;
-    font-size: 35px;
-    letter-spacing: 0.1rem;
-    color: white;
-    text-align: center;
-  }
-
-  .blocks {
-    margin: 0 20px;
-    display: flex;
-    justify-content: space-between;
-
-    .block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 445px;
-      height: 330px;
-      margin-top: 25px;
-      font-size: 126px;
-      font-family: raleway-semibold, raleway, sans-serif;
-      background: rgb(36, 35, 35);
+  .steps {
+    .title {
+      padding: 20px 0 80px;
+      font-size: 35px;
+      letter-spacing: 0.1rem;
       color: white;
-      text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+      text-align: center;
+    }
 
-      &.red {
-        background: rgb(236, 45, 68);
-      }
+    .blocks {
+      margin: 0 20px;
+      display: flex;
+      justify-content: space-between;
 
-      &.small {
-        height: 160px;
-        font-size: 22px;
+      .block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 445px;
+        height: 330px;
+        margin-top: 25px;
+        font-size: 126px;
+        font-family: raleway-semibold, raleway, sans-serif;
+        background: rgb(36, 35, 35);
+        color: white;
+        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+
+        &.red {
+          background: rgb(236, 45, 68);
+        }
+
+        &.small {
+          height: 160px;
+          font-size: 22px;
+        }
       }
     }
   }
-}
 
-.time-remaining {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 270px;
-  padding: 0 120px;
-  background: #ec2d44;
-  margin-top: 100px;
-
-  .title {
-    font-size: 36px;
-    letter-spacing: 2px;
-  }
-
-  .time-wrap {
+  .time-remaining {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 320px;
-    color: white;
+    align-items: center;
+    height: 270px;
+    padding: 0 120px;
+    background: #ec2d44;
+    margin-top: 100px;
 
-    div {
-      height: 74px;
-      width: 67px;
+    .title {
+      font-size: 36px;
+      letter-spacing: 2px;
+    }
+
+    .time-wrap {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
+      width: 320px;
+      color: white;
+
+      div {
+        height: 74px;
+        width: 67px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        font-size: 40px;
+      }
+    }
+    .time-description {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 320px;
+      margin-top: 15px;
       background: black;
-      font-size: 40px;
+      color: white;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 67px;
+      }
     }
   }
-  .time-description {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 320px;
-    margin-top: 15px;
-    background: black;
-    color: white;
 
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 67px;
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    margin-top: 30px;
+
+    .steps{
+      .title{
+        padding: 20px;
+        font-size: 18px;
+      }
+      .blocks{
+
+        .block{
+          width: 100px;
+          height: 90px;
+          margin-top: 15px;
+          font-size: 56px;
+
+          &.small{
+            height: 42px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .time-remaining{
+      flex-direction: column;
+      height: 170px;
+      padding: 20px;
+      margin-top: 30px;
+
+      .title{
+        font-size: 20px;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      .time-wrap{
+        width: 100%;
+        margin: 0 auto;
+
+        div{
+          height: 50px;
+          width: 60px;
+          font-size: 24px;
+        }
+      }
+      .time-description{
+        width: 282px;
+        margin-top: 5px;
+      }
     }
   }
 }
@@ -247,6 +397,21 @@
       }
     }
   }
+
+  @media screen and (max-width: 420px){
+    .type{
+      height: 160px;
+
+      .blur{
+        .title{
+          font-size: 22px;
+        }
+        .button{
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }
 .photos {
   display: flex;
@@ -276,6 +441,8 @@
     &.richard {
       background-image: url("../../assets/images/richard.png");
     }
+
+    
   }
 
   .name {
@@ -290,9 +457,27 @@
         color: #BADA55;
         margin: 10px;
   }
+  @media screen and (max-width: 420px){
+    width: 100%;
+    margin: 30px 0;
+
+    .photo{
+      height: 95px;
+      width: 70px;
+      margin: 0 auto;
+    }
+    .name{
+      font-size: 12px;
+    }
+    .description-photo{
+      font-size: 12px;
+      color: #BADA55;
+      margin: 6px;
+    }
+  }
 }
 .tokenomix{
-    padding: 60px 0 0;
+    padding-top: 60px;
     background: #EC2D44;
 
     .background{
@@ -359,6 +544,48 @@
             background: rgba(236, 45, 68, 0.4);
         }
     }
+
+    @media screen and (max-width: 420px){
+      padding-top: 20px;
+
+      .title{
+        font-size: 26px;
+      }
+
+      .background{
+        height: 500px;
+        margin: 20px auto 0;
+
+        .blur{
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          height: calc(100% - 60px);
+          padding: 30px;
+
+          .columns{     
+            height: auto;
+            width: 220px;
+
+            .title{
+              font-size: 16px;
+              margin-top: 12px;
+            }
+
+            .horizontal-line{
+              margin: 10px auto;
+            }
+
+            .step{
+              width: 200px;
+              margin: 5px 10px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
 }
 .question-block{
     display: flex;
@@ -379,6 +606,22 @@
         border-radius: 6px;
         font-size: 18px;
         background: rgb(194, 32, 32);
+    }
+
+    @media screen and (max-width: 420px){
+      height: 100px;
+      width: calc(100% - 40px);
+      padding: 0 20px;
+
+      .question{
+        font-family: raleway,sans-serif;
+        font-size: 13px;
+        color: white;
+      }
+      .button{
+        padding: 4px 15px;
+        font-size: 14px;
+      }
     }
 }
 
@@ -431,4 +674,23 @@
             }
         }
     }
+
+    @media screen and (max-width: 420px){
+        padding: 20px;
+        height: 160px;
+
+            .title{
+              font-size: 24px;
+            }
+            .empty{
+              margin: 10px 0;
+              font-size: 18px;
+            }
+            .community{
+              .icons{
+                margin-top: 48px;
+              }
+            }
+      }
+    
 }

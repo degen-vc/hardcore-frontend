@@ -45,6 +45,16 @@
             }
         }
     }
+
+    @media screen and (max-width: 420px){
+        width: calc(100% - 20px);
+
+        .navigation{
+            width: 280px;
+            font-size: 12px;
+        }
+    }
+
 }
 .info{
     margin-top: 10px;
