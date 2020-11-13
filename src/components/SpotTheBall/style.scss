@@ -475,3 +475,43 @@ background: #00f;
 .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
     max-width: 100%;
 }
+
+.spot-the-ball-page{
+	h1{
+		padding-top: 20px;
+	}
+
+	@media screen and (max-width: 420px){
+		.stb-wrapper{
+			width: 100%!important;
+			.stb-image{
+				width: 100%!important;
+				
+				.spot-ball-container{
+					width: 100%!important;
+					height: 100%!important;
+
+					.main-image-container{
+						width: 100%!important;
+						height: 100%!important;
+
+						.main-image-inner{
+							width: 100%!important;
+							height: 100%!important;
+						}
+					}
+				}
+			}
+			.zoom-image{
+				img{
+					width: 650px!important;
+					height: 450px!important;
+				}
+			}
+			.main-image-svg-container{
+				width: 420px!important;
+				height: 300px!important;
+			}
+		}
+	}
+}

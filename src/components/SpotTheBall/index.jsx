@@ -22,7 +22,7 @@ class SpotTheBall extends PureComponent{
       console.log('valueOfBall',valueOfBall)
         return (
             <main>
-              <section>
+              <section className='spot-the-ball-page'>
                 <div className='description'>
                   <h1>HOW TO WIN A LAMBO</h1>
                   <h3>THESE ARE THE STEPS:</h3>

@@ -5,7 +5,7 @@ export default class Vault extends PureComponent {
     render(){
         return (
             <main>
-               <section>
+               <section className='vault'>
                     <div className='description'>
                         <h1>VAULT</h1>
                         <h3>$HCORE TRANSFER FEES RECEIVED AND AVAILABLE NOW: 000</h3>
