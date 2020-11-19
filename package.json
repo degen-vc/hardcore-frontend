@@ -6,6 +6,10 @@
     "repository": "https://github.com/user/repository.git",
     "author": "Your Name <your@email.com>",
     "license": "MIT",
+    "engines": {
+        "node": "15.2.0",
+        "npm": "7.0.8"
+    },
     "scripts": {
         "start": "webpack-dev-server --config=config/webpack.dev.js --hot",
         "start:reload": "webpack-dev-server --config=config/webpack.dev.js",
