@@ -689,7 +689,7 @@ class plugin extends PureComponent {
                 show_desktop_cross_lines: true,
                 show_points: true,
                 onChooseSpot: function(e) {
-                    setValueBall(`X: ${+e.coordinate_x} Y: ${+e.coordinate_y}`)
+                    setValueBall(+e.coordinate_x, +e.coordinate_y);
                     jQuery('.stb-xy-values').text('Processing...');
                     var _this = this;
                     var cart_coorindate_key = 123;

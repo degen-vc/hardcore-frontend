@@ -1,5 +1,5 @@
-.vault{
-    .vault-button-wrap{
+.vault {
+    .vault-button-wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -8,24 +8,20 @@
         margin: 0 auto;
         color: white;
         text-align: center;
-
-        .white-line{
+        .white-line {
             border-bottom: 3px solid;
             width: 40px;
             margin: 0 auto 20px;
         }
-
-        .button-vault{
+        .button-vault {
             width: 220px;
-
             padding: 30px;
             background: rgb(14, 20, 33);
         }
-
-        .discriptrion-value{
+        .discriptrion-value {
             color: #BADA55;
         }
-        .button{
+        .button {
             padding: 10px;
             min-width: 100px;
             background: red;
@@ -33,57 +29,50 @@
             margin: 20px auto 20px;
         }
     }
-    .description{
-        h1{
+    .description {
+        h1 {
             font-size: 36px;
             margin-bottom: 70px;
         }
     }
-
     @media screen and (max-width: 420px) {
-        .description{
+        .description {
             padding: 60px 40px 20px;
-
-            h1{
+            h1 {
                 font-size: 26px;
                 margin: 10px 20px;
             }
-
-            h3{
+            h3 {
                 font-size: 14px;
             }
-            .description-item{
+            .description-item {
                 font-size: 12px;
             }
         }
-        .vault-button-wrap{
+        .vault-button-wrap {
             flex-direction: column;
             height: 100%;
             width: 100%;
             margin: 10px auto;
-
-            .button-vault{
+            .button-vault {
                 padding: 0;
                 margin: 5px 0;
                 border-radius: 5px;
-
-                h2{
+                h2 {
                     margin: 8px;
                     font-size: 16px;
                 }
-                .hc-value{
+                .hc-value {
                     font-size: 14px;
                 }
-                .discriptrion-value{
+                .discriptrion-value {
                     font-size: 14px;
                 }
-
-                .white-line{
+                .white-line {
                     border-bottom: 2px solid;
                     margin: 0 auto 10px;
                 }
-
-                .button{
+                .button {
                     min-width: 80px;
                     max-width: 80px;
                     padding: 4px 0;
@@ -91,6 +80,23 @@
                     font-size: 14px;
                 }
             }
+        }
+    }
+}
+
+.modal.vault {
+    .wrap-modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title {
+            margin: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-style: italic;
+        }
+        input {
+            width: 200px;
         }
     }
 }

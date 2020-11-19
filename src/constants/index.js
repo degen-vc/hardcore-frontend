@@ -1,1 +1,2 @@
-export const AUTHORIZATION = 'AUTHORIZATION'
+export const AUTHORIZATION = 'AUTHORIZATION';
+export const SPOT_GAME = 'SPOT_GAME';

@@ -4,7 +4,7 @@ import {  NavLink } from "react-router-dom";
 
 import Modal from '../../shared/Modal';
 import { connect } from 'react-redux';
-import { getAuth, initMetamask } from '../../actions'
+import { getAuth } from '../../actions'
 
 import './style.scss'
 
@@ -23,7 +23,6 @@ class Header extends PureComponent {
     }
 
     componentDidMount() {
-        initMetamask()
         this.checkAuth()
     }
 
@@ -109,9 +108,6 @@ const mapDispatchToProps = dispatch => {
         getAuth: () => {
             dispatch(getAuth());
         },
-        initMetamask: ()=> {
-            dispatch(initMetamask());
-        }
     };
 };
 

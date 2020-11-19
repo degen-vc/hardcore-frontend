@@ -1,25 +1,31 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
-import {testAction} from '../../actions';
-import './style.scss';
+import {sendCoord} from '../../actions';
 import SpotTheBallPlugin from './SpotTheBallPlugin';
+import './style.scss';
 
 class SpotTheBall extends PureComponent{
   constructor(){
     super()
     this.state={
-      valueOfBall: ''
+      valueOfBall: {
+        x: 0,
+        y: 0
+      }
     }
     this.setValueBall = this.setValueBall.bind(this)
   }
 
-  setValueBall(value){
-    this.setState({valueOfBall: value})
+  setValueBall(x,y){
+    const result = {};
+    result.x = x;
+    result.y = y;
+    this.setState({valueOfBall: result})
   }
   
     render(){
-    const {valueOfBall} = this.state
-      console.log('valueOfBall',valueOfBall)
+    const {valueOfBall: {x,y}} = this.state
+    const {sendCoord} = this.props;
         return (
             <main>
               <section className='spot-the-ball-page'>
@@ -42,7 +48,7 @@ class SpotTheBall extends PureComponent{
                   <div>
                     For example, if X = 738 and Y = 844 then the correct number (string) is 738844
                   </div>
-                  <div className='button'>Mint NFT</div>
+                  <div className='button' onClick={()=>sendCoord(x,y)}>Mint NFT</div>
                   <div>
                     This button will be activated after the #alphadrop
                     If you want to practice and mint your NFT on the Ropstan test network (no points needed) 
@@ -57,8 +63,16 @@ class SpotTheBall extends PureComponent{
 
 const mapStateToProps = state => {
   return {
- 
+    
   };
 };
 
-export default connect(mapStateToProps, {testAction})(SpotTheBall);
+const mapDispatchToProps = dispatch => {
+  return {
+    sendCoord: (x,y) => {
+          dispatch(sendCoord(x,y));
+      },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SpotTheBall);
