@@ -1,20 +1,21 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
-.center{
+
+.center {
     text-align: center;
 }
 
-.button{
+.button {
     padding: 5px 10px;
     border-radius: 2px;
     cursor: pointer;
-    &.cancel{
+    &.cancel {
         color: white;
-        background: rgba(255,0,0,0.7);
+        background: rgba(255, 0, 0, 0.7);
     }
-    &:hover{
+    &:hover {
         opacity: 0.8;
     }
 }

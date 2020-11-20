@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import App from './components/App';
 import  reducers  from './reducers/index';
 
-import './style.scss';
+import './index.scss';
 
 const store = createStore(
   reducers,
