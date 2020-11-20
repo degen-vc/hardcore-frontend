@@ -1,0 +1,33 @@
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 40px;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+
+    .social-icons{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80px;
+        padding: 0 20px;
+
+        a{
+            text-decoration: none;
+            color: rgba(0,0,0,0.5);
+        }
+        
+        .anticon{
+            cursor: pointer;
+            svg{
+                height: 22px;
+                width: 22px;
+                
+                &:hover{
+                    color: rgba(0,0,0,0.8);
+                }
+            }
+        }
+    }
+}

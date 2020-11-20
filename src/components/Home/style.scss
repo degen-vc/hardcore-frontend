@@ -1,0 +1,696 @@
+.background-image {
+  height: 570px;
+  padding-top: 140px;
+  background-image: url("../../assets/images/home-car.png");
+  background-size: contain;
+
+  .title {
+    font-size: 24px;
+    text-align: center;
+    color: #bada55;
+
+    @media screen and (max-width: 420px){
+      padding: 0 14px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .shadow-wrap {
+    margin-top: 100px;
+    text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+    text-align: center;
+
+    .title {
+      font-size: 28px;
+      color: white;
+    }
+    .name {
+      font-size: 85px;
+      color: white;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+    }
+    .red-text {
+      color: #ec2d44;
+      letter-spacing: 0.3em;
+      font-size: 50px;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 420px){
+      margin-top: 30px;
+
+      .title{
+        font-size: 22px;
+      }
+
+      .name{
+        font-size: 32px;
+      }
+
+      .red-text{
+        margin-top: 10px;
+        font-size: 28px;
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 420px){
+    height: 250px;
+    width: 100%;
+    padding-top: 100px;
+    background-size: cover;
+    background-position: 70%;
+    background-repeat: no-repeat;
+  }
+
+}
+.content-wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: 90px auto 0;
+
+  .text-content {
+    .header-title {
+      display: flex;
+      align-items: center;
+
+      .red-text {
+        color: #ec2d44;
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .horizontal-line {
+        height: 40px;
+        width: 1px;
+        margin: 0 15px;
+        background: black;
+      }
+      .description-title {
+        font-size: 18px;
+      }
+    }
+    .oclock-button {
+      width: 145px;
+      padding: 8px 0;
+      margin-top: 70px;
+      color: #ec2d44;
+      border-radius: 4px;
+      border: 2px solid #ec2d44;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid black;
+        color: black;
+      }
+    }
+  }
+
+  .clock-image {
+    height: 320px;
+    width: 390px;
+    background-image: url("../../assets/images/home-oclock.png");
+    background-size: contain;
+  }
+
+  .description-wrap {
+    margin-top: 50px;
+    width: 420px;
+    text-align: justify;
+  }
+
+  .clock-description {
+    width: 290px;
+    margin-top: 90px;
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .clock-title {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (max-width: 420px){
+    flex-direction: column;
+    width: calc(100% - 20px);
+    margin: 30px 0 0 0;
+    padding: 0 10px;
+
+
+    .text-content{
+      .header-title{
+
+        .red-text{
+          font-size: 24px;
+        }
+        
+        .horizontal-line{
+          height: 28px;
+          margin: 0 12px;
+        }
+        
+        .description-title{
+          font-size: 16px;
+        }
+      }
+      .oclock-button{
+        width: 100px;
+        padding: 5px 0;
+        margin: 20px auto;
+        font-size: 14px;
+      }
+    }
+
+    .description-wrap{
+      margin-top: 20px;
+      width: 100%;
+
+      p{
+        font-size: 12px;
+        margin: 10px 0;
+        padding: 0 8px;
+      }
+    }
+    .clock-image{
+      height: 298px;
+      width: 100%;
+    }
+    .clock-description{
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      margin-top: 10px;
+
+      .title{
+        font-size: 22px;
+      }
+      .clock-title{
+        margin-top: 10px;
+        padding-right: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+
+}
+.paralax {
+  background-image: url('../../assets/images/paralax-car.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 100px;
+
+  .steps {
+    .title {
+      padding: 20px 0 80px;
+      font-size: 35px;
+      letter-spacing: 0.1rem;
+      color: white;
+      text-align: center;
+    }
+
+    .blocks {
+      margin: 0 20px;
+      display: flex;
+      justify-content: space-between;
+
+      .block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 445px;
+        height: 330px;
+        margin-top: 25px;
+        font-size: 126px;
+        font-family: raleway-semibold, raleway, sans-serif;
+        background: rgb(36, 35, 35);
+        color: white;
+        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+
+        &.red {
+          background: rgb(236, 45, 68);
+        }
+
+        &.small {
+          height: 160px;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+
+  .time-remaining {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 270px;
+    padding: 0 120px;
+    background: #ec2d44;
+    margin-top: 100px;
+
+    .title {
+      font-size: 36px;
+      letter-spacing: 2px;
+    }
+
+    .time-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 320px;
+      color: white;
+
+      div {
+        height: 74px;
+        width: 67px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        font-size: 40px;
+      }
+    }
+    .time-description {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 320px;
+      margin-top: 15px;
+      background: black;
+      color: white;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 67px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    margin-top: 30px;
+
+    .steps{
+      .title{
+        padding: 20px;
+        font-size: 18px;
+      }
+      .blocks{
+
+        .block{
+          width: 100px;
+          height: 90px;
+          margin-top: 15px;
+          font-size: 56px;
+
+          &.small{
+            height: 42px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .time-remaining{
+      flex-direction: column;
+      height: 170px;
+      padding: 20px;
+      margin-top: 30px;
+
+      .title{
+        font-size: 20px;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      .time-wrap{
+        width: 100%;
+        margin: 0 auto;
+
+        div{
+          height: 50px;
+          width: 60px;
+          font-size: 24px;
+        }
+      }
+      .time-description{
+        width: 282px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.win-types {
+  display: flex;
+  justify-content: space-between;
+
+  .type {
+    flex: 1;
+    height: 380px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.car {
+      background-image: url("../../assets/images/lambo-win.png");
+    }
+
+    &.watch {
+      background-image: url("../../assets/images/watch-win.png");
+    }
+
+    &.procent {
+      background-image: url("../../assets/images/procent-win.png");
+    }
+
+    .blur {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+
+      .title {
+        text-align: center;
+        font-family: raleway-semibold, raleway, sans-serif;
+        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+        font-size: 45px;
+      }
+
+      .button {
+        border: 1px solid white;
+        font-size: 20px;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 420px){
+    .type{
+      height: 160px;
+
+      .blur{
+        .title{
+          font-size: 22px;
+        }
+        .button{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+.photos {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 70px auto;
+  text-align: center;
+
+  .photo {
+    height: 300px;
+    width: 220px;
+    text-align: center;
+    background-size: contain;
+
+    &.fraser {
+      background-image: url("../../assets/images/fraser.png");
+    }
+
+    &.paul {
+      background-image: url("../../assets/images/paul.png");
+    }
+
+    &.justin {
+      background-image: url("../../assets/images/justin.png");
+    }
+
+    &.richard {
+      background-image: url("../../assets/images/richard.png");
+    }
+
+    
+  }
+
+  .name {
+    margin-top: 10px;
+    font-family: raleway-semibold, raleway, sans-serif;
+    font-size: 22px;
+    color: #ec2d44;
+  }
+
+  .description-photo{
+        font-size: 16px;
+        color: #BADA55;
+        margin: 10px;
+  }
+  @media screen and (max-width: 420px){
+    width: 100%;
+    margin: 30px 0;
+
+    .photo{
+      height: 95px;
+      width: 70px;
+      margin: 0 auto;
+    }
+    .name{
+      font-size: 12px;
+    }
+    .description-photo{
+      font-size: 12px;
+      color: #BADA55;
+      margin: 6px;
+    }
+  }
+}
+.tokenomix{
+    padding-top: 60px;
+    background: #EC2D44;
+
+    .background{
+        background-image: url('../../assets/images/lambo-win.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 90%;
+        height: 470px;
+        margin: 50px auto 0;
+    }
+    .blur{
+        display: flex;
+        justify-content: space-between;
+        height: 390px;
+        padding: 80px 175px 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .title{
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        color: white;
+    }
+
+    .columns{
+        height: 340px;
+        width: 300px;
+        background: rgba(36, 35, 35, 0.57);
+        
+        .title{
+            font-size: 24px;
+            text-shadow: none;
+            letter-spacing: 1px;
+            margin-top: 32px;
+
+            &.red{
+                color: #EC2D44;
+            }
+        }
+
+        .step{
+            width: 250px;
+            text-align: left;
+            font-size: 18px;
+            color: white;
+            margin: 5px 20px;
+        }
+        .horizontal-line{
+            height: 2px;
+            width: 45px;
+            margin: 30px auto;
+            background: white;
+
+            &.red{
+                background: #EC2D44;
+            }
+        }
+
+        &.red{
+            background: rgba(236, 45, 68, 0.4);
+        }
+    }
+
+    @media screen and (max-width: 420px){
+      padding-top: 20px;
+
+      .title{
+        font-size: 26px;
+      }
+
+      .background{
+        height: 500px;
+        margin: 20px auto 0;
+
+        .blur{
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          height: calc(100% - 60px);
+          padding: 30px;
+
+          .columns{     
+            height: auto;
+            width: 220px;
+
+            .title{
+              font-size: 16px;
+              margin-top: 12px;
+            }
+
+            .horizontal-line{
+              margin: 10px auto;
+            }
+
+            .step{
+              width: 200px;
+              margin: 5px 10px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
+}
+.question-block{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 160px;
+    width: 870px;
+    margin: 0 auto;
+    .question{
+        font-family: raleway,sans-serif;
+        font-size: 25px;
+        color: white;
+    }
+    .button{
+        padding: 8px 30px;
+        color: white;
+        border: 2px solid white;
+        border-radius: 6px;
+        font-size: 18px;
+        background: rgb(194, 32, 32);
+    }
+
+    @media screen and (max-width: 420px){
+      height: 100px;
+      width: calc(100% - 40px);
+      padding: 0 20px;
+
+      .question{
+        font-family: raleway,sans-serif;
+        font-size: 13px;
+        color: white;
+      }
+      .button{
+        padding: 4px 15px;
+        font-size: 14px;
+      }
+    }
+}
+
+.wrap{
+    display: flex;
+    justify-content: space-between;
+    padding:50px 300px;
+    height: 300px;
+    background: black;
+
+    .title{
+        color: #EC2D44;
+        text-align: center;
+        font-size: 35px;
+    }
+
+    .description-title{
+        margin-bottom: 20px;
+        color: #BADA55;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .community{
+        .icons{
+            margin-top: 68px;
+        }
+    }
+
+    .empty{
+        margin: 30px 0;
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .icons{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    
+        .anticon{
+            padding: 5px;
+            background: white;
+            border-radius: 50%;
+            
+            svg{
+                font-size: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 420px){
+        padding: 20px;
+        height: 160px;
+
+            .title{
+              font-size: 24px;
+            }
+            .empty{
+              margin: 10px 0;
+              font-size: 18px;
+            }
+            .community{
+              .icons{
+                margin-top: 48px;
+              }
+            }
+      }
+    
+}

@@ -1,18 +1,32 @@
-// Test import of a JavaScript function
-import {example} from './js/example'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// Test import of an asset
-import webpackLogo from './images/webpack-logo.svg'
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-// Test import of styles
-import './styles/index.scss'
+import App from './components/App';
+import  reducers  from './reducers/index';
 
-// Appending to the DOM
-const logo = document.createElement('img')
-logo.src = webpackLogo
+import './style.scss';
 
-const heading = document.createElement('h1')
-heading.textContent = example()
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk)
+);
 
-const app = document.querySelector('#root')
-app.append(logo, heading)
+const Root = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+  </Provider>
+);
+
+ReactDOM.render(<Root />, document.getElementById('root'));
+// Check if hot reloading is enable. If it is, changes won't reload the page.
+// This is related to webpack-dev-server and works on development only.
+if (module.hot) {
+  module.hot.accept();
+}

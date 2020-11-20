@@ -1,28 +1,41 @@
-const paths = require('./paths')
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const webpack = require('webpack')
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common.js')
+const mapStyle = process.env.MAP_STYLE === 'true';
 
-module.exports = merge(common, {
-  // Set the mode to development or production
-  mode: 'development',
-
-  // Control how source maps are generated
-  devtool: 'inline-source-map',
-
-  // Spin up a server for quick development
-  devServer: {
-    historyApiFallback: true,
-    contentBase: paths.build,
-    open: true,
-    compress: true,
-    hot: true,
-    port: 8080,
-  },
-
-  plugins: [
-    // Only update what has changed on hot reload
-    new webpack.HotModuleReplacementPlugin(),
-  ],
-})
+module.exports = merge (common, {
+    mode: 'development',
+    devtool: 'inline-source-map',
+    devServer: {
+        port: 3000,
+        historyApiFallback: true,
+        overlay: true,
+        open: true,
+        stats: 'errors-only'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: mapStyle ? "css-loader?sourceMap" : "css-loader" }
+                ]
+            },
+            {
+                test: /\.s(a|c)ss$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: "sass-loader" }
+                ]
+            },
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+        }),
+    ],
+});
