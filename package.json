@@ -3,8 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
         "@ant-design/icons": "^4.2.2",
         "@metamask/detect-provider": "^1.2.0",
         "@testing-library/jest-dom": "^5.11.4",
@@ -46,7 +44,7 @@
         "style-loader": "^0.21.0",
         "url-loader": "^1.0.1"
     },
-    "homepage": "https://andrii4ire.github.io/degen-vc/hardcore-frontend",
+    "homepage": "https://andrii4ire.github.io/hardcore-frontend",
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
