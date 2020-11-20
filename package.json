@@ -1,73 +1,49 @@
 {
-    "name": "webpack-4-react-boilerplate",
-    "version": "1.0.0",
-    "description": "A simple and complete Webpack 4 React Boilerplate",
-    "main": "index.js",
-    "repository": "https://github.com/user/repository.git",
-    "author": "Your Name <your@email.com>",
-    "license": "MIT",
-    "engines": {
-        "node": "15.2.0",
-        "npm": "7.0.8"
-    },
-    "scripts": {
-        "start": "webpack-dev-server --config=config/webpack.dev.js --hot",
-        "start:reload": "webpack-dev-server --config=config/webpack.dev.js",
-        "start:style": "cross-env MAP_STYLE=true webpack-dev-server --config=config/webpack.dev.js --hot",
-        "build": "webpack --config=config/webpack.prod.js",
-        "analyze": "cross-env ENABLE_ANALYZER=true yarn build"
-    },
-    "dependencies": {
-        "@ant-design/icons": "^4.2.2",
-        "@metamask/detect-provider": "^1.2.0",
-        "antd": "^4.7.3",
-        "jquery": "^3.5.1",
-        "prop-types": "^15.6.2",
-        "react": "^16.4.1",
-        "react-dom": "^16.4.1",
-        "react-redux": "^7.2.2",
-        "react-router-dom": "^5.2.0",
-        "redux": "^4.0.5",
-        "redux-thunk": "^2.3.0",
-        "web3": "^1.2.6"
-    },
-    "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.5",
-        "babel-polyfill": "^6.26.0",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-0": "^6.24.1",
-        "clean-webpack-plugin": "^0.1.19",
-        "cross-env": "^5.2.0",
-        "css-loader": "^1.0.0",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "enzyme-to-json": "^3.3.4",
-        "file-loader": "^1.1.11",
-        "html-webpack-plugin": "^3.2.0",
-        "jest": "^23.4.1",
-        "mini-css-extract-plugin": "^0.4.1",
-        "node-sass": "^4.9.2",
-        "optimize-css-assets-webpack-plugin": "^5.0.0",
-        "react-test-renderer": "^16.4.1",
-        "sass-loader": "^7.0.3",
-        "style-loader": "^0.21.0",
-        "url-loader": "^1.0.1",
-        "webpack": "^4.16.0",
-        "webpack-bundle-analyzer": "^2.13.1",
-        "webpack-cli": "^3.0.8",
-        "webpack-dev-server": "^3.1.4",
-        "webpack-manifest-plugin": "^2.0.3",
-        "webpack-merge": "^4.1.3"
-    },
-    "jest": {
-        "setupTestFrameworkScriptFile": "<rootDir>/config/setupTests.js",
-        "snapshotSerializers": [
-            "enzyme-to-json/serializer"
-        ],
-        "moduleNameMapper": {
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|css)$": "<rootDir>/src/utils/empty-module.js"
-        }
-    }
+  "name": "webpack-boilerplate",
+  "version": "2.0.0",
+  "description": "Sensible webpack 5 boilerplate using Babel and PostCSS with a hot dev server and an optimized production build.",
+  "main": "index.js",
+  "author": "Tania Rascia",
+  "license": "MIT",
+  "homepage": "https://andrii4ire.github.io/deploy_test",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
+  },
+  "keywords": [
+    "webpack",
+    "webpack 5",
+    "webpack boilerplate"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.0",
+    "css-minimizer-webpack-plugin": "^1.1.5",
+    "html-webpack-plugin": "^5.0.0-alpha.7",
+    "mini-css-extract-plugin": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^4.0.4",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:taniarascia/webpack-boilerplate"
+  },
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
 }

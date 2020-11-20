@@ -1,57 +1,58 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ManifestPlugin = require('webpack-manifest-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const paths = require('./paths')
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common.js')
 
-const enableBundleAnalyzer = process.env.ENABLE_ANALYZER === 'true';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = merge(common, {
-    mode: 'production',
-    devtool: 'source-map',
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: "css-loader" }
-                ]
+  mode: 'production',
+  devtool: false,
+  output: {
+    path: paths.build,
+    publicPath: '/',
+    filename: 'js/[name].[contenthash].bundle.js',
+  },
+  plugins: [
+    // Extracts CSS into separate files
+    // Note: style-loader is for development, MiniCssExtractPlugin is for production
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].[contenthash].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              sourceMap: false,
             },
-            {
-                test: /\.s(a|c)ss$/,
-                use: [
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: "css-loader" },
-                    { loader: "sass-loader" }
-                ]
-            },
-        ]
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
-        runtimeChunk: false,
-    },
-    plugins: [
-        new CleanWebpackPlugin([path.resolve(__dirname, '../dist')], {
-            root: process.cwd(),
-            verbose: true,
-            dry: false
-        }),
-        new OptimizeCssAssetsPlugin(),
-        new MiniCssExtractPlugin({
-            filename: "[name].[hash:8].css",
-            chunkFilename: "[id].[hash:8].css"
-        }),
-        new ManifestPlugin(),
-        new BundleAnalyzerPlugin({
-            analyzerMode: enableBundleAnalyzer === true ? 'static' : 'disabled',
-            openAnalyzer: true,
-        }),
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
     ],
-});
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin(), "..."],
+    // Once your build outputs multiple chunks, this option will ensure they share the webpack runtime
+    // instead of having their own. This also helps with long-term caching, since the chunks will only
+    // change when actual code changes, not the webpack runtime.
+    runtimeChunk: {
+      name: 'runtime',
+    },
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+})
