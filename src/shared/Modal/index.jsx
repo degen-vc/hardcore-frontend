@@ -1,4 +1,3 @@
-import { Callbacks } from 'jquery';
 import React, { PureComponent } from 'react';
 import './style.scss'
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
 import {sendCoord} from '../../actions';
-// import SpotTheBallPlugin from './SpotTheBallPlugin';
+import SpotTheBallPlugin from './SpotTheBallPlugin';
 import './style.scss';
 
 class SpotTheBall extends PureComponent{
@@ -38,7 +38,7 @@ class SpotTheBall extends PureComponent{
                   <div className='description-item'>4. Check if you are the winner after the judges have adjudicated!</div>
                 </div>
 
-                {/* <SpotTheBallPlugin setValueBall={this.setValueBall}/> */}
+                <SpotTheBallPlugin setValueBall={this.setValueBall}/>
 
                 <div className='white-description'>
                   <div>

@@ -1,4 +1,4 @@
-export default [{
+const abi = [{
         "inputs": [{
                 "internalType": "contract ERC1155Minter",
                 "name": "_gameMinter",
@@ -407,3 +407,4 @@ export default [{
         "type": "function"
     }
 ]
+export default abi

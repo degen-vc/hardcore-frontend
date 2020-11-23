@@ -229,12 +229,12 @@ export default class Home extends PureComponent {
                         <div className='wrap'>
                             <div className='community'>
                                 <div className='title'>COMMUNITY</div>
-                                <div className='empty'>//////</div>
+                                <div className='empty'>{'//////'}</div>
                                 <div className='icons'><TwitterOutlined /> <YoutubeOutlined /> <FacebookOutlined /></div>
                             </div>
                             <div className='listings'>
                                 <div className='title'>LISTINGS</div>
-                                <div className='empty'>//////</div>
+                                <div className='empty'>{'//////'}</div>
                                 <div className='description-title'>COMING SOON!</div>
                                 <div className='icons'><TwitterOutlined /> <YoutubeOutlined /></div>
                             </div>

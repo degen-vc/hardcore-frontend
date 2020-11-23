@@ -18,7 +18,7 @@ class Vault extends PureComponent {
     }
 
     componentDidMount() {
-        const { getLockedLP, getHcore } = this.props;
+        const { getLockedLP } = this.props;
         getLockedLP()
     }
 

@@ -1,4 +1,3 @@
-import { SPOT_GAME } from '../constants';
 import { getWeb3 } from "../utils";
 import LPGenesisPoolGameAbi from './abi/LPGenesisPoolGameAbi'
 

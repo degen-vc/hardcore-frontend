@@ -10,7 +10,13 @@ export const liquidVault = function(state = initialState, action) {
     switch (action.type) {
         case "GET_LIQUID":
             const { notReadyTokens, tokens, balance, myPoints, maxStake } = action.payload;
-            return Object.assign(...state, { notReadyTokens, tokens, balance, myPoints, maxStake });
+            return {...state,
+                notReadyTokens,
+                tokens,
+                balance,
+                myPoints,
+                maxStake
+            };
         default:
             return state;
     }
