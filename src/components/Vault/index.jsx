@@ -50,7 +50,7 @@ class Vault extends PureComponent {
     render() {
         const { claim, liquidVault, stake} = this.props;
         const { modalIsOpen } = this.state;
-        console.log(liquidVault)
+        console.log(this)
         return (
             <React.Fragment>
                 <main>
@@ -60,7 +60,7 @@ class Vault extends PureComponent {
                             <h3>$HCORE TRANSFER FEES RECEIVED AND AVAILABLE NOW: 000</h3>
                             <div className='description-item'>Sent ETH and receive $HCORE/ETH-UNI-V2-LP tokens claimable after 30 days</div>
                             <br />
-                            <div className='description-item'>MAXIMUM ETH THAT CAN BE SENT: 000</div>
+                            <div className='description-item'>Current percentege of EHT fee</div>
                         </div>
                         <div className='vault-button-wrap'>
                             <div className='button-vault'>
