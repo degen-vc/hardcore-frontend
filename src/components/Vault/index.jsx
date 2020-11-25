@@ -64,7 +64,7 @@ class Vault extends PureComponent {
                         </div>
                         <div className='vault-button-wrap'>
                             <div className='button-vault'>
-                                <h2>STAKE HCORE</h2>
+                                <h2>STAKE LP</h2>
                                 <div className='white-line'></div>
                                 <div className='hc-value'>{`YOUR POINTS: ${liquidVault.myPoints}`}</div>
                                 <div className='discriptrion-value'>{`MAX STAKE: ${liquidVault.maxStake}`}</div>

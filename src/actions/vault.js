@@ -6,7 +6,7 @@ import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
 
 export const purchaseLP = (value) => {
     return async dispatch => {
-        const LIQUID_VAULT = '0x0e5DF687Da14396641DA79D707A92776B496d44e'
+        const LIQUID_VAULT = '0x2706eb7ff1bb7424aF23A5aAEfab0A83aaC62165'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
@@ -20,7 +20,7 @@ export const purchaseLP = (value) => {
 
 export const claim = () => {
     return async dispatch => {
-        const LIQUID_VAULT = '0x0e5DF687Da14396641DA79D707A92776B496d44e'
+        const LIQUID_VAULT = '0x2706eb7ff1bb7424aF23A5aAEfab0A83aaC62165'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
@@ -35,7 +35,7 @@ export const claim = () => {
 
 export const getLockedLP = () => {
     return async dispatch => {
-        const LIQUID_VAULT = '0x0e5DF687Da14396641DA79D707A92776B496d44e'
+        const LIQUID_VAULT = '0x2706eb7ff1bb7424aF23A5aAEfab0A83aaC62165'
         const HCORE = '0x49bc86b40237527ec19874aCA15bCb095B363f2E';
         const LPGenesisPoolGameAddress = '0xef64Ec53b7723823d35D5BD69D47beB6102f59fe';
         const web3 = await getWeb3();
