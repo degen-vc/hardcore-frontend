@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/hardcore-frontend/static/css/main.9fe9f461.chunk.css",
-    "main.js": "/hardcore-frontend/static/js/main.104d95b6.chunk.js",
-    "main.js.map": "/hardcore-frontend/static/js/main.104d95b6.chunk.js.map",
+    "main.js": "/hardcore-frontend/static/js/main.fc05315b.chunk.js",
+    "main.js.map": "/hardcore-frontend/static/js/main.fc05315b.chunk.js.map",
     "runtime-main.js": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js",
     "runtime-main.js.map": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js.map",
     "static/js/2.caab3d71.chunk.js": "/hardcore-frontend/static/js/2.caab3d71.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.5f1ce0fd.js",
     "static/js/2.caab3d71.chunk.js",
     "static/css/main.9fe9f461.chunk.css",
-    "static/js/main.104d95b6.chunk.js"
+    "static/js/main.fc05315b.chunk.js"
   ]
 }
