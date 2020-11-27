@@ -54,7 +54,7 @@ export const getLockedLP = () => {
                 const lockedLP = await LiquidContract.methods.getLockedLP('0x77a3701f8f68565170Dc801656c426882E2ED8aD', i).call();
                 balance = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
 
-                if (lockedLP[2] && (new Date().getTime() / 1000)) { // change && to <=
+                if (lockedLP[2] <= (new Date().getTime() / 1000)) { // change && to <=
                     tokens += lockedLP[1];
                 } else {
                     notReadyTokens += lockedLP[1]
@@ -81,7 +81,7 @@ export const getLockedLP = () => {
     }
 }
 
-export const stake = () => {
+export const stake = (value) => {
     return async dispatch => {
         const LPGenesisPoolGameAddress = '0xef64Ec53b7723823d35D5BD69D47beB6102f59fe';
         const UniswapV2PairAddress = '0xF28Ae277407E13c4da0d02886e1b97114c57Cb97'
@@ -89,10 +89,10 @@ export const stake = () => {
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
         const UniswapV2Pair = await new web3.eth.Contract(UniswapV2PairAbi, UniswapV2PairAddress);
-        await UniswapV2Pair.methods.approve(LPGenesisPoolGameAddress, 1).send({ from: ethAddress[0] })
+        await UniswapV2Pair.methods.approve(LPGenesisPoolGameAddress, value).send({ from: ethAddress[0] })
 
         try {
-            await LPGenesisPoolGameContract.methods.stake(1).send({ from: ethAddress[0] })
+            await LPGenesisPoolGameContract.methods.stake(value).send({ from: ethAddress[0] })
         } catch (error) {
             console.log(error)
         }

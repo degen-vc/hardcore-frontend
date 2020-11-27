@@ -5,6 +5,7 @@ import {  NavLink } from "react-router-dom";
 import Modal from '../../shared/Modal';
 import { connect } from 'react-redux';
 import { getAuth } from '../../actions'
+import logo from '../../assets/images/logo.png'
 
 import './style.scss'
 
@@ -78,7 +79,7 @@ class Header extends PureComponent {
         return (
             <Fragment>
                 <header className='header'>
-                    <div className='logo'>logo</div>
+                    <img className='logo' src={logo} alt=""/>
                     {authorized || auth ?
                         <nav className='navigation'>
                             <NavLink to='/home' className='item'>Home</NavLink>

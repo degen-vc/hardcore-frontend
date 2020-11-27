@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { TwitterOutlined, YoutubeOutlined, FacebookOutlined } from '@ant-design/icons';
+import { TwitterOutlined, YoutubeOutlined, FacebookOutlined, GithubOutlined } from '@ant-design/icons';
 import './style.scss';
 
 export default class Home extends PureComponent {
@@ -85,7 +85,7 @@ export default class Home extends PureComponent {
                                 <p>The Degen.VC approach is to #alphadrop (airdrop) tokens to the DGVC LP and let the Uniswap market do the rest. This innovation has been covered in notable publications such as: The Coin Tribune; Altcoin Buzz, and Irish Tech News</p>
                                 <p>This. Is. HARDCORE</p>
                             </div>
-                            <div className='oclock-button'>MEDIUM</div>
+                            <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/this-is-hardcore-dc3147eaafc'><div className='oclock-button'>MEDIUM</div></a>
                         </div>
                         <div>
                             <div className='clock-image'></div>
@@ -106,8 +106,12 @@ export default class Home extends PureComponent {
                                 <div className='block red'>3</div>
                             </div>
                             <div className='blocks'>
-                                <div className='small block'>BUY DGVC ON UNSWAP</div>
-                                <div className='small block red'>POOL DGVC ON UNISWAP</div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x26E43759551333e57F073bb0772F50329A957b30'>
+                                    <div className='small block'>BUY DGVC ON UNSWAP</div>
+                                </a>
+                                <a rel="noopener noreferrer" target="_blank"  href='https://app.uniswap.org/#/add/ETH/0x26E43759551333e57F073bb0772F50329A957b30'>
+                                    <div className='small block red'>POOL DGVC ON UNISWAP</div>
+                                </a>
                                 <div className='small block'>WAIT FOR THE #ALPHADROP</div>
                             </div>
                         </div>
@@ -137,7 +141,9 @@ export default class Home extends PureComponent {
                                     <div>Win</div>
                                     <div>exotic cars</div>
                                 </div>
-                                <div className='button'>Learn more</div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <div className='button'>Learn more</div>
+                                </a>
                             </div>
                         </div>
                         <div className='type watch'>
@@ -146,7 +152,9 @@ export default class Home extends PureComponent {
                                     <div>Win fine</div>
                                     <div>watches</div>
                                 </div>
-                                <div className='button'>Learn more</div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <div className='button'>Learn more</div>
+                                </a>
                             </div>
                         </div>
                         <div className='type procent'>
@@ -155,7 +163,9 @@ export default class Home extends PureComponent {
                                     <div>Win</div>
                                     <div>crypto</div>
                                 </div>
-                                <div className='button'>Learn more</div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <div className='button'>Learn more</div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -164,25 +174,44 @@ export default class Home extends PureComponent {
                             <div className='photo fraser'></div>
                             <div className='name'>Fraser Brown</div>
                             <div className='description-photo'>Co-founder • Degen.VC</div>
-                            <div className='social'><TwitterOutlined /> In</div>
+                            <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/fraserbrown-org/'>
+                            <TwitterOutlined /> 
+                            </a>
+                            <a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/fraserbrown-org/'>
+                            <b>In</b>
+                            </a>
+                            </div>
                         </div>
                         <div>
                             <div className='photo paul'></div>
                             <div className='name'>Paul Scott</div>
                             <div className='description-photo'>Co-founder • Degen.VC</div>
-                            <div className='social'><TwitterOutlined /> In</div>
+                            <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://twitter.com/paulscott005'>
+                            <TwitterOutlined /> 
+                            </a>
+                            <a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/paulscott55/'>
+                            <b>In</b>
+                            </a>
+                            </div>
                         </div>
                         <div>
                             <div className='photo justin'></div>
                             <div className='name'>Justin Goro</div>
                             <div className='description-photo'>Senior Dev • Degen.VC</div>
-                            <div className='social'><TwitterOutlined /> In</div>
+                            <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://github.com/gititGoro'>
+                            <GithubOutlined /> 
+                            </a>
+                            </div>
                         </div>
                         <div>
                             <div className='photo richard'></div>
                             <div className='name'>Richard Parker</div>
                             <div className='description-photo'>Community • Degen.VC</div>
-                            <div className='social'><TwitterOutlined /> In</div>
+                            <div className='social'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://twitter.com/upspwnage'>
+                                    <TwitterOutlined /> 
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className='tokenomix'>
@@ -222,7 +251,9 @@ export default class Home extends PureComponent {
                         </div>
                         <div className='question-block'>
                             <div className='question'>Any questions? Please head over to our telegram group</div>
-                            <div className='button'>Telegram</div>
+                            <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
+                                <div className='button'>Telegram</div>
+                            </a>
                         </div>
                     </div>
                     <div className='footer'>

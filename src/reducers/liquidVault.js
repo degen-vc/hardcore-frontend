@@ -17,6 +17,12 @@ export const liquidVault = function(state = initialState, action) {
                 myPoints,
                 maxStake
             };
+        case "GET_ETH_AND_HCORE_BALANCE":
+            const { ethBalance, hCoreBalance } = action.payload;
+            return {...state,
+                ethBalance,
+                hCoreBalance
+            };
         default:
             return state;
     }

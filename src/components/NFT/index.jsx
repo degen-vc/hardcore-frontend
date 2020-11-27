@@ -1,19 +1,23 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react';
+import { getEthAndHcoreBalance, sellHcore} from '../../actions';
+import { connect } from 'react-redux';
+import './style.scss'
 
-export default class NFT extends PureComponent {
+class NFT extends PureComponent {
     constructor() {
         super()
-        // this.setSpeed = this.setSpeed.bind(this)
-        // this.speedNeedle = this.speedNeedle.bind(this)
-        // this.rpmNeedle = this.rpmNeedle.bind(this)
-        // this.calculateSpeedAngle = this.calculateSpeedAngle.bind(this)
-        // this.calculateRPMAngel = this.calculateRPMAngel.bind(this)
-        // this.drawMiniNeedle = this.drawMiniNeedle.bind(this)
+        this.setSpeed = this.setSpeed.bind(this)
+        this.speedNeedle = this.speedNeedle.bind(this)
+        this.rpmNeedle = this.rpmNeedle.bind(this)
+        this.calculateSpeedAngle = this.calculateSpeedAngle.bind(this)
+        this.calculateRPMAngel = this.calculateRPMAngel.bind(this)
+        this.drawMiniNeedle = this.drawMiniNeedle.bind(this)
     }
 
     componentDidMount() {
+        const { getEthAndHcoreBalance } = this.props;
+        getEthAndHcoreBalance()
         this.canvas = document.getElementById('canvas');
-        console.log(this.canvas)
         this.canvas.width = 500;
         this.canvas.height = 500;
         
@@ -95,7 +99,6 @@ export default class NFT extends PureComponent {
             speed = Math.floor(speed);
             rpm = rpm * 10;
         }
-        console.log('this.',this);
         this.ctx.clearRect(0, 0, 500, 500);
     
         //fill all speedometer
@@ -217,7 +220,7 @@ export default class NFT extends PureComponent {
         let speedM = 0;
         let gear = 0;
         let rpm = 0;
-        setInterval(function() {
+        setInterval(() => {
             if (speedM > 160) { // max number
                 speedM = 0;
                 rpm = 0;
@@ -240,17 +243,44 @@ export default class NFT extends PureComponent {
             }
             this.drawSpeedo(speedM, gear, rpm, 160);
     
-        }, 5000);
+        }, 50);
     
     }
 
     render() {
+        const { liquidVault: {ethBalance, hCoreBalance} } = this.props;
+
         return (
             <main>
-                <section>
-                    <canvas id='canvas'></canvas>
+                <section className='NFT-page'>
+                    <h1>NFT</h1>
+                        <button onClick={() => this.props.sellHcore()}>Sell Hcore</button>
+                    <div className='wrap-nft'>
+                        <div className='score'>Hcore: { hCoreBalance}</div>
+                        <canvas id='canvas'></canvas>
+                        <div className='score'>ETH: { ethBalance}</div>
+                    </div>
                 </section>
             </main>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        liquidVault: state.liquidVault
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getEthAndHcoreBalance: (value) => {
+            dispatch(getEthAndHcoreBalance(value));
+        },
+        sellHcore: () => {
+            dispatch(sellHcore());
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NFT);

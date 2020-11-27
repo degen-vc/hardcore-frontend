@@ -10,6 +10,7 @@ class Vault extends PureComponent {
         this.state = {
             modalIsOpen: false,
             inputEth: '',
+            modalType: ''
         }
 
         this.changeModalStatus = this.changeModalStatus.bind(this)
@@ -32,25 +33,24 @@ class Vault extends PureComponent {
         this.setState({ inputEth: e.target.value });
     }
 
-    changeModalStatus() {
+    changeModalStatus(type) {
         let { modalIsOpen } = this.state;
-        this.setState({ modalIsOpen: !modalIsOpen })
+        this.setState({ modalIsOpen: !modalIsOpen, inputEth: '', modalType: type })
     }
 
     renderModalBody() {
         const { inputEth } = this.state;
         return (
             <div className='wrap-modal'>
-                <div className='title'>Enter ETH</div>
+                <div className='title'>Enter Value</div>
                 <input type='text' value={inputEth} onChange={this.changeInput}></input>
             </div>
         )
     }
 
     render() {
-        const { claim, liquidVault, stake} = this.props;
-        const { modalIsOpen } = this.state;
-        console.log(this)
+        const { claim, liquidVault} = this.props;
+        const { modalIsOpen,modalType } = this.state;
         return (
             <React.Fragment>
                 <main>
@@ -68,14 +68,13 @@ class Vault extends PureComponent {
                                 <div className='white-line'></div>
                                 <div className='hc-value'>{`YOUR POINTS: ${liquidVault.myPoints}`}</div>
                                 <div className='discriptrion-value'>{`MAX STAKE: ${liquidVault.maxStake}`}</div>
-                                <div className='button' onClick={stake}>Stake</div>
+                                <div className='button' onClick={() => this.changeModalStatus('stake')}>Stake</div>
                             </div>
                             <div className='button-vault'>
                                 <h2>SEND ETH</h2>
                                 <div className='white-line'></div>
                                 <div className='hc-value'>{`AVAILABLE $HCORE: ${liquidVault.balance}`}</div>
-                                <div className='discriptrion-value'>MAXIMUM ETH: 000</div>
-                                <div className='button' onClick={() => this.changeModalStatus(true)}>Send ETH</div>
+                                <div className='button' onClick={() => this.changeModalStatus('send')}>Send ETH</div>
                             </div>
                             <div className='button-vault'>
                                 <h2>CLAIM LP</h2>
@@ -88,7 +87,7 @@ class Vault extends PureComponent {
                     </section>
                 </main>
                 {modalIsOpen ? (
-                    <Modal name='vault' children={this.renderModalBody()} callback={this.sendEth} onClose={this.changeModalStatus} />
+                    <Modal name='vault' children={this.renderModalBody()} callback={modalType === 'send' ? this.sendEth : stake} onClose={this.changeModalStatus} />
                 ) : null}
             </React.Fragment>
         )
