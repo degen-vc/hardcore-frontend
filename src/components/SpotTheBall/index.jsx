@@ -48,7 +48,7 @@ class SpotTheBall extends PureComponent{
                   <div>
                     For example, if X = 738 and Y = 844 then the correct number (string) is 738844
                   </div>
-                  <div className='button' onClick={()=>sendCoord(x,y)}>Mint NFT</div>
+                  <div className='button' onClick={()=>sendCoord(x,y)}>Play</div>
                   <div>
                     This button will be activated after the #alphadrop
                     If you want to practice and mint your NFT on the Ropstan test network (no points needed) 

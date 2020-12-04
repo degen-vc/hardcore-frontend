@@ -83,7 +83,7 @@ class Header extends PureComponent {
                     {authorized || auth ?
                         <nav className='navigation'>
                             <NavLink to='/home' className='item'>Home</NavLink>
-                            <NavLink to='/spot' className='item'>Spot the ball</NavLink>
+                            <NavLink to='/spot' className='item'>Play</NavLink>
                             <NavLink to='/vault' className='item'>Vault</NavLink>
                             <NavLink to='/nft' className='item'>NFT</NavLink>
                             <div className='profile button' onClick={this.openModal}>Profile</div>

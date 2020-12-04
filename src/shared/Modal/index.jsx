@@ -3,16 +3,15 @@ import './style.scss'
 
 class Modal extends PureComponent {
     render() {
-        const { children, onClose, callback, name } = this.props;
+        const { children, onClose, callback, name, confirmName } = this.props;
         return (
             <div className={`modal ${name}`}>
                 <div className='modal-body'>
                     {children}
                     <div className='button-wrap'>
-                        {callback ? <div className='button done' onClick={callback}>OK</div> : null}
                         <div className='button cancel' onClick={onClose}>Close</div>
+                        {callback ? <div className='button done' onClick={() => callback()}>{confirmName ? confirmName : 'OK'}</div> : null}
                     </div>
-                    <div className='close' onClick={onClose}>+</div>
                 </div>
             </div>
         )
