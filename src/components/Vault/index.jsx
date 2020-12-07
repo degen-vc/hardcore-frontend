@@ -70,7 +70,7 @@ class Vault extends PureComponent {
     }
 
     render() {
-        const { claim, liquidVault} = this.props;
+        const { claim, liquidVault, unStake} = this.props;
         const { modalIsOpen, modalType } = this.state;
         return (
             <React.Fragment>
@@ -90,7 +90,7 @@ class Vault extends PureComponent {
                                 <div className='hc-value'>{`YOUR POINTS: ${parseFloat(liquidVault.myPoints).toFixed(2)}`}</div>
                                 <div className='discriptrion-value'>{`MAX STAKE: ${liquidVault.maxStake}`}</div>
                                 <div className='button' onClick={() => this.changeModalStatus('stake')}>Stake</div>
-                                <div className='unstake'></div>
+                                <div className='unstake' onClick={unStake}>Unstake</div>
                             </div>
                             <div className='button-vault'>
                                 <h2>SEND ETH</h2>

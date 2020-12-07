@@ -119,6 +119,11 @@ export const stake = (value) => {
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
+        const balance = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call();
+        if (balance + value > 2.02) {
+            alert("You can't stake more than 2.02");
+            return
+        }
         const UniswapV2Pair = await new web3.eth.Contract(UniswapV2PairAbi, UniswapV2PairAddress);
         await UniswapV2Pair.methods.approve(LPGenesisPoolGameAddress, web3.utils.toWei(value)).send({ from: ethAddress[0] })
         try {
