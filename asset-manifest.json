@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/hardcore-frontend/static/css/main.f9261cf9.chunk.css",
-    "main.js": "/hardcore-frontend/static/js/main.878c70c0.chunk.js",
-    "main.js.map": "/hardcore-frontend/static/js/main.878c70c0.chunk.js.map",
+    "main.css": "/hardcore-frontend/static/css/main.48e4bf7c.chunk.css",
+    "main.js": "/hardcore-frontend/static/js/main.d9743150.chunk.js",
+    "main.js.map": "/hardcore-frontend/static/js/main.d9743150.chunk.js.map",
     "runtime-main.js": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js",
     "runtime-main.js.map": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js.map",
     "static/js/2.f72a2293.chunk.js": "/hardcore-frontend/static/js/2.f72a2293.chunk.js",
     "static/js/2.f72a2293.chunk.js.map": "/hardcore-frontend/static/js/2.f72a2293.chunk.js.map",
     "index.html": "/hardcore-frontend/index.html",
-    "static/css/main.f9261cf9.chunk.css.map": "/hardcore-frontend/static/css/main.f9261cf9.chunk.css.map",
+    "static/css/main.48e4bf7c.chunk.css.map": "/hardcore-frontend/static/css/main.48e4bf7c.chunk.css.map",
     "static/js/2.f72a2293.chunk.js.LICENSE.txt": "/hardcore-frontend/static/js/2.f72a2293.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/hardcore-frontend/static/media/watch-win.cc09f596.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5f1ce0fd.js",
     "static/js/2.f72a2293.chunk.js",
-    "static/css/main.f9261cf9.chunk.css",
-    "static/js/main.878c70c0.chunk.js"
+    "static/css/main.48e4bf7c.chunk.css",
+    "static/js/main.d9743150.chunk.js"
   ]
 }
