@@ -63,8 +63,8 @@ class Vault extends PureComponent {
             <div className='wrap-modal'>
                 <div className='title'>Enter Value</div>
                 <input type='number' value={inputEth} onChange={this.changeInput}></input>
-                <div>{`Amount to send: ${inputEth - inputEth / 100  * liquidVault.purchaseFee}`}</div>
-                <div>{`ETH fee: ${inputEth / 100  * liquidVault.purchaseFee}`}</div>
+                <div>{`Amount to send: ${parseFloat(inputEth - inputEth / 100  * liquidVault.purchaseFee).toFixed(4)}`}</div>
+                <div>{`ETH fee: ${(inputEth / 100  * liquidVault.purchaseFee).toFixed(2)}`}</div>
             </div>
         )
     }
@@ -87,7 +87,7 @@ class Vault extends PureComponent {
                              <div className='button-vault'>
                                 <h2>STAKE LP</h2>
                                 <div className='white-line'></div>
-                                <div className='hc-value'>{`YOUR POINTS: ${parseFloat(liquidVault.myPoints).toFixed(2)}`}</div>
+                                <div className='hc-value'>{`YOUR POINTS: ${parseFloat(liquidVault.myPoints).toFixed(4)}`}</div>
                                 <div className='discriptrion-value'>{`MAX STAKE: ${liquidVault.maxStake}`}</div>
                                 <div className='button' onClick={() => this.changeModalStatus('stake')}>Stake</div>
                                 <div className='unstake' onClick={unStake}>Unstake</div>

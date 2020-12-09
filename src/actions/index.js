@@ -1,5 +1,5 @@
 import { getAuth } from './auth';
-import { sendCoord } from './LPGenesisPoolGame';
+import { sendCoord, getBalance } from './LPGenesisPoolGame';
 import { getEthAndHcoreBalance, sellHcore } from './NFTFund';
 import { purchaseLP, claim, getLockedLP, stake, unStake } from './vault';
 
@@ -12,5 +12,6 @@ export {
     stake,
     getEthAndHcoreBalance,
     sellHcore,
-    unStake
+    unStake,
+    getBalance
 }

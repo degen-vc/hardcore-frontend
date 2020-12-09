@@ -43,11 +43,11 @@ export const claim = () => {
 export const getLockedLP = () => {
     return async dispatch => {
 
-        const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3'
+        const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3';
         const HCORE = '0xe6f6E7e3F5771d6B078474697a47f876a05b9426';
         const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
-        const FEE_DISTRIBUTOR = '0x3BE435C19FE14082c043A003561551abf64e4530'
-        const UniswapV2PairAddress = '0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b'
+        const FEE_DISTRIBUTOR = '0x3BE435C19FE14082c043A003561551abf64e4530';
+        const UniswapV2PairAddress = '0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b';
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
@@ -68,7 +68,7 @@ export const getLockedLP = () => {
 
             } else {
                 let data = await LiquidContract.methods.getLockedLP(ethAddress[0], length - 1).call();
-                tokens = data[1]
+                tokens = data[1];
                 let count = 0;
 
                 if (stakeDuration < (new Date().getTime() / 1000) - data[2]) {
@@ -80,9 +80,7 @@ export const getLockedLP = () => {
                 tokens = parseFloat(tokens).toFixed(2);
                 for (let i = 0; i < length - count; i++) {
                     const lockedLP = await LiquidContract.methods.getLockedLP(ethAddress[0], i).call();
-                    if (stakeDuration > (new Date().getTime() / 1000) - lockedLP[2]) {
-                        notReadyTokens = web3.utils.toBN(notReadyTokens).add(web3.utils.toBN(lockedLP[1]))
-                    }
+                    notReadyTokens = web3.utils.toBN(notReadyTokens).add(web3.utils.toBN(lockedLP[1]))
                 }
                 notReadyTokens = notReadyTokens !== 0 ? +web3.utils.fromWei(notReadyTokens + '') : 0;
                 notReadyTokens = parseFloat(notReadyTokens.toFixed(2));
@@ -119,15 +117,20 @@ export const stake = (value) => {
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
-        const balance = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call();
-        if (balance + value > 2.02) {
+        let balance = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call();
+        value = web3.utils.toWei(value);
+        balance = web3.utils.toBN(balance);
+        let expected = web3.utils.toWei('2.02');
+        expected = web3.utils.toBN(expected);
+        if (web3.utils.toBN(value).add(balance).gt(expected)) {
             alert("You can't stake more than 2.02");
             return
         }
+
         const UniswapV2Pair = await new web3.eth.Contract(UniswapV2PairAbi, UniswapV2PairAddress);
-        await UniswapV2Pair.methods.approve(LPGenesisPoolGameAddress, web3.utils.toWei(value)).send({ from: ethAddress[0] })
+        await UniswapV2Pair.methods.approve(LPGenesisPoolGameAddress, value).send({ from: ethAddress[0] })
         try {
-            await LPGenesisPoolGameContract.methods.stake(web3.utils.toWei(value)).send({ from: ethAddress[0] })
+            await LPGenesisPoolGameContract.methods.stake(value).send({ from: ethAddress[0] })
         } catch (error) {
             console.log(error)
         }

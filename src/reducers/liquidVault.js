@@ -3,7 +3,11 @@ const initialState = {
     tokens: 0,
     balance: 0,
     myPoints: 0,
-    maxStake: 0
+    maxStake: 0,
+    purchaseFee: 0,
+    feeBalance: 0,
+    stakeDuration: 0,
+    myLpTokens: 0
 }
 
 export const liquidVault = function(state = initialState, action) {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
-import {sendCoord} from '../../actions';
+import {sendCoord, getBalance} from '../../actions';
 import SpotTheBallPlugin from './SpotTheBallPlugin';
 import './style.scss';
 
@@ -16,6 +16,11 @@ class SpotTheBall extends PureComponent{
     this.setValueBall = this.setValueBall.bind(this)
   }
 
+  componentDidMount() {
+    const { getBalance } = this.props;
+    getBalance();
+  }
+
   setValueBall(x,y){
     const result = {};
     result.x = x;
@@ -25,7 +30,7 @@ class SpotTheBall extends PureComponent{
   
     render(){
     const {valueOfBall: {x,y}} = this.state
-    const {sendCoord} = this.props;
+      const { sendCoord, balance:{balance, need} } = this.props;
         return (
             <main>
               <section className='spot-the-ball-page'>
@@ -46,8 +51,10 @@ class SpotTheBall extends PureComponent{
                     Points are required to mint NFTs and a separate transaction is required for each NFT minted.
                   </div>
                   <div>
-                    For example, if X = 738 and Y = 844 then the correct number (string) is 738844
+                  For example, if X = 738 and Y = 844 then the correct number (string) is 738844
                   </div>
+                  <div>{`Required to play: ${parseFloat(need).toFixed(4)}`}</div>
+                  <div>{`Your points: ${parseFloat(balance).toFixed(4)}`}</div>
                   <div className='button' onClick={()=>sendCoord(x,y)}>Play</div>
                   <div>
                     This button will be activated after the #alphadrop
@@ -63,7 +70,7 @@ class SpotTheBall extends PureComponent{
 
 const mapStateToProps = state => {
   return {
-    
+    balance: state.getBalance
   };
 };
 
@@ -71,7 +78,10 @@ const mapDispatchToProps = dispatch => {
   return {
     sendCoord: (x,y) => {
           dispatch(sendCoord(x,y));
-      },
+    },
+    getBalance: () => {
+      dispatch(getBalance())
+    }
   };
 };
 
