@@ -80,17 +80,15 @@ class Header extends PureComponent {
             <Fragment>
                 <header className='header'>
                     <img className='logo' src={logo} alt=""/>
-                    {authorized || auth ?
                         <nav className='navigation'>
-                            <NavLink to='/home' className='item'>Home</NavLink>
-                            <NavLink to='/spot' className='item'>Play</NavLink>
-                            <NavLink to='/vault' className='item'>Vault</NavLink>
-                            <NavLink to='/nft' className='item'>NFT</NavLink>
-                            <div className='profile button' onClick={this.openModal}>Profile</div>
+                            <NavLink to='/home' className='item'>HOME</NavLink>
+                            <NavLink to='/spot' className='item'>ABOUT</NavLink>
+                            <NavLink to='/vault' className='item'>VAULT</NavLink>
+                            <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
                         </nav>
+                        {authorized || auth ?<div className='profile button' onClick={this.openModal}>Profile</div>
                         :
-                        <div className='button' onClick={this.toLogin}>Login</div>
-                    }
+                        <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
                 </header>
                 {isProfileOpen ? <Modal children={this.renderModalBody()} onClose={this.closeModal} /> : null}
             </Fragment>

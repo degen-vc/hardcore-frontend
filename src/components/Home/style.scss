@@ -1,611 +1,679 @@
-.background-image {
-    height: 570px;
-    padding-top: 140px;
-    background-image: url("../../assets/images/home-car.png");
-    background-size: contain;
-    .title {
-        font-size: 24px;
-        text-align: center;
-        color: #bada55;
-        @media screen and (max-width: 420px) {
-            padding: 0 14px;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+.home-page {
+    // padding: 0 230px;
+    background: black;
+    .space {
+        height: 78px;
     }
-    .shadow-wrap {
-        margin-top: 100px;
-        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
-        text-align: center;
-        .title {
-            font-size: 28px;
-            color: white;
-        }
-        .name {
-            font-size: 85px;
-            color: white;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-        }
-        .red-text {
-            color: #ec2d44;
-            letter-spacing: 0.3em;
-            font-size: 50px;
-            font-weight: bold;
-        }
-        @media screen and (max-width: 420px) {
-            margin-top: 30px;
-            .title {
-                font-size: 22px;
-            }
-            .name {
-                font-size: 32px;
-            }
-            .red-text {
-                margin-top: 10px;
-                font-size: 28px;
-            }
-        }
-    }
-    @media screen and (max-width: 420px) {
-        height: 250px;
-        width: 100%;
-        padding-top: 100px;
-        background-size: cover;
-        background-position: 70%;
-        background-repeat: no-repeat;
-    }
-}
-
-.content-wrap {
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
-    margin: 90px auto 0;
-    .text-content {
-        .header-title {
-            display: flex;
-            align-items: center;
-            .red-text {
-                color: #ec2d44;
-                font-size: 36px;
-                font-weight: bold;
-            }
-            .horizontal-line {
-                height: 40px;
-                width: 1px;
-                margin: 0 15px;
-                background: black;
-            }
-            .description-title {
-                font-size: 18px;
-            }
-        }
-        .oclock-button {
-            width: 145px;
-            padding: 8px 0;
-            margin-top: 70px;
-            color: #ec2d44;
-            border-radius: 4px;
-            border: 2px solid #ec2d44;
-            text-align: center;
-            cursor: pointer;
-            &:hover {
-                border: 2px solid black;
-                color: black;
-            }
-        }
-    }
-    .clock-image {
-        height: 320px;
-        width: 390px;
-        background-image: url("../../assets/images/home-oclock.png");
+    .background-image {
+        height: 800px;
+        background-image: url("../../assets/images/home-car.png");
         background-size: contain;
-    }
-    .description-wrap {
-        margin-top: 50px;
-        width: 420px;
-        text-align: justify;
-    }
-    .clock-description {
-        width: 290px;
-        margin-top: 90px;
         .title {
-            font-size: 22px;
-            font-weight: bold;
-            font-style: italic;
+            position: absolute;
+            left: 20%;
+            top: 30%;
+            width: 339px;
+            height: 114px;
+            margin: 0 0 36px 5px;
+            background-image: radial-gradient(circle at 15% 81%, #ffffff, #636363 122%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            @media screen and (max-width: 420px) {
+                padding: 0 14px;
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
         }
-        .clock-title {
-            margin-top: 15px;
-            font-size: 14px;
+        @media screen and (max-width: 420px) {
+            height: 250px;
+            width: 100%;
+            padding-top: 100px;
+            background-size: cover;
+            background-position: 70%;
+            background-repeat: no-repeat;
         }
     }
-    @media screen and (max-width: 420px) {
-        flex-direction: column;
-        width: calc(100% - 20px);
-        margin: 30px 0 0 0;
-        padding: 0 10px;
+    .content-wrap {
+        height: 604px;
+        // background-color: #171717;
+        background: black;
+        background-image: url('../../assets/images/black-car.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        .title-launch {
+            height: 58px;
+            margin: 0 auto;
+            padding-top: 58px;
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 48%);
+            font-family: 'Roboto-medium';
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ;
+        .timer {
+            height: 112px;
+            font-family: Roboto;
+            font-size: 96px;
+            font-weight: 100;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: -1.5px;
+            text-align: center;
+            color: #ffffff;
+        }
         .text-content {
             .header-title {
+                display: flex;
+                align-items: center;
                 .red-text {
-                    font-size: 24px;
+                    color: #ec2d44;
+                    font-size: 36px;
+                    font-weight: bold;
                 }
                 .horizontal-line {
-                    height: 28px;
-                    margin: 0 12px;
+                    height: 40px;
+                    width: 1px;
+                    margin: 0 15px;
+                    background: black;
                 }
                 .description-title {
-                    font-size: 16px;
+                    font-size: 18px;
                 }
             }
             .oclock-button {
-                width: 100px;
-                padding: 5px 0;
-                margin: 20px auto;
-                font-size: 14px;
+                width: 145px;
+                padding: 8px 0;
+                margin-top: 70px;
+                color: #ec2d44;
+                border-radius: 4px;
+                border: 2px solid #ec2d44;
+                text-align: center;
+                cursor: pointer;
+                &:hover {
+                    border: 2px solid black;
+                    color: black;
+                }
             }
         }
         .description-wrap {
-            margin-top: 20px;
-            width: 100%;
-            p {
-                font-size: 12px;
-                margin: 10px 0;
-                padding: 0 8px;
-            }
-        }
-        .clock-image {
-            height: 298px;
-            width: 100%;
+            margin-top: 50px;
+            width: 420px;
+            text-align: justify;
         }
         .clock-description {
-            width: calc(100% - 20px);
-            padding: 0 10px;
-            margin-top: 10px;
+            width: 290px;
+            margin-top: 90px;
             .title {
                 font-size: 22px;
+                font-weight: bold;
+                font-style: italic;
             }
             .clock-title {
-                margin-top: 10px;
-                padding-right: 5px;
-                font-size: 12px;
+                margin-top: 15px;
+                font-size: 14px;
             }
         }
-    }
-}
-
-.paralax {
-    background-image: url('../../assets/images/paralax-car.png');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: 100px;
-    .steps {
-        .title {
-            padding: 20px 0 80px;
-            font-size: 35px;
-            letter-spacing: 0.1rem;
-            color: white;
-            text-align: center;
-        }
-        .blocks {
-            margin: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            .block {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 445px;
-                height: 330px;
-                margin-top: 25px;
-                font-size: 126px;
-                font-family: raleway-semibold, raleway, sans-serif;
-                background: rgb(36, 35, 35);
-                color: white;
-                text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
-                &.red {
-                    background: rgb(236, 45, 68);
-                }
-                &.small {
-                    height: 160px;
-                    font-size: 22px;
-                }
-            }
-        }
-    }
-    .time-remaining {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 270px;
-        padding: 0 120px;
-        background: #ec2d44;
-        margin-top: 100px;
-        .title {
-            font-size: 36px;
-            letter-spacing: 2px;
-        }
-        .time-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 320px;
-            color: white;
-            div {
-                height: 74px;
-                width: 67px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: black;
-                font-size: 40px;
-            }
-        }
-        .time-description {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 320px;
-            margin-top: 15px;
-            background: black;
-            color: white;
-            div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 67px;
-            }
-        }
-    }
-    @media screen and (max-width: 420px) {
-        width: 100%;
-        margin-top: 30px;
-        .steps {
-            .title {
-                padding: 20px;
-                font-size: 18px;
-            }
-            .blocks {
-                .block {
-                    width: 100px;
-                    height: 90px;
-                    margin-top: 15px;
-                    font-size: 56px;
-                    &.small {
-                        height: 42px;
-                        font-size: 12px;
-                        text-align: center;
+        @media screen and (max-width: 420px) {
+            flex-direction: column;
+            width: calc(100% - 20px);
+            margin: 30px 0 0 0;
+            padding: 0 10px;
+            .text-content {
+                .header-title {
+                    .red-text {
+                        font-size: 24px;
+                    }
+                    .horizontal-line {
+                        height: 28px;
+                        margin: 0 12px;
+                    }
+                    .description-title {
+                        font-size: 16px;
                     }
                 }
-            }
-        }
-        .time-remaining {
-            flex-direction: column;
-            height: 170px;
-            padding: 20px;
-            margin-top: 30px;
-            .title {
-                font-size: 20px;
-                text-align: center;
-                letter-spacing: 1px;
-            }
-            .time-wrap {
-                width: 100%;
-                margin: 0 auto;
-                div {
-                    height: 50px;
-                    width: 60px;
-                    font-size: 24px;
+                .oclock-button {
+                    width: 100px;
+                    padding: 5px 0;
+                    margin: 20px auto;
+                    font-size: 14px;
                 }
             }
-            .time-description {
-                width: 282px;
-                margin-top: 5px;
+            .description-wrap {
+                margin-top: 20px;
+                width: 100%;
+                p {
+                    font-size: 12px;
+                    margin: 10px 0;
+                    padding: 0 8px;
+                }
             }
-        }
-    }
-}
-
-.win-types {
-    display: flex;
-    justify-content: space-between;
-    .type {
-        flex: 1;
-        height: 380px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        &.car {
-            background-image: url("../../assets/images/lambo-win.png");
-        }
-        &.watch {
-            background-image: url("../../assets/images/watch-win.png");
-        }
-        &.procent {
-            background-image: url("../../assets/images/procent-win.png");
-        }
-        .blur {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            flex-direction: column;
-            height: 100%;
-            color: white;
-            background: rgba(0, 0, 0, 0.7);
-            .title {
-                text-align: center;
-                font-family: raleway-semibold, raleway, sans-serif;
-                text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
-                font-size: 45px;
+            .clock-image {
+                height: 298px;
+                width: 100%;
             }
-            .button {
-                border: 1px solid white;
-                font-size: 20px;
-                border-radius: 3px;
-                color: white;
-            }
-        }
-    }
-    @media screen and (max-width: 420px) {
-        .type {
-            height: 160px;
-            .blur {
+            .clock-description {
+                width: calc(100% - 20px);
+                padding: 0 10px;
+                margin-top: 10px;
                 .title {
                     font-size: 22px;
                 }
-                .button {
-                    font-size: 16px;
+                .clock-title {
+                    margin-top: 10px;
+                    padding-right: 5px;
+                    font-size: 12px;
                 }
             }
         }
     }
-}
-
-.photos {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin: 70px auto;
-    text-align: center;
-    a {
-        color: black;
-    }
-    .photo {
-        height: 300px;
-        width: 220px;
-        text-align: center;
-        background-size: contain;
-        &.fraser {
-            background-image: url("../../assets/images/fraser.png");
+    .stake-block {
+        .title {
+            width: 442px;
+            height: 56px;
+            margin: 176px auto 40px;
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 190%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        &.paul {
-            background-image: url("../../assets/images/paul.png");
-        }
-        &.justin {
-            background-image: url("../../assets/images/justin.png");
-        }
-        &.richard {
-            background-image: url("../../assets/images/richard.png");
-        }
-    }
-    .name {
-        margin-top: 10px;
-        font-family: raleway-semibold, raleway, sans-serif;
-        font-size: 22px;
-        color: #ec2d44;
-    }
-    .description-photo {
-        font-size: 16px;
-        color: #BADA55;
-        margin: 10px;
-    }
-    @media screen and (max-width: 420px) {
-        width: 100%;
-        margin: 30px 0;
-        .photo {
-            height: 95px;
-            width: 70px;
+        .stake-panel {
+            width: 760px;
+            height: 178px;
             margin: 0 auto;
-        }
-        .name {
-            font-size: 12px;
-        }
-        .description-photo {
-            font-size: 12px;
-            color: #BADA55;
-            margin: 6px;
-        }
-    }
-}
-
-.tokenomix {
-    padding-top: 60px;
-    background: #EC2D44;
-    .background {
-        background-image: url('../../assets/images/lambo-win.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 90%;
-        height: 470px;
-        margin: 50px auto 0;
-    }
-    .blur {
-        display: flex;
-        justify-content: space-between;
-        height: 390px;
-        padding: 80px 175px 0;
-        background: rgba(0, 0, 0, 0.5);
-    }
-    .title {
-        font-size: 35px;
-        font-weight: bold;
-        text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
-        letter-spacing: 0.1em;
-        text-align: center;
-        color: white;
-    }
-    .columns {
-        height: 340px;
-        width: 300px;
-        background: rgba(36, 35, 35, 0.57);
-        .title {
-            font-size: 24px;
-            text-shadow: none;
-            letter-spacing: 1px;
-            margin-top: 32px;
-            &.red {
-                color: #EC2D44;
+            padding: 24px;
+            background-color: #242323;
+            .stake {
+                .stake-header {
+                    display: flex;
+                    .wrap-title {
+                        .stake-title {
+                            width: 142px;
+                            height: 16px;
+                            font-family: Roboto;
+                            font-size: 12px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.33;
+                            letter-spacing: 0.4px;
+                            color: rgba(255, 255, 255, 0.6);
+                        }
+                        .stake-value {
+                            width: 142px;
+                            height: 30px;
+                            margin-top: 4px;
+                            font-family: Roboto;
+                            font-size: 24px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.25;
+                            letter-spacing: normal;
+                            color: #ffffff;
+                        }
+                        &.first {
+                            width: 220px;
+                        }
+                        &.second {
+                            width: 270px;
+                        }
+                        &.third {
+                            width: 150px;
+                        }
+                        &.fourth {
+                            width: 110px;
+                        }
+                    }
+                }
+                .stake-body {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 24px;
+                    .stake-input-wrap {
+                        width: 360px;
+                        padding: 16px;
+                        background-color: rgba(255, 255, 255, 0.1);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .stake-input {
+                            background: transparent;
+                            outline: none;
+                            border: none;
+                            width: 291px;
+                            height: 24px;
+                            margin: 0 16px 0 0;
+                            font-family: Roboto;
+                            font-size: 16px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.5;
+                            letter-spacing: 0.15px;
+                            color: rgba(255, 255, 255, 0.6);
+                            &::placeholder {
+                                color: rgba(255, 255, 255, 0.6);
+                            }
+                        }
+                        .stake-type {
+                            width: 20px;
+                            height: 24px;
+                            margin: 0 0 0 16px;
+                            font-family: Roboto;
+                            font-size: 16px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.5;
+                            letter-spacing: 0.15px;
+                            text-align: center;
+                            color: #ffffff;
+                        }
+                    }
+                    .stake-button {
+                        width: 142px;
+                        height: 44px;
+                        background-image: url('../../assets/buttons/stake.png');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                    .unstake-button {
+                        width: 142px;
+                        height: 44px;
+                        background-image: url('../../assets/buttons/unstake.png');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+                .stake-footer {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-top: 24px;
+                    .stake-wrap-more {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 254px;
+                        padding: 0px 36px;
+                        .stake-more {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            width: 80px;
+                            height: 16px;
+                            font-family: Roboto-medium;
+                            font-size: 12px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.33;
+                            letter-spacing: 0.4px;
+                            text-align: center;
+                            color: #ec2d44;
+                            cursor: pointer;
+                            div {
+                                font-size: 22px;
+                                height: 34px;
+                            }
+                        }
+                    }
+                }
             }
         }
-        .step {
-            width: 250px;
-            text-align: left;
-            font-size: 18px;
+        .stake-link {
+            display: flex;
             color: white;
-            margin: 5px 20px;
-        }
-        .horizontal-line {
-            height: 2px;
-            width: 45px;
-            margin: 30px auto;
-            background: white;
-            &.red {
-                background: #EC2D44;
+            justify-content: space-between;
+            margin: 24px auto 140px;
+            width: 205px;
+            font-family: Roboto;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            div {
+                font-size: 24px;
+                line-height: 14px;
             }
         }
-        &.red {
-            background: rgba(236, 45, 68, 0.4);
+    }
+    .game {
+        background-color: #171717;
+        padding-bottom: 100px;
+        .game-header {
+            padding: 50px 0 30px 0;
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 39%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
-    @media screen and (max-width: 420px) {
-        padding-top: 20px;
-        .title {
-            font-size: 26px;
+    .tokenomix {
+        padding-top: 60px;
+        background: #EC2D44;
+        // .background {
+        //     background-image: url('../../assets/images/lambo-win.png');
+        //     background-size: cover;
+        //     background-repeat: no-repeat;
+        //     background-position: center;
+        //     width: 90%;
+        //     height: 470px;
+        //     margin: 50px auto 0;
+        // }
+        .blur {
+            display: flex;
+            justify-content: space-between;
+            height: 390px;
+            padding: 80px 175px 0;
+            background: rgba(0, 0, 0, 0.5);
         }
-        .background {
-            height: 500px;
-            margin: 20px auto 0;
-            .blur {
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-                height: calc(100% - 60px);
-                padding: 30px;
-                .columns {
-                    height: auto;
-                    width: 220px;
-                    .title {
-                        font-size: 16px;
-                        margin-top: 12px;
-                    }
-                    .horizontal-line {
-                        margin: 10px auto;
-                    }
-                    .step {
-                        width: 200px;
-                        margin: 5px 10px;
-                        font-size: 14px;
+        .title {
+            font-size: 35px;
+            font-weight: bold;
+            text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+            letter-spacing: 0.1em;
+            text-align: center;
+            color: white;
+        }
+        .columns {
+            height: 340px;
+            width: 300px;
+            background: rgba(36, 35, 35, 0.57);
+            .title {
+                font-size: 24px;
+                text-shadow: none;
+                letter-spacing: 1px;
+                margin-top: 32px;
+                &.red {
+                    color: #EC2D44;
+                }
+            }
+            .step {
+                width: 250px;
+                text-align: left;
+                font-size: 18px;
+                color: white;
+                margin: 5px 20px;
+            }
+            .horizontal-line {
+                height: 2px;
+                width: 45px;
+                margin: 30px auto;
+                background: white;
+                &.red {
+                    background: #EC2D44;
+                }
+            }
+            &.red {
+                background: rgba(236, 45, 68, 0.4);
+            }
+        }
+        @media screen and (max-width: 420px) {
+            padding-top: 20px;
+            .title {
+                font-size: 26px;
+            }
+            .background {
+                height: 500px;
+                margin: 20px auto 0;
+                .blur {
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    height: calc(100% - 60px);
+                    padding: 30px;
+                    .columns {
+                        height: auto;
+                        width: 220px;
+                        .title {
+                            font-size: 16px;
+                            margin-top: 12px;
+                        }
+                        .horizontal-line {
+                            margin: 10px auto;
+                        }
+                        .step {
+                            width: 200px;
+                            margin: 5px 10px;
+                            font-size: 14px;
+                        }
                     }
                 }
             }
         }
     }
-}
-
-.question-block {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 160px;
-    width: 870px;
-    margin: 0 auto;
-    .question {
-        font-family: raleway, sans-serif;
-        font-size: 25px;
-        color: white;
-    }
-    .button {
-        padding: 8px 30px;
-        color: white;
-        border: 2px solid white;
-        border-radius: 6px;
-        font-size: 18px;
-        background: rgb(194, 32, 32);
-    }
-    @media screen and (max-width: 420px) {
-        height: 100px;
-        width: calc(100% - 40px);
-        padding: 0 20px;
-        .question {
-            font-family: raleway, sans-serif;
-            font-size: 13px;
-            color: white;
-        }
-        .button {
-            padding: 4px 15px;
-            font-size: 14px;
-        }
-    }
-}
-
-.wrap {
-    display: flex;
-    justify-content: space-between;
-    padding: 50px 300px;
-    height: 300px;
-    background: black;
-    .title {
-        color: #EC2D44;
-        text-align: center;
-        font-size: 35px;
-    }
-    .description-title {
-        margin-bottom: 20px;
-        color: #BADA55;
-        font-weight: bold;
-        text-align: center;
-    }
-    .community {
-        .icons {
-            margin-top: 68px;
-        }
-    }
-    .empty {
-        margin: 30px 0;
-        font-size: 26px;
-        font-weight: bold;
-        text-align: center;
-        color: white;
-    }
-    .icons {
+    .question-block {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        .anticon {
-            padding: 5px;
-            background: white;
-            border-radius: 50%;
-            svg {
-                font-size: 30px;
+        justify-content: space-between;
+        width: 985px;
+        height: 100px;
+        padding: 0 196px;
+        margin: 180px auto 80px;
+        background-color: #ec2d44;
+        .question {
+            font-family: Roboto;
+            font-size: 20px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.75;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+        .button {
+            background-image: url('../../assets/buttons/telegram.png');
+            width: 134px;
+            height: 46px;
+            background-repeat: no-repeat;
+        }
+        @media screen and (max-width: 420px) {
+            height: 100px;
+            width: calc(100% - 40px);
+            padding: 0 20px;
+            .question {
+                font-family: raleway, sans-serif;
+                font-size: 13px;
+                color: white;
+            }
+            .button {
+                padding: 4px 15px;
+                font-size: 14px;
             }
         }
     }
-    @media screen and (max-width: 420px) {
-        padding: 20px;
-        height: 160px;
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px 300px;
+        height: 300px;
+        background: black;
         .title {
-            font-size: 24px;
+            color: #EC2D44;
+            text-align: center;
+            font-size: 35px;
         }
-        .empty {
-            margin: 10px 0;
-            font-size: 18px;
+        .description-title {
+            margin-bottom: 20px;
+            color: #BADA55;
+            font-weight: bold;
+            text-align: center;
         }
         .community {
             .icons {
-                margin-top: 48px;
+                margin-top: 68px;
             }
         }
+        .empty {
+            margin: 30px 0;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+        }
+        .icons {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .anticon {
+                padding: 5px;
+                background: white;
+                border-radius: 50%;
+                svg {
+                    font-size: 30px;
+                }
+            }
+        }
+        @media screen and (max-width: 420px) {
+            padding: 20px;
+            height: 160px;
+            .title {
+                font-size: 24px;
+            }
+            .empty {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+            .community {
+                .icons {
+                    margin-top: 48px;
+                }
+            }
+        }
+    }
+}
+
+.news-hardcore {
+    .news-title {
+        margin-top: 100px;
+        background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 80%);
+        font-family: Roboto;
+        font-size: 48px;
+        font-weight: 900;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.wrap-items {
+    display: flex;
+    justify-content: space-between;
+    width: 740px;
+    margin: 80px auto 0;
+    .item {
+        width: 200px;
+        height: 230px;
+        padding: 24px 15px 20px 16px;
+        background: black;
+        border: 1px solid white;
+        .number {
+            width: 196px;
+            height: 112px;
+            margin: 0 0 8px;
+            font-family: Roboto;
+            font-size: 96px;
+            font-weight: 100;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: -1.5px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .title {
+            width: 150px;
+            height: 48px;
+            margin: 8px 23px 24px;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: 0.15px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .label-item {
+            height: 80px;
+            background-repeat: no-repeat;
+            width: 80px;
+            margin: 0 auto 35px;
+            &.arrows {
+                background-image: url('../../assets/buttons/arrows.png');
+            }
+            &.money {
+                background-image: url('../../assets/buttons/money.png');
+            }
+            &.ask {
+                background-image: url('../../assets/buttons/ask.png');
+            }
+        }
+    }
+    .button {
+        width: 162px;
+        height: 36px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .degen {
+        background-image: url('../../assets/buttons/degen.png');
+    }
+    .swap {
+        background-image: url('../../assets/buttons/swap.png');
+    }
+    .pool {
+        background-image: url('../../assets/buttons/pool.png');
+    }
+    .medium {
+        background-image: url('../../assets/buttons/medium.png');
     }
 }

@@ -1,33 +1,88 @@
-footer{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 40px;
-    width: 100%;
-    background: rgba(0,0,0,0.3);
-
-    .social-icons{
+footer {
+    height: 142px;
+    padding: 16px 227px 0;
+    background-color: #171717;
+    .header-title {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        width: 80px;
-        padding: 0 20px;
-
-        a{
-            text-decoration: none;
-            color: rgba(0,0,0,0.5);
-        }
-        
-        .anticon{
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    .icon-items {
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        .icon {
+            height: 30px;
+            width: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
             cursor: pointer;
-            svg{
-                height: 22px;
-                width: 22px;
-                
-                &:hover{
-                    color: rgba(0,0,0,0.8);
-                }
-            }
+        }
+        .twitter {
+            background-image: url('../../assets/socials/twitter.png');
+        }
+        .discord {
+            background-image: url('../../assets/socials/discord.png');
+        }
+        .telegram {
+            background-image: url('../../assets/socials/telegram.png');
+        }
+        .github {
+            background-image: url('../../assets/socials/github.png');
+        }
+        .medium1 {
+            background-image: url('../../assets/socials/medium1.png');
+        }
+        .medium3 {
+            background-image: url('../../assets/socials/medium3.png');
+        }
+        .medium2 {
+            background-image: url('../../assets/socials/medium2.png');
+        }
+        .block-1 {
+            display: flex;
+            justify-content: space-between;
+            width: 260px;
+        }
+        .block-2 {
+            display: flex;
+            justify-content: space-between;
+            width: 80px;
+        }
+    }
+    .horizontal-line {
+        width: 100%;
+        height: 2px;
+        margin-top: 10px;
+        opacity: 0.12;
+        background-color: #ffffff;
+    }
+    .summary-information {
+        display: flex;
+        justify-content: space-between;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        margin-top: 20px;
+        letter-spacing: 0.25px;
+        color: rgba(255, 255, 255, 0.6);
+        .wrap-summary {
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
         }
     }
 }
