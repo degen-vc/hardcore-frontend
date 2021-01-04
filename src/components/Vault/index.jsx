@@ -25,16 +25,16 @@ class Vault extends PureComponent {
     }
 
     sendEth() {
-        const { purchaseLP , liquidVault} = this.props;
+        const { purchaseLP, liquidVault } = this.props;
         const { inputEth } = this.state;
-        this.setState({modalIsOpen: false})
-        purchaseLP(inputEth,  liquidVault.balance);
+        this.setState({ modalIsOpen: false })
+        purchaseLP(inputEth, liquidVault.balance);
     }
 
     stakeLp() {
         const { stake } = this.props;
         const { inputEth } = this.state;
-        this.setState({modalIsOpen: false})
+        this.setState({ modalIsOpen: false })
         stake(inputEth);
     }
 
@@ -49,7 +49,7 @@ class Vault extends PureComponent {
 
     renderModalBody() {
         const { inputEth, modalType } = this.state;
-        const {liquidVault} = this.props
+        const { liquidVault } = this.props
         if (modalType !== 'send') {
             return (
                 <div className='wrap-modal'>
@@ -63,18 +63,87 @@ class Vault extends PureComponent {
             <div className='wrap-modal'>
                 <div className='title'>Enter Value</div>
                 <input type='number' value={inputEth} onChange={this.changeInput}></input>
-                <div>{`Amount to send: ${parseFloat(inputEth - inputEth / 100  * liquidVault.purchaseFee).toFixed(4)}`}</div>
-                <div>{`ETH fee: ${(inputEth / 100  * liquidVault.purchaseFee).toFixed(2)}`}</div>
+                <div>{`Amount to send: ${parseFloat(inputEth - inputEth / 100 * liquidVault.purchaseFee).toFixed(4)}`}</div>
+                <div>{`ETH fee: ${(inputEth / 100 * liquidVault.purchaseFee).toFixed(2)}`}</div>
             </div>
         )
     }
 
     render() {
-        const { claim, liquidVault, unStake} = this.props;
-        const { modalIsOpen, modalType } = this.state;
+        const { claim, liquidVault, unStake } = this.props;
+        const { modalIsOpen, modalType, inputEth } = this.state;
         return (
             <React.Fragment>
-                <main>
+                <section className='vault'>
+                    <div className='vault-page-title'>Vault</div>
+                    <div className='stake-panel'>
+                        <div className='header-panel'>
+                            <div className='header-text'>
+                                Send ETH. It is pooled with $HCORE. Your discounted LP is locked for a period. 
+                            </div>
+                            <div>
+                                <div className='wrap-title second'>
+                                    <div className='header-text'>Available $HCORE</div>
+                                    <div className='stake-value'>0000000</div>
+                                </div>
+                            </div>
+                            </div>
+                        <div className='stake'>
+                            <div className='stake-header'>
+                                <div className='wrap-title first'>
+                                    <div className='stake-title'>Max ETH</div>
+                                    <div className='stake-value'>00000000</div>
+                                </div>
+                                <div className='wrap-title first'>
+                                    <div className='stake-title'>Lock Period</div>
+                                    <div className='stake-value'>00000000</div>
+                                </div>
+                                <div className='wrap-title first'>
+                                    <div className='stake-title'>LP Discount</div>
+                                    <div className='stake-value'>00000000</div>
+                                </div>
+                                <div className='wrap-title first'>
+                                    <div className='stake-title'>LP Burn</div>
+                                    <div className='stake-value'>00000000</div>
+                                </div>
+                                <div className='second-block'>
+                                <div className='wrap-title second'>
+                                    <div className='stake-title'>Not yet claimable LP</div>
+                                    <div className='stake-value'>00000000</div>
+                                </div>
+                                    <div className='wrap-title second'>
+                                        <div className='stake-title'>Claimable LP</div>
+                                        <div className='stake-value'>00000000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='stake-body'>
+                                <div className='stake-input-wrap'>
+                                    <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
+                                    <div className='stake-type'></div>
+                                </div>
+                                
+
+                                <div className='stake-button' ></div>
+                                <div className='unstake-button' ></div>
+                              
+                            </div>
+                            <div className='stake-footer'>
+                                <div className='stake-wrap-more'>
+                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='question-block'>
+                        <div className='question'>Any questions? Please head over to our telegram group</div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
+                            <div className='button'></div>
+                        </a>
+                    </div>
+                </section>
+                {/* <main>
                     <section className='vault'>
                         <div className='description'>
                             <h1>VAULT</h1>
@@ -107,9 +176,9 @@ class Vault extends PureComponent {
                             </div>
                         </div>
                     </section>
-                </main>
+                </main> */}
                 {modalIsOpen ? (
-                    <Modal confirmName='Send' name='vault' children={this.renderModalBody()} callback={modalType === 'send' ?  this.sendEth : this.stakeLp} onClose={this.changeModalStatus} />
+                    <Modal confirmName='Send' name='vault' children={this.renderModalBody()} callback={modalType === 'send' ? this.sendEth : this.stakeLp} onClose={this.changeModalStatus} />
                 ) : null}
             </React.Fragment>
         )
@@ -124,7 +193,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         purchaseLP: (value, balance) => {
-            dispatch(purchaseLP(value,balance ));
+            dispatch(purchaseLP(value, balance));
         },
         claim: () => {
             dispatch(claim());

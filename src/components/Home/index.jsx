@@ -1,23 +1,26 @@
 import React, { PureComponent } from 'react';
-import { TwitterOutlined, YoutubeOutlined, FacebookOutlined, GithubOutlined } from '@ant-design/icons';
 import Game from '../SpotTheBall';
+import { connect } from 'react-redux';
+import {  purchaseLP, claim, getLockedLP, stake, unStake  } from '../../actions'
 import './style.scss';
 
-export default class Home extends PureComponent {
+class Home extends PureComponent {
     constructor() {
         super()
         this.state = {
-            time: 0
+            globalTime: 0,
+            inputEth: '',
         }
     }
 
     componentDidMount() {
-        this.setState({ time: 500000 })
+        this.setState({ globalTime: 500000 })
         this.interval = setInterval(() => {
-            let { time } = this.state;
-            time--;
-            this.setState({ time })
+            let { globalTime } = this.state;
+            globalTime--;
+            this.setState({ globalTime })
         }, 1000);
+        this.props.getLockedLP()
     }
 
     componentWillUnmount() {
@@ -25,6 +28,7 @@ export default class Home extends PureComponent {
     }
 
     getExpiredTime(time) {
+        let { globalTime } = this.state;
         let days, hours, minutes, seconds;
         if (time / 86400 >= 1) {
             days = (time / 86400);
@@ -48,18 +52,27 @@ export default class Home extends PureComponent {
             time -= minutes * 60;
         }
         seconds = Math.round(time);
-        if ((!days && !hours && !minutes && !seconds) || time <= 0) {
+        if ((!days && !hours && !minutes && !seconds) || globalTime <= 0) {
             return [0, 0, 0, 0]
         }
 
         return [days, hours, minutes, seconds]
 
     }
-
+    stakeLp() {
+        const { stake } = this.props;
+        const { inputEth } = this.state;
+        stake(inputEth);
+        this.setState({inputEth: ''})
+    }
+    changeInput(e) {
+        this.setState({ inputEth: e.target.value });
+    }
 
     render() {
-        const { time } = this.state;
-        const [days, hours, minutes, seconds] = this.getExpiredTime(time)
+        const { globalTime, inputEth } = this.state;
+        const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
+        const {liquidVault : {maxStake, myPoints}, unStake} = this.props;
         return (
             <main className='home-page'>
                 <section>
@@ -109,20 +122,20 @@ export default class Home extends PureComponent {
                                     </div>
                                     <div className='wrap-title third'>
                                         <div className='stake-title'>Max stake</div>
-                                        <div className='stake-value'>2.02</div>
+                                        <div className='stake-value'>{maxStake}</div>
                                     </div>
                                     <div className='wrap-title fourth'>
                                         <div className='stake-title'>Staked $HCORE LP</div>
-                                        <div className='stake-value'>0000000</div>
+                                        <div className='stake-value'>{parseFloat(myPoints).toFixed(4)}</div>
                                     </div>
                                 </div>
                                 <div className='stake-body'>
                                     <div className='stake-input-wrap'>
-                                        <input className='stake-input' type='text' placeholder='Amount' />
+                                        <input className='stake-input' type='text' placeholder='Amount' onChange={(e)=>this.changeInput(e)} value={inputEth} />
                                         <div className='stake-type'>LP</div>
                                     </div>
-                                    <div className='stake-button'></div>
-                                    <div className='unstake-button'></div>
+                                    <div className='stake-button' onClick={this.stakeLp}></div>
+                                    <div className='unstake-button' onClick={unStake}></div>
                                 </div>
                                 <div className='stake-footer'>
                                     <div className='stake-wrap-more'>
@@ -171,3 +184,32 @@ export default class Home extends PureComponent {
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        liquidVault: state.liquidVault
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        purchaseLP: (value, balance) => {
+            dispatch(purchaseLP(value,balance ));
+        },
+        claim: () => {
+            dispatch(claim());
+        },
+        getLockedLP: () => {
+            dispatch(getLockedLP());
+        },
+        stake: (value) => {
+            dispatch(stake(value))
+        },
+        unStake: () => {
+            dispatch(unStake())
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

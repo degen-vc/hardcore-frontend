@@ -1,11 +1,11 @@
 import React, { PureComponent, } from 'react'
 import jQuery from "jquery";
 import { connect } from 'react-redux';
-import {sendCoord, getBalance} from '../../actions';
+import { sendCoord, getBalance, getAuth } from '../../actions';
 import './style.scss';
 
 class SpotTheBall extends PureComponent {
-    state={
+    state = {
         x: 0,
         y: 0
     }
@@ -384,8 +384,8 @@ class SpotTheBall extends PureComponent {
                         if (((tmp_cursor_x + 35) > 0) && ((tmp_cursor_y + 35) > 0) && (tmp_cursor_x <= (main_image_width - 35)) && (tmp_cursor_y <= (main_image_height - 35))) {
                             jQuery(obj).find('.zoom-image-container').css({ 'top': tmp_cursor_y, 'left': tmp_cursor_x });
                         }
-                         cursor_y = cursor_y - 19;
-                         cursor_x = cursor_x - 19;
+                        cursor_y = cursor_y - 19;
+                        cursor_x = cursor_x - 19;
                         var inner_x = ((cursor_x / 2) + cursor_x);
                         var inner_y = ((cursor_y / 2) + cursor_y);
                         jQuery(obj).find('.zoom-image-inner').css({ 'top': 0 - inner_y, 'left': 0 - inner_x });
@@ -396,11 +396,11 @@ class SpotTheBall extends PureComponent {
                             var original_width;
                             var original_height;
                             if (_is_mobile()) {
-                                 original_width = jQuery('.main-image-mobile').data('width');
-                                 original_height = jQuery('.main-image-mobile').data('height');
+                                original_width = jQuery('.main-image-mobile').data('width');
+                                original_height = jQuery('.main-image-mobile').data('height');
                             } else {
-                                 original_width = jQuery(obj).find('.main-image-container').data('width');
-                                 original_height = jQuery(obj).find('.main-image-container').data('height');
+                                original_width = jQuery(obj).find('.main-image-container').data('width');
+                                original_height = jQuery(obj).find('.main-image-container').data('height');
                             }
 
 
@@ -463,34 +463,34 @@ class SpotTheBall extends PureComponent {
                         } else if (options.mode === 'choose_winner') {
 
                         } else {
-                            
-                                var zoom_image_container_position = get_zoom_image_container_position(38);
-                                var offsetX = zoom_image_container_position.x * 1.5;
-                                var offsetY = zoom_image_container_position.y * 1.5;
-                                var zoom_client_x = offsetX - 8;
-                                var zoom_client_y = offsetY - 8;
-                                var main_client_left = ((((zoom_client_x / 1.5) - 4) + 1)).toFixed(); //1.5 = zoom level is 50%
-                                var main_client_top = ((((zoom_client_y / 1.5) - 4) + 1)).toFixed();
 
-                                //Remove the existing spot
-                                if (options.mode === 'set_answer') {
-                                    jQuery(obj).find('*[data-spot_id="__set_spot_id__"]').remove();
-                                }
+                            var zoom_image_container_position = get_zoom_image_container_position(38);
+                            var offsetX = zoom_image_container_position.x * 1.5;
+                            var offsetY = zoom_image_container_position.y * 1.5;
+                            var zoom_client_x = offsetX - 8;
+                            var zoom_client_y = offsetY - 8;
+                            var main_client_left = ((((zoom_client_x / 1.5) - 4) + 1)).toFixed(); //1.5 = zoom level is 50%
+                            var main_client_top = ((((zoom_client_y / 1.5) - 4) + 1)).toFixed();
 
-                                jQuery(obj).find('.main-image-points-container').append('<div class="main-image-point" data-spot_id="__set_spot_id__" style="top: ' + (main_client_top) + 'px;left: ' + (main_client_left) + 'px; ">&nbsp;</div>');
-                                jQuery(obj).find('.zoom-points-container').append('<div class="zoom-point" data-spot_id="__set_spot_id__" style="top: ' + (zoom_client_y) + 'px;left: ' + (zoom_client_x) + 'px;">&nbsp;</div>');
+                            //Remove the existing spot
+                            if (options.mode === 'set_answer') {
+                                jQuery(obj).find('*[data-spot_id="__set_spot_id__"]').remove();
+                            }
 
-                                if (options.onChooseSpot !== undefined) {
-                                    e.coordinate_x = (((zoom_client_x + 8) / 1.5) * 2.7).toFixed();
-                                    e.coordinate_y = (((zoom_client_y + 8) / 1.5) * 2.7).toFixed();
-                                    e.spot_index = 0;
-                                    e.is_game_played = _is_game_played();
-                                    e.remaining_spots = _get_remaining_spots();
-                                    options.onChooseSpot(e);
-                                }
+                            jQuery(obj).find('.main-image-points-container').append('<div class="main-image-point" data-spot_id="__set_spot_id__" style="top: ' + (main_client_top) + 'px;left: ' + (main_client_left) + 'px; ">&nbsp;</div>');
+                            jQuery(obj).find('.zoom-points-container').append('<div class="zoom-point" data-spot_id="__set_spot_id__" style="top: ' + (zoom_client_y) + 'px;left: ' + (zoom_client_x) + 'px;">&nbsp;</div>');
 
-                                //spot_index++;
-                            
+                            if (options.onChooseSpot !== undefined) {
+                                e.coordinate_x = (((zoom_client_x + 8) / 1.5) * 2.7).toFixed();
+                                e.coordinate_y = (((zoom_client_y + 8) / 1.5) * 2.7).toFixed();
+                                e.spot_index = 0;
+                                e.is_game_played = _is_game_played();
+                                e.remaining_spots = _get_remaining_spots();
+                                options.onChooseSpot(e);
+                            }
+
+                            //spot_index++;
+
                         }
                     }
                 });
@@ -523,16 +523,16 @@ class SpotTheBall extends PureComponent {
                     var tmp_left = (jQuery(obj).find('.main-image-mobile').attr('data-spot-x') - 8);
 
                     var zoom_level = jQuery('.mobile-stb-zoom').val();
-                   
+
                     var data_top;
                     var data_left;
                     if (zoom_level === 51) {
-                         data_top = tmp_top;
-                         data_left = tmp_left;
+                        data_top = tmp_top;
+                        data_left = tmp_left;
                     } else {
                         var zoom_level_value = (zoom_level / 100) + 1;
-                         data_top = (tmp_top - ((zoom_level / 100) * 9)) / zoom_level_value;
-                         data_left = (tmp_left - ((zoom_level / 100) * 9)) / zoom_level_value;
+                        data_top = (tmp_top - ((zoom_level / 100) * 9)) / zoom_level_value;
+                        data_left = (tmp_left - ((zoom_level / 100) * 9)) / zoom_level_value;
                     }
 
 
@@ -606,9 +606,9 @@ class SpotTheBall extends PureComponent {
             function _get_remaining_spots() {
                 var clicked
                 if (_is_mobile()) {
-                     clicked = jQuery(obj).find('.main-image-point').length;
+                    clicked = jQuery(obj).find('.main-image-point').length;
                 } else {
-                     clicked = jQuery(obj).find('.zoom-point').length;
+                    clicked = jQuery(obj).find('.zoom-point').length;
                 }
                 return options.total_qty - clicked;
             }
@@ -620,9 +620,9 @@ class SpotTheBall extends PureComponent {
                 } else {
                     var clicked
                     if (_is_mobile()) {
-                         clicked = jQuery(obj).find('.main-image-point').length;
+                        clicked = jQuery(obj).find('.main-image-point').length;
                     } else {
-                         clicked = jQuery(obj).find('.zoom-point').length;
+                        clicked = jQuery(obj).find('.zoom-point').length;
                     }
                     if (jQuery('body').find('div[data-stb_edit_cart_coorindate_key]').length > 0) {
                         clicked = clicked - 1;
@@ -680,14 +680,14 @@ class SpotTheBall extends PureComponent {
                 show_desktop_cross_lines: true,
                 show_points: true,
                 onChooseSpot: (e) => {
-                    if(document.getElementsByClassName("main-image-point")[1]){
-                        console.log( document.getElementsByClassName('spot-ball-container')[0])
-                        console.log( document.getElementsByClassName('main-image-point')[0])
+                    if (document.getElementsByClassName("main-image-point")[1]) {
+                        console.log(document.getElementsByClassName('spot-ball-container')[0])
+                        console.log(document.getElementsByClassName('main-image-point')[0])
 
                         document.getElementsByClassName('main-image-points-container')[0].removeChild(document.getElementsByClassName("main-image-point")[0])
                         document.getElementsByClassName('zoom-points-container')[0].removeChild(document.getElementsByClassName("zoom-point")[0])
                     }
-                    save.setState({x:+e.coordinate_x, y: +e.coordinate_y});
+                    save.setState({ x: +e.coordinate_x, y: +e.coordinate_y });
                     jQuery('.stb-xy-values').text('Processing...');
                     var _this = this;
                     var cart_coorindate_key = 123;
@@ -729,7 +729,7 @@ class SpotTheBall extends PureComponent {
 
     zoom_in = () => {
         var slider_val = jQuery('.mobile-stb-zoom').val();
-         slider_val = parseInt(slider_val);
+        slider_val = parseInt(slider_val);
         slider_val = slider_val - 5;
         if (slider_val > 0) {
             jQuery('.mobile-stb-zoom').val(slider_val);
@@ -739,7 +739,7 @@ class SpotTheBall extends PureComponent {
 
     zoom_out = () => {
         var slider_val = jQuery('.mobile-stb-zoom').val();
-         slider_val = parseInt(slider_val);
+        slider_val = parseInt(slider_val);
         slider_val = slider_val + 5;
         jQuery('.mobile-stb-zoom').val(slider_val);
         this.mobile_zoom(slider_val);
@@ -767,44 +767,32 @@ class SpotTheBall extends PureComponent {
 
     }
 
+    renderPlayButton(balance, need, sendCoord) {
+        const { x, y } = this.state;
+        if (balance !== 0 && balance < need) {
+            return <div className='not-authorized'>
+                <div className='auth-message'>Be patient. Your points balance is growing</div>
+                <div className="not-enough-button" onClick={()=>{window.scrollTo( 0, 1450 )}}></div>
+            </div>
+        } else if (balance === 0) {
+           return <div className='not-authorized'>
+                <div className='auth-message'>HCORE tokens are needed to play</div>
+                <div className="get-tokens-button"></div>
+            </div>
+        }else{
+            return <div className='not-authorized'>
+                <div className={`auth-message ${x ? '' : 'error'}`}>{`${x ? 'Claim these coordinates as an NFT' : 'Choose your coordinate before play'}`}</div>
+                {x ? <div className="play-button" onClick={() => sendCoord(x, y)}></div> : <div className="play-button"></div>}
+            </div>
+        }
+    }
+
     render() {
 
+        const { sendCoord, balance: { balance, need } } = this.props;
 
-
-        const { sendCoord, balance:{balance, need} } = this.props;
-
-        function set_mobile_circle() {
-            setTimeout(function () {
-                /*
-                Note: window.outerHeight and window.outerWidth are not working in iPhone
-                jQuery('.stb-mobile-circle').css('top', ((window.outerHeight/2)-35)+'px');
-                jQuery('.stb-mobile-circle').css('left', ((window.outerWidth/2)-35)+'px');
-                */
-                jQuery('.stb-mobile-circle').css('top', ((window.innerHeight / 2) - 35) + 'px');
-                jQuery('.stb-mobile-circle').css('left', ((window.innerWidth / 2) - 35) + 'px');
-                jQuery('.stb-mobile-circle').show();
-
-                jQuery('.main-image-mobile').attr('data-width', jQuery('.main-image-mobile').width());
-                jQuery('.main-image-mobile').attr('data-height', jQuery('.main-image-mobile').height());
-
-
-
-                
-
-
-            }, 500);
-
-
-
-
-        }
-
-        window.addEventListener("orientationchange", function () {
-            jQuery('.stb-mobile-circle').hide();
-            set_mobile_circle();
-        }, false);
-
-        const {x,y} = this.state;
+        const { x, y } = this.state;
+        const { authorized, getAuth } = this.props;
         return (
             <div className="stb-wrapper">
                 <div className="stb-image"><img alt='' src="https://lambo.hcore.finance/wp-content/uploads/2020/10/soccer-2-withoutball.jpg" /></div>
@@ -812,10 +800,10 @@ class SpotTheBall extends PureComponent {
                     <div className='game-title'>Choose your coordinate </div>
                     <div className='coordinate-wrap'>
                         <div className='coordinate'>
-                           {` X:${x ? x : '----'}`}
+                            {` X:${x ? x : '----'}`}
                         </div>
                         <div className='coordinate'>
-                           {` Y:${y ? y : '----'}`}
+                            {` Y:${y ? y : '----'}`}
                         </div>
                     </div>
                     <div className='game-points'>
@@ -826,11 +814,13 @@ class SpotTheBall extends PureComponent {
                         <div className='game-point-title'>Your points</div>
                         <div className='game-point-value'>{parseFloat(balance).toFixed(4)}</div>
                     </div>
-                    <div className='not-authorized'>
+                    {!authorized ? (<div className='not-authorized'>
                         <div className='auth-message'>Please connect to Metamask</div>
-                        <div className='button-connect' onClick={()=>sendCoord(x,y)}></div>
+                        <div className='button-connect' onClick={getAuth}></div>
                         <div className='link-more'>Learn more <div>&#8250;</div></div>
-                    </div>
+                    </div>) : (
+                            this.renderPlayButton(0.0000001, need, sendCoord)
+                        )}
                 </div>
             </div>
         )
@@ -838,19 +828,23 @@ class SpotTheBall extends PureComponent {
 }
 const mapStateToProps = state => {
     return {
-      balance: state.getBalance
+        balance: state.getBalance,
+        authorized: state.auth.authorization
     };
-  };
-  
-  const mapDispatchToProps = dispatch => {
+};
+
+const mapDispatchToProps = dispatch => {
     return {
-      sendCoord: (x,y) => {
-            dispatch(sendCoord(x,y));
-      },
-      getBalance: () => {
-        dispatch(getBalance())
-      }
+        sendCoord: (x, y) => {
+            dispatch(sendCoord(x, y));
+        },
+        getBalance: () => {
+            dispatch(getBalance())
+        },
+        getAuth: () => {
+            dispatch(getAuth());
+        },
     };
-  };
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(SpotTheBall);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SpotTheBall);

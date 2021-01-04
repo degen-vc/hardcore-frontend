@@ -601,4 +601,50 @@ body.wp-admin .spot-ball-container {
             height: 34px;
         }
     }
+    .not-enough-button {
+        width: 142px;
+        height: 44px;
+        margin: 20px auto 10px;
+        background-image: url('../../assets/buttons/not-enough.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .get-tokens-button {
+        width: 142px;
+        height: 44px;
+        margin: 20px auto 10px;
+        background-image: url('../../assets/buttons/get-token.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .play-button {
+        width: 142px;
+        height: 44px;
+        margin: 20px auto 10px;
+        background-image: url('../../assets/buttons/play.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.button-play {
+    margin: 100px auto 0;
+    width: 50px;
+    text-align: center;
+    color: white;
+    background: #f44d5e;
+    padding: 6px 12px;
+    border-radius: 2px;
 }

@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react'
 
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Modal from '../../shared/Modal';
 import { connect } from 'react-redux';
@@ -27,25 +27,27 @@ class Header extends PureComponent {
         this.checkAuth()
     }
 
-    checkAuth(){
+    checkAuth() {
         const ethereum = window.ethereum
         if (ethereum) {
-            if( ethereum.selectedAddress !== null){
+            if (ethereum.selectedAddress !== null) {
                 this.setState({ auth: ethereum.selectedAddress })
                 localStorage.auth = ethereum.selectedAddress;
-            }else{
+                this.props.getAuth();
+            } else {
                 const self = this
                 this.setState({ auth: localStorage.auth })
-                this.timeout = setTimeout(()=>{
+                this.timeout = setTimeout(() => {
                     const ethereum = window.ethereum;
                     if (ethereum.selectedAddress !== null) {
                         self.setState({ auth: ethereum.selectedAddress })
                         localStorage.auth = ethereum.selectedAddress;
-                    }else{
+                        this.props.getAuth();
+                    } else {
                         localStorage.auth = '';
-                        self.setState({auth: false})
+                        self.setState({ auth: false })
                     }
-                },400) 
+                }, 400)
             }
         }
     }
@@ -76,17 +78,23 @@ class Header extends PureComponent {
     render() {
         const { isProfileOpen, auth } = this.state;
         const { authorized } = this.props;
+        const address = auth || authorized
         return (
             <Fragment>
                 <header className='header'>
-                    <img className='logo' src={logo} alt=""/>
-                        <nav className='navigation'>
-                            <NavLink to='/home' className='item'>HOME</NavLink>
-                            <NavLink to='/spot' className='item'>ABOUT</NavLink>
-                            <NavLink to='/vault' className='item'>VAULT</NavLink>
-                            <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
-                        </nav>
-                        {authorized || auth ?<div className='profile button' onClick={this.openModal}>Profile</div>
+                    <img className='logo' src={logo} alt="" />
+                    <nav className='navigation'>
+                        <NavLink to='/home' className='item'>HOME</NavLink>
+                        <NavLink to='/spot' className='item'>ABOUT</NavLink>
+                        <NavLink to='/vault' className='item'>VAULT</NavLink>
+                        <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
+                    </nav>
+                    {authorized || auth ? <div className='user-profile'>
+                        <div className='profile-logo'></div>
+                        <div className='user-address'>
+                            {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                        </div>
+                    </div>
                         :
                         <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
                 </header>
@@ -107,6 +115,7 @@ const mapDispatchToProps = dispatch => {
         getAuth: () => {
             dispatch(getAuth());
         },
+        
     };
 };
 

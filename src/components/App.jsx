@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Route, Redirect } from "react-router-dom";
 
-import SpotTheBall from './SpotTheBall';
+import About from './About';
 import NFT from './NFT';
 import Vault from './Vault';
 import Header from './Header'
@@ -14,7 +14,7 @@ class App extends Component {
         return (
             <div className="project">
                 <Header />
-                <Route path="/spot" exact component={SpotTheBall} />
+                <Route path="/spot" exact component={About} />
                 <Route path="/nft" exact component={NFT} />
                 <Route path="/vault" exact component={Vault} />
                 <Route path="/home" component={Home} />

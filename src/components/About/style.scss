@@ -1,0 +1,180 @@
+.About-page {
+    .about-page-header {
+        padding-top: 152px;
+        background-image: radial-gradient(circle at 50% 71%, #ffffff, #000000 51%);
+        font-family: Roboto-medium;
+        font-size: 48px;
+        font-weight: 900;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .tokenomics-panel {
+        display: flex;
+        justify-content: space-between;
+        width: 1100px;
+        margin: 36px auto 0;
+        .block-header {
+            margin-bottom: 20px;
+            font-family: Roboto;
+            font-size: 24px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.25;
+            letter-spacing: normal;
+            color: #ffffff;
+        }
+        .block-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .block-item {
+            width: 110px;
+            .block-item-header {
+                font-family: Roboto;
+                font-size: 16px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.5;
+                letter-spacing: 0.15px;
+                color: #ffffff;
+            }
+            .block-item-value {
+                display: flex;
+                font-family: Roboto;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.43;
+                letter-spacing: 0.25px;
+                color: rgba(255, 255, 255, 0.6);
+                .copy {
+                    margin-left: 10px;
+                    color: #ec2d44;
+                    cursor: pointer;
+                }
+            }
+        }
+        .block-1 {
+            width: 250px;
+        }
+        .block-2 {
+            width: 400px;
+        }
+        .block-3 {}
+    }
+    .photos {
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: 70px auto;
+        text-align: center;
+        a {
+            color: black;
+        }
+        .photo {
+            height: 220px;
+            width: 220px;
+            text-align: center;
+            background-size: contain;
+            &.fraser {
+                background-image: url("../../assets/images/Fraser.png");
+            }
+            &.paul {
+                background-image: url("../../assets/images/Paul.png");
+            }
+            &.justin {
+                background-image: url("../../assets/images/Justin.png");
+            }
+            &.richard {
+                background-image: url("../../assets/images/Richard.png");
+            }
+        }
+        .name {
+            margin-top: 10px;
+            font-family: raleway-semibold, raleway, sans-serif;
+            font-size: 22px;
+            color: #ec2d44;
+        }
+        .description-photo {
+            font-size: 16px;
+            color: #BADA55;
+            margin: 10px;
+        }
+        @media screen and (max-width: 420px) {
+            width: 100%;
+            margin: 30px 0;
+            .photo {
+                height: 95px;
+                width: 70px;
+                margin: 0 auto;
+            }
+            .name {
+                font-size: 12px;
+            }
+            .description-photo {
+                font-size: 12px;
+                color: #BADA55;
+                margin: 6px;
+                text-align: center;
+            }
+        }
+    }
+    .about-section {
+        background: #171717;
+        height: 600px;
+        .header-about-section {
+            margin-top: 140px;
+            padding-top: 110px;
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 116%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about-section-description {
+            width: 650px;
+            margin: 0 auto;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: 0.25px;
+            text-align: justify;
+            color: rgba(255, 255, 255, 0.6);
+            div {
+                margin-top: 20px;
+            }
+        }
+        .button-about {
+            background-image: url('../../assets/buttons/about-medium.png');
+            width: 104px;
+            height: 36px;
+            background-size: cover;
+            margin: 24px auto 0;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}

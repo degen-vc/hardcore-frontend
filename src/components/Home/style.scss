@@ -484,46 +484,6 @@
             }
         }
     }
-    .question-block {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 985px;
-        height: 100px;
-        padding: 0 196px;
-        margin: 180px auto 80px;
-        background-color: #ec2d44;
-        .question {
-            font-family: Roboto;
-            font-size: 20px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.75;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-        }
-        .button {
-            background-image: url('../../assets/buttons/telegram.png');
-            width: 134px;
-            height: 46px;
-            background-repeat: no-repeat;
-        }
-        @media screen and (max-width: 420px) {
-            height: 100px;
-            width: calc(100% - 40px);
-            padding: 0 20px;
-            .question {
-                font-family: raleway, sans-serif;
-                font-size: 13px;
-                color: white;
-            }
-            .button {
-                padding: 4px 15px;
-                font-size: 14px;
-            }
-        }
-    }
     .wrap {
         display: flex;
         justify-content: space-between;
@@ -600,6 +560,47 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+}
+
+.question-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 985px;
+    height: 100px;
+    padding: 0 196px;
+    margin: 180px auto 80px;
+    background-color: #ec2d44;
+    .question {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.75;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+    }
+    .button {
+        background-image: url('../../assets/buttons/telegram.png');
+        width: 134px;
+        height: 46px;
+        background-repeat: no-repeat;
+    }
+    @media screen and (max-width: 420px) {
+        height: 100px;
+        width: calc(100% - 40px);
+        padding: 0 20px;
+        .question {
+            font-family: raleway, sans-serif;
+            font-size: 13px;
+            color: white;
+        }
+        .button {
+            padding: 4px 15px;
+            font-size: 14px;
+        }
     }
 }
 
