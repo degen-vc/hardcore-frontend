@@ -772,14 +772,14 @@ class SpotTheBall extends PureComponent {
         if (balance !== 0 && balance < need) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Be patient. Your points balance is growing</div>
-                <div className="not-enough-button" onClick={()=>{window.scrollTo( 0, 1450 )}}></div>
+                <div className="not-enough-button" onClick={() => { window.scrollTo(0, 1450) }}></div>
             </div>
         } else if (balance === 0) {
-           return <div className='not-authorized'>
+            return <div className='not-authorized'>
                 <div className='auth-message'>HCORE tokens are needed to play</div>
                 <div className="get-tokens-button"></div>
             </div>
-        }else{
+        } else {
             return <div className='not-authorized'>
                 <div className={`auth-message ${x ? '' : 'error'}`}>{`${x ? 'Claim these coordinates as an NFT' : 'Choose your coordinate before play'}`}</div>
                 {x ? <div className="play-button" onClick={() => sendCoord(x, y)}></div> : <div className="play-button"></div>}
@@ -817,9 +817,11 @@ class SpotTheBall extends PureComponent {
                     {!authorized ? (<div className='not-authorized'>
                         <div className='auth-message'>Please connect to Metamask</div>
                         <div className='button-connect' onClick={getAuth}></div>
-                        <div className='link-more'>Learn more <div>&#8250;</div></div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                        </a>
                     </div>) : (
-                            this.renderPlayButton(0.0000001, need, sendCoord)
+                            this.renderPlayButton(balance, need, sendCoord)
                         )}
                 </div>
             </div>

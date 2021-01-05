@@ -8,13 +8,11 @@
         height: 800px;
         background-image: url("../../assets/images/home-car.png");
         background-size: contain;
+        background-repeat: no-repeat;
         .title {
-            position: absolute;
-            left: 20%;
-            top: 30%;
             width: 339px;
             height: 114px;
-            margin: 0 0 36px 5px;
+            padding: 160px 0 30px 240px;
             background-image: radial-gradient(circle at 15% 81%, #ffffff, #636363 122%);
             font-family: Roboto-medium;
             font-size: 48px;
@@ -39,6 +37,12 @@
             background-size: cover;
             background-position: 70%;
             background-repeat: no-repeat;
+        }
+        .connect-button {
+            width: 178px;
+            height: 40px;
+            margin-left: 240px;
+            background-image: url('../../assets/buttons/connect-wallet.png');
         }
     }
     .content-wrap {
@@ -666,15 +670,15 @@
         background-repeat: no-repeat;
     }
     .degen {
-        background-image: url('../../assets/buttons/degen.png');
+        background-image: url('../../assets/buttons/button-m.png');
     }
     .swap {
-        background-image: url('../../assets/buttons/swap.png');
+        background-image: url('../../assets/buttons/button-m.png');
     }
     .pool {
-        background-image: url('../../assets/buttons/pool.png');
+        background-image: url('../../assets/buttons/button-m.png');
     }
     .medium {
-        background-image: url('../../assets/buttons/medium.png');
+        background-image: url('../../assets/buttons/button-m.png');
     }
 }

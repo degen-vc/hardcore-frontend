@@ -21,13 +21,6 @@ footer {
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
-        .icon {
-            height: 30px;
-            width: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            cursor: pointer;
-        }
         .twitter {
             background-image: url('../../assets/socials/twitter.png');
         }
@@ -85,4 +78,40 @@ footer {
             justify-content: space-between;
         }
     }
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.twitter {
+    background-image: url('../../assets/socials/twitter.png');
+}
+
+.discord {
+    background-image: url('../../assets/socials/discord.png');
+}
+
+.telegram {
+    background-image: url('../../assets/socials/telegram.png');
+}
+
+.github {
+    background-image: url('../../assets/socials/github.png');
+}
+
+.medium1 {
+    background-image: url('../../assets/socials/medium1.png');
+}
+
+.medium3 {
+    background-image: url('../../assets/socials/medium3.png');
+}
+
+.medium2 {
+    background-image: url('../../assets/socials/medium2.png');
 }

@@ -17,11 +17,18 @@ class Footer extends PureComponent {
                         <div className='icon discord'></div>
                         <div className='icon telegram'></div>
                         <div className='icon github'></div>
-                        <div className='icon medium2'></div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
+                            <div className='icon medium2'></div>
+                        </a>
                     </div>
                     <div className='block-2'>
-                        <div className='icon medium1'></div>
-                        <div className='icon medium3'></div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://info.uniswap.org/token/0x26e43759551333e57f073bb0772f50329a957b30'>
+                            <div className='icon medium3'></div>
+                        </a>
+                        {/* changed */}
+                        <a rel="noopener noreferrer" target="_blank" href='https://www.coingecko.com/en/coins/degenvc'>
+                            <div className='icon medium1'></div>
+                        </a>
                     </div>
                 </div>
                 <div className='horizontal-line'></div>

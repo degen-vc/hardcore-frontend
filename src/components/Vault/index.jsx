@@ -79,7 +79,7 @@ class Vault extends PureComponent {
                     <div className='stake-panel'>
                         <div className='header-panel'>
                             <div className='header-text'>
-                                Send ETH. It is pooled with $HCORE. Your discounted LP is locked for a period. 
+                                Send ETH. It is pooled with $HCORE. Your discounted LP is locked for a period.
                             </div>
                             <div>
                                 <div className='wrap-title second'>
@@ -87,7 +87,7 @@ class Vault extends PureComponent {
                                     <div className='stake-value'>0000000</div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                         <div className='stake'>
                             <div className='stake-header'>
                                 <div className='wrap-title first'>
@@ -107,10 +107,10 @@ class Vault extends PureComponent {
                                     <div className='stake-value'>00000000</div>
                                 </div>
                                 <div className='second-block'>
-                                <div className='wrap-title second'>
-                                    <div className='stake-title'>Not yet claimable LP</div>
-                                    <div className='stake-value'>00000000</div>
-                                </div>
+                                    <div className='wrap-title second'>
+                                        <div className='stake-title'>Not yet claimable LP</div>
+                                        <div className='stake-value'>00000000</div>
+                                    </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Claimable LP</div>
                                         <div className='stake-value'>00000000</div>
@@ -122,16 +122,20 @@ class Vault extends PureComponent {
                                     <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
                                     <div className='stake-type'></div>
                                 </div>
-                                
+
 
                                 <div className='stake-button' ></div>
                                 <div className='unstake-button' ></div>
-                              
+
                             </div>
                             <div className='stake-footer'>
                                 <div className='stake-wrap-more'>
-                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    </a>
+                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

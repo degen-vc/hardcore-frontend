@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Game from '../SpotTheBall';
 import { connect } from 'react-redux';
-import {  purchaseLP, claim, getLockedLP, stake, unStake  } from '../../actions'
+import { purchaseLP, claim, getLockedLP, stake, unStake } from '../../actions'
 import './style.scss';
 
 class Home extends PureComponent {
@@ -63,7 +63,7 @@ class Home extends PureComponent {
         const { stake } = this.props;
         const { inputEth } = this.state;
         stake(inputEth);
-        this.setState({inputEth: ''})
+        this.setState({ inputEth: '' })
     }
     changeInput(e) {
         this.setState({ inputEth: e.target.value });
@@ -72,13 +72,17 @@ class Home extends PureComponent {
     render() {
         const { globalTime, inputEth } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
-        const {liquidVault : {maxStake, myPoints}, unStake} = this.props;
+        const { liquidVault: { maxStake, myPoints, balance }, unStake } = this.props;
+        console.log(this.props)
         return (
             <main className='home-page'>
                 <section>
                     <div className='space'></div>
                     <div className='background-image'>
                         <div className='title'>Stake tokens to Win a Lambo</div>
+
+                        <div className='btn connect-button'>CONNECT WALLET</div>
+                        <div className="play-button"></div>
                     </div>
 
                     <div className='content-wrap'>
@@ -90,17 +94,24 @@ class Home extends PureComponent {
                             <div className='item'>
                                 <div className='number'>1</div>
                                 <div className='title'>Swap DGVC on Uniswap</div>
-                                <div className='button swap'></div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap'>
+                                    <div className='button swap'>SWAP</div>
+                                </a>
                             </div>
                             <div className='item'>
                                 <div className='number'>2</div>
                                 <div className='title'>Pool DGVC on Uniswap</div>
-                                <div className='button pool'></div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH'>
+                                    <div className='button pool'>POOL</div>
+                                </a>
                             </div>
                             <div className='item'>
                                 <div className='number'>3</div>
                                 <div className='title'>Wait for the #Alphadrop</div>
-                                <div className='button degen'></div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://www.degen.vc'>
+                                    <div className='button degen'>DEGEN.VC</div>
+                                </a>
+
                             </div>
                         </div>
 
@@ -114,7 +125,7 @@ class Home extends PureComponent {
                                 <div className='stake-header'>
                                     <div className='wrap-title first'>
                                         <div className='stake-title'>Your $HCORE LP</div>
-                                        <div className='stake-value'>00000000</div>
+                                        <div className='stake-value'>{balance}</div>
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
@@ -131,16 +142,20 @@ class Home extends PureComponent {
                                 </div>
                                 <div className='stake-body'>
                                     <div className='stake-input-wrap'>
-                                        <input className='stake-input' type='text' placeholder='Amount' onChange={(e)=>this.changeInput(e)} value={inputEth} />
+                                        <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
                                         <div className='stake-type'>LP</div>
                                     </div>
-                                    <div className='stake-button' onClick={this.stakeLp}></div>
-                                    <div className='unstake-button' onClick={unStake}></div>
+                                    <div className='stake-button' onClick={this.stakeLp}>STAKE</div>
+                                    <div className='unstake-button' onClick={unStake}>UNSTAKE</div>
                                 </div>
                                 <div className='stake-footer'>
                                     <div className='stake-wrap-more'>
-                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                        </a>
+                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -159,17 +174,25 @@ class Home extends PureComponent {
                             <div className='item'>
                                 <div className='label-item arrows'></div>
                                 <div className='title'>Swap $HCORE on Uniswap</div>
-                                <div className='button swap'></div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap'>
+                                    <div className='button swap'>SWAP</div>
+                                </a>
                             </div>
                             <div className='item'>
                                 <div className='label-item money'></div>
                                 <div className='title'>Pool $HCORE on Uniswap</div>
-                                <div className='button pool'></div>
+
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH'>
+                                    <div className='button pool'>POOL</div>
+                                </a>
                             </div>
                             <div className='item'>
                                 <div className='label-item ask'></div>
                                 <div className='title'>How to play HARDCORE</div>
-                                <div className='button medium'></div>
+
+                                <a rel="noopener noreferrer" target="_blank" href='https://www.degen.vc'>
+                                    <div className='button medium'>MEDIUM</div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -195,7 +218,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         purchaseLP: (value, balance) => {
-            dispatch(purchaseLP(value,balance ));
+            dispatch(purchaseLP(value, balance));
         },
         claim: () => {
             dispatch(claim());

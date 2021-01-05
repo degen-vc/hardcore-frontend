@@ -73,12 +73,31 @@
         }
         .block-3 {}
     }
+    .team-section {
+        padding: 80px 0 120px;
+        background: #171717;
+        .team-section-header {
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 44%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
     .photos {
         display: flex;
         justify-content: space-between;
-        width: 70%;
-        margin: 70px auto;
         text-align: center;
+        width: 1040px;
+        margin: 0 auto;
         a {
             color: black;
         }
@@ -111,22 +130,20 @@
             color: #BADA55;
             margin: 10px;
         }
-        @media screen and (max-width: 420px) {
-            width: 100%;
-            margin: 30px 0;
-            .photo {
-                height: 95px;
-                width: 70px;
-                margin: 0 auto;
+        .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            b {
+                margin-left: 14px;
+                color: rgba(255, 255, 255, 0.54);
+                font-size: 22px;
+                &:hover {
+                    opacity: 0.8;
+                }
             }
-            .name {
-                font-size: 12px;
-            }
-            .description-photo {
-                font-size: 12px;
-                color: #BADA55;
-                margin: 6px;
-                text-align: center;
+            div:hover {
+                opacity: 0.8;
             }
         }
     }
@@ -176,5 +193,46 @@
                 opacity: 0.8;
             }
         }
+    }
+    .exotic-section {
+        height: 700px;
+        .clock-wrapper {
+            width: 648px;
+            height: 518px;
+            margin: 36px auto;
+            background-image: url('../../assets/images/clock.png');
+        }
+        .exotic-header {
+            width: 240px;
+            height: 114px;
+            padding-top: 280px;
+            background-image: radial-gradient(circle at 63% 15%, #ffffff, #000000 174%);
+            font-family: Roboto-medium;
+            font-size: 48px;
+            font-weight: 900;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .exotic-description {
+            width: 240px;
+            height: 140px;
+            margin: 16px 0 0;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: 0.25px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    }
+    .question-block {
+        margin: 80px auto;
     }
 }

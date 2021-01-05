@@ -1,0 +1,126 @@
+.Governance-page {
+    .governance-header {
+        padding: 120px 0 56px 0;
+        background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 160%);
+        font-family: Roboto-medium;
+        font-size: 48px;
+        font-weight: 900;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .h-line {
+        position: absolute;
+        top: 56px;
+        left: 0px;
+        height: 1px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.12);
+    }
+    .block-header {
+        margin-bottom: 20px;
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        color: #ffffff;
+    }
+    .block-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px 0 15px;
+    }
+    .block {
+        display: flex;
+        align-items: center;
+        .stake-more {
+            margin-left: 20px;
+        }
+    }
+    .block-item {
+        width: 110px;
+        .block-item-header {
+            width: 170px;
+            font-family: Roboto;
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: 0.4px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .block-item-value {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: 0.15px;
+            color: #ffffff;
+        }
+    }
+    .block-wrap {
+        display: flex;
+        justify-content: space-between;
+        width: 840px;
+        margin: 0 auto;
+    }
+    .block-1 {
+        position: relative;
+        width: 300px;
+        padding: 20px 30px 10px;
+        background: #242323;
+    }
+    .block-2 {
+        position: relative;
+        width: 400px;
+        padding: 20px 30px 10px;
+        background: #242323;
+    }
+    .sell-button {
+        background-image: url('../../assets/buttons/sell.png');
+        width: 134px;
+        height: 36px;
+        background-size: cover;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .stake-more {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80px;
+        height: 16px;
+        font-family: Roboto-medium;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: 0.4px;
+        text-align: center;
+        color: #ec2d44;
+        cursor: pointer;
+        div {
+            font-size: 22px;
+            height: 34px;
+        }
+        &.low {
+            margin-top: -5px;
+        }
+    }
+    .block-3 {}
+}
