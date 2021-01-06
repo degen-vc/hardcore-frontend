@@ -89,7 +89,7 @@ class Header extends PureComponent {
                         <NavLink to='/vault' className='item'>VAULT</NavLink>
                         <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
                     </nav>
-                    {authorized || auth ? <div className='user-profile'>
+                    {authorized || auth ? <div className='user-profile' onClick={()=>{ navigator.clipboard.writeText(authorized)}} >
                         <div className='profile-logo'></div>
                         <div className='user-address'>
                             {`${address.slice(0, 6)}...${address.slice(-4)}`}

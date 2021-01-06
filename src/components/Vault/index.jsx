@@ -27,7 +27,6 @@ class Vault extends PureComponent {
     sendEth() {
         const { purchaseLP, liquidVault } = this.props;
         const { inputEth } = this.state;
-        this.setState({ modalIsOpen: false })
         purchaseLP(inputEth, liquidVault.balance);
     }
 
@@ -70,7 +69,7 @@ class Vault extends PureComponent {
     }
 
     render() {
-        const { claim, liquidVault, unStake } = this.props;
+        const { claim, liquidVault : {stakeDuration, notReadyTokens, tokens, balance} } = this.props;
         const { modalIsOpen, modalType, inputEth } = this.state;
         return (
             <React.Fragment>
@@ -84,7 +83,7 @@ class Vault extends PureComponent {
                             <div>
                                 <div className='wrap-title second'>
                                     <div className='header-text'>Available $HCORE</div>
-                                    <div className='stake-value'>0000000</div>
+                                    <div className='stake-value'>{balance}</div>
                                 </div>
                             </div>
                         </div>
@@ -96,36 +95,42 @@ class Vault extends PureComponent {
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>Lock Period</div>
-                                    <div className='stake-value'>00000000</div>
+                                    <div className='stake-value'>{`${stakeDuration} Day`}</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Discount</div>
-                                    <div className='stake-value'>00000000</div>
+                                    <div className='stake-value'>35%</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Burn</div>
-                                    <div className='stake-value'>00000000</div>
+                                    <div className='stake-value'>10%</div>
                                 </div>
                                 <div className='second-block'>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Not yet claimable LP</div>
-                                        <div className='stake-value'>00000000</div>
+                                        <div className='stake-value'>{notReadyTokens}</div>
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Claimable LP</div>
-                                        <div className='stake-value'>00000000</div>
+                                        <div className='stake-value'>{tokens}</div>
                                     </div>
                                 </div>
                             </div>
                             <div className='stake-body'>
                                 <div className='stake-input-wrap'>
                                     <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
-                                    <div className='stake-type'></div>
+                                    <div className='stake-type-eth' ></div>
                                 </div>
 
 
-                                <div className='stake-button' ></div>
-                                <div className='unstake-button' ></div>
+                                <div className='stake-button btn unique' onClick={()=>{this.sendEth()}}>SEND ETH</div>
+                                <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    </a>
+                                <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div>
+                                    <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                    </a>
 
                             </div>
                             <div className='stake-footer'>
@@ -143,7 +148,7 @@ class Vault extends PureComponent {
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
-                            <div className='button'></div>
+                            <div className='button btn'>TELEGRAM</div>
                         </a>
                     </div>
                 </section>

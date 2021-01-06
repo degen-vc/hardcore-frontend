@@ -602,10 +602,10 @@ body.wp-admin .spot-ball-container {
         }
     }
     .not-enough-button {
-        width: 142px;
-        height: 44px;
+        width: 222px;
+        height: 28px;
         margin: 20px auto 10px;
-        background-image: url('../../assets/buttons/not-enough.png');
+        background-image: url('../../assets/buttons/unstake-mobile.png');
         background-size: contain;
         background-repeat: no-repeat;
         cursor: pointer;
@@ -615,9 +615,9 @@ body.wp-admin .spot-ball-container {
     }
     .get-tokens-button {
         width: 142px;
-        height: 44px;
+        height: 34px;
         margin: 20px auto 10px;
-        background-image: url('../../assets/buttons/get-token.png');
+        background-image: url('../../assets/buttons/swap.png');
         background-size: contain;
         background-repeat: no-repeat;
         cursor: pointer;
@@ -627,15 +627,18 @@ body.wp-admin .spot-ball-container {
     }
     .play-button {
         width: 142px;
-        height: 44px;
+        height: 34px;
         margin: 20px auto 10px;
-        background-image: url('../../assets/buttons/play.png');
+        background-image: url('../../assets/buttons/swap.png');
         background-size: contain;
         background-repeat: no-repeat;
         cursor: pointer;
         &:hover {
             opacity: 0.8;
         }
+    }
+    .error {
+        color: red;
     }
 }
 

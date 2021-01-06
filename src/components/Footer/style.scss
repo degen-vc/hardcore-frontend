@@ -78,6 +78,18 @@ footer {
             justify-content: space-between;
         }
     }
+    @media screen and (max-width: 420px) {
+        padding: 16px 16px 0;
+        .block-1 {
+            height: 30px;
+            padding-right: 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            width: 70% !important;
+        }
+        .block-2 {
+            width: 22%;
+        }
+    }
 }
 
 .icon {

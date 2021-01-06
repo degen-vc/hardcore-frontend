@@ -13,10 +13,18 @@ class Footer extends PureComponent {
                 </div>
                 <div className='icon-items'>
                     <div className='block-1'>
-                        <div className='icon twitter'></div>
-                        <div className='icon discord'></div>
-                        <div className='icon telegram'></div>
-                        <div className='icon github'></div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://twitter.com/hcorefinance'>
+                            <div className='icon twitter'></div>
+                        </a>
+                        <a rel="noopener noreferrer" target="_blank" href='https://discord.com/invite/pPCuyYa'>
+                            <div className='icon discord'></div>
+                        </a>
+                        <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
+                            <div className='icon telegram'></div>
+                        </a>
+                        <a rel="noopener noreferrer" target="_blank" href='https://github.com/degen-vc/HardCore'>
+                            <div className='icon github'></div>
+                        </a>
                         <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
                             <div className='icon medium2'></div>
                         </a>

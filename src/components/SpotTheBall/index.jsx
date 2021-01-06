@@ -772,17 +772,17 @@ class SpotTheBall extends PureComponent {
         if (balance !== 0 && balance < need) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Be patient. Your points balance is growing</div>
-                <div className="not-enough-button" onClick={() => { window.scrollTo(0, 1450) }}></div>
+                <div className="not-enough-button btn" onClick={() => { window.scrollTo(0, 1450) }}>NOT ENOUGH POINTS</div>
             </div>
         } else if (balance === 0) {
             return <div className='not-authorized'>
                 <div className='auth-message'>HCORE tokens are needed to play</div>
-                <div className="get-tokens-button"></div>
+                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>GET TOKENS</div>
             </div>
         } else {
             return <div className='not-authorized'>
                 <div className={`auth-message ${x ? '' : 'error'}`}>{`${x ? 'Claim these coordinates as an NFT' : 'Choose your coordinate before play'}`}</div>
-                {x ? <div className="play-button" onClick={() => sendCoord(x, y)}></div> : <div className="play-button"></div>}
+                {x ? <div className="play-button btn" onClick={() => sendCoord(x, y)}>PLAY</div> : <div className="play-button btn">PLAY</div>}
             </div>
         }
     }

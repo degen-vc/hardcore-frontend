@@ -2,7 +2,7 @@
     .vault-page-title {
         padding: 152px 0 36px;
         background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 38%);
-        font-family: Roboto;
+        font-family: Roboto-medium;
         font-size: 48px;
         font-weight: 900;
         font-stretch: normal;
@@ -12,6 +12,9 @@
         text-align: center;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        @media screen and (max-width: 420px) {
+            background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 50%);
+        }
     }
     .description {
         h1 {
@@ -19,55 +22,19 @@
             margin-bottom: 70px;
         }
     }
-    @media screen and (max-width: 420px) {
-        .description {
-            padding: 60px 40px 20px;
-            h1 {
-                font-size: 26px;
-                margin: 10px 20px;
-            }
-            h3 {
-                font-size: 14px;
-            }
-            .description-item {
-                font-size: 12px;
-            }
-        }
-        .vault-button-wrap {
-            flex-direction: column;
-            height: 100%;
-            width: 100%;
-            margin: 10px auto;
-            .button-vault {
-                padding: 0;
-                margin: 5px 0;
-                border-radius: 5px;
-                h2 {
-                    margin: 8px;
-                    font-size: 16px;
-                }
-                .hc-value {
-                    font-size: 14px;
-                }
-                .discriptrion-value {
-                    font-size: 14px;
-                }
-                .white-line {
-                    border-bottom: 2px solid;
-                    margin: 0 auto 10px;
-                }
-                .button {
-                    min-width: 80px;
-                    max-width: 80px;
-                    padding: 4px 0;
-                    margin: 10px auto;
-                    font-size: 14px;
-                }
-            }
-        }
-    }
     .question-block {
-        margin: 56px auto 66px;
+        @media screen and (max-width: 420px) {
+            margin: 30px auto;
+            height: 140px;
+            .button {
+                width: 88%;
+                padding: 0;
+                height: 36px;
+            }
+            .question {
+                margin-bottom: 30px;
+            }
+        }
     }
 }
 
@@ -186,7 +153,7 @@
                         color: rgba(255, 255, 255, 0.6);
                     }
                 }
-                .stake-type {
+                .stake-type-eth {
                     height: 30px;
                     width: 70px;
                     background-image: url('../../assets/eth.png');
@@ -198,19 +165,24 @@
                 width: 142px;
                 height: 44px;
                 margin-left: 40px;
-                background-image: url('../../assets/buttons/send-eth.png');
+                background-image: url('../../assets/buttons/stake.png');
                 background-size: contain;
                 background-repeat: no-repeat;
                 cursor: pointer;
                 &:hover {
                     opacity: 0.8;
                 }
+                &.mr {
+                    width: 270px;
+                    height: 40px;
+                    background-image: url('../../assets/buttons/claim.png');
+                }
             }
             .unstake-button {
                 width: 260px;
                 height: 44px;
                 margin-left: 55px;
-                background-image: url('../../assets/buttons/claim.png');
+                background-image: url('../../assets/buttons/stake.png');
                 background-size: contain;
                 background-repeat: no-repeat;
                 cursor: pointer;
@@ -253,6 +225,95 @@
             }
         }
     }
+    @media screen and (max-width: 420px) {
+        width: 82%;
+        height: 640px;
+        margin: 0 auto;
+        .header-panel {
+            display: block;
+            .header-text {
+                text-align: center;
+            }
+            .wrap-title {
+                margin-top: 15px;
+            }
+        }
+        .stake {
+            .stake-header {
+                flex-wrap: wrap;
+                position: relative;
+                .wrap-title.first {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 50%;
+                    margin-bottom: 15px;
+                }
+                .second-block {
+                    width: 100%;
+                    position: absolute;
+                    top: 350px;
+                    .wrap-title.second {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+            }
+            .stake-body {
+                display: block;
+                .stake-input-wrap {
+                    width: 90%;
+                    border-radius: 3px;
+                    .stake-input {
+                        width: 85%;
+                    }
+                }
+                .stake-button {
+                    width: 100%;
+                    margin: 0;
+                    background-image: url('../../assets/buttons/send-eth-x.png');
+                    &.unique {
+                        margin: 20px 0;
+                    }
+                    &.mr {
+                        margin-top: 90px;
+                    }
+                }
+                .stake-more {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 80px;
+                    height: 16px;
+                    margin: 20px auto;
+                    font-family: Roboto-medium;
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.33;
+                    letter-spacing: 0.4px;
+                    text-align: center;
+                    color: #ec2d44;
+                    cursor: pointer;
+                }
+                .mobile {
+                    display: block;
+                }
+            }
+            .stake-footer {
+                display: none;
+                width: 75%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.mobile {
+    display: none;
 }
 
 .modal.vault {

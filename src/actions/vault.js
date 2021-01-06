@@ -16,7 +16,7 @@ export const purchaseLP = (value, balance) => {
             if (+balance >= +web3.utils.fromWei(hardCoreRequired)) {
                 await LiquidContract.methods.purchaseLP().send({ from: ethAddress[0], value: web3.utils.toWei(`${value}`) });
             } else {
-                // send alert
+                alert('Not enough eth')
             }
         } catch (error) {
             console.log(error)
@@ -87,10 +87,11 @@ export const getLockedLP = () => {
             }
             balance = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
-
+            // burn = await HcoreContract.methods.burn().call();
             let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
             let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
-
+            let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
+            HcoreLP = +web3.utils.fromWei(HcoreLP + '');
             feeBalance = +web3.utils.fromWei(feeBalance + '')
             feeBalance = feeBalance.toFixed(2)
 
@@ -102,7 +103,7 @@ export const getLockedLP = () => {
             let maxStake = 2.02;
             stakeDuration = stakeDuration / 60 / 60 / 24
 
-            await dispatch({ type: "GET_LIQUID", payload: { myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake } });
+            await dispatch({ type: "GET_LIQUID", payload: { myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
 
         } catch (error) {
             console.log(error)
@@ -140,6 +141,21 @@ export const stake = (value) => {
 export const unStake = () => {
     return async dispatch => {
         const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
+        const web3 = await getWeb3();
+        const ethAddress = await web3.eth.getAccounts();
+        const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
+
+        try {
+            await LPGenesisPoolGameContract.methods.exit().send({ from: ethAddress[0] })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const unStakePrevious = () => {
+    return async dispatch => {
+        let LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);

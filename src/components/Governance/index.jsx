@@ -4,18 +4,14 @@ import { connect } from 'react-redux';
 import './style.scss'
 
 class NFT extends PureComponent {
-    constructor() {
-        super()
-    }
-
     componentDidMount() {
         const { getEthAndHcoreBalance } = this.props;
         getEthAndHcoreBalance()
     }
 
     render() {
-        const { liquidVault: { ethBalance, hCoreBalance } } = this.props;
-
+        const { liquidVault: { ethBalance, hCoreBalance, burnPercentage, liquidVaultShare, dev }, sellHcore } = this.props;
+       
         return (
             <main>
                 <section className='Governance-page'>
@@ -29,15 +25,15 @@ class NFT extends PureComponent {
                             <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">Fund $HCORE balance</div>
-                                    <div className="block-item-value">00000000</div>
+                                    <div className="block-item-value">{hCoreBalance}</div>
                                 </div>
                                 <div className='block-item'>
                                     <div className="block-item-header">Fund ETH balance</div>
-                                    <div className="block-item-value">00000000</div>
+                                    <div className="block-item-value">{ethBalance}</div>
                                 </div>
                             </div>
                             <div className='block'>
-                                <div className='sell-button'></div>
+                                <div className='sell-button' onClick={sellHcore}></div>
 
                                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
@@ -50,16 +46,16 @@ class NFT extends PureComponent {
                             <div className='block-header'>$HCORE Parameters</div>
                             <div className='block-row'>
                                 <div className='block-item'>
-                                    <div className="block-item-header">$Hcore burn</div>
-                                    <div className="block-item-value">00000000</div>
+                                    <div className="block-item-header">$HCORE burn</div>
+                                    <div className="block-item-value">{`${burnPercentage}%`}</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">% Fot to vault</div>
-                                    <div className="block-item-value">00000000</div>
+                                    <div className="block-item-header">% FOT to vault</div>
+                                    <div className="block-item-value">{`${liquidVaultShare}%`}</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">% Fot to fund</div>
-                                    <div className="block-item-value">00000000</div>
+                                    <div className="block-item-header">% FOT to fund</div>
+                                    <div className="block-item-value">{`${dev}%`}</div>
                                 </div>
                             </div>
                             <div className='block-row'>
@@ -72,7 +68,7 @@ class NFT extends PureComponent {
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
-                            <div className='button'></div>
+                            <div className='button btn'>TELEGRAM</div>
                         </a>
                     </div>
                 </section>
@@ -83,7 +79,8 @@ class NFT extends PureComponent {
 
 const mapStateToProps = state => {
     return {
-        liquidVault: state.liquidVault
+        liquidVault: state.liquidVault,
+        
     };
 };
 

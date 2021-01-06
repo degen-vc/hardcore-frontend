@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import './style.scss'
 
 class NFT extends PureComponent {
-    constructor() {
-        super()
-    }
 
     componentDidMount() {
         const { getEthAndHcoreBalance } = this.props;
@@ -14,7 +11,7 @@ class NFT extends PureComponent {
     }
 
     render() {
-
+        const {authorized} = this.props;
         return (
             <main>
                 <section className='About-page'>
@@ -69,7 +66,7 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">Token address</div>
                                     <div className="block-item-value">
                                         <span>0x0b9D...2e14</span>
-                                        <span className='copy'>Copy</span>
+                                        <span className='copy' onClick={()=>{ navigator.clipboard.writeText(authorized)}}>Copy</span>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +104,10 @@ class NFT extends PureComponent {
                                 This innovation has been covered in notable publications such as: The Coin Tribune; Altcoin Buzz, and Irish Tech News.
                            </div>
                         </div>
+                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
+
                         <div className="button-about"></div>
+                        </a>
                     </div>
                     <div className="exotic-section">
                         <div className='clock-wrapper'>
@@ -126,7 +126,7 @@ class NFT extends PureComponent {
                                 <div className='photo fraser'></div>
                                 <div className='name'>Fraser Brown</div>
                                 <div className='description-photo'>Co-founder • Degen.VC</div>
-                                <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/fraserbrown-org/'>
+                                <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://twitter.com/fraserbrown_org'>
                                     <div className='icon twitter'></div>
                                 </a>
                                     <a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/fraserbrown-org/'>
@@ -170,7 +170,7 @@ class NFT extends PureComponent {
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
-                            <div className='button'></div>
+                            <div className='button btn'>TELEGRAM</div>
                         </a>
                     </div>
                 </section>
@@ -181,7 +181,8 @@ class NFT extends PureComponent {
 
 const mapStateToProps = state => {
     return {
-        liquidVault: state.liquidVault
+        liquidVault: state.liquidVault,
+        authorized: state.auth.authorization
     };
 };
 

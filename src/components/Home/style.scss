@@ -5,7 +5,7 @@
         height: 78px;
     }
     .background-image {
-        height: 800px;
+        height: 860px;
         background-image: url("../../assets/images/home-car.png");
         background-size: contain;
         background-repeat: no-repeat;
@@ -24,11 +24,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            @media screen and (max-width: 420px) {
-                padding: 0 14px;
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
         }
         @media screen and (max-width: 420px) {
             height: 250px;
@@ -44,14 +39,23 @@
             margin-left: 240px;
             background-image: url('../../assets/buttons/connect-wallet.png');
         }
+        .play-button {
+            width: 142px;
+            height: 34px;
+            margin-left: 240px;
+            background-image: url('../../assets/buttons/swap.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
     }
     .content-wrap {
-        height: 604px;
+        height: 664px;
         // background-color: #171717;
-        background: black;
-        background-image: url('../../assets/images/black-car.png');
-        background-position: center;
-        background-repeat: no-repeat;
+        background: #242323;
         .title-launch {
             height: 58px;
             margin: 0 auto;
@@ -186,6 +190,12 @@
                 }
             }
         }
+        .car-image {
+            height: 550px;
+            background-image: url('../../assets/images/black-car.png');
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     }
     .stake-block {
         .title {
@@ -306,10 +316,6 @@
                         background-image: url('../../assets/buttons/stake.png');
                         background-size: contain;
                         background-repeat: no-repeat;
-                        cursor: pointer;
-                        &:hover {
-                            opacity: 0.8;
-                        }
                     }
                     .unstake-button {
                         width: 142px;
@@ -317,43 +323,18 @@
                         background-image: url('../../assets/buttons/unstake.png');
                         background-size: contain;
                         background-repeat: no-repeat;
-                        cursor: pointer;
-                        &:hover {
-                            opacity: 0.8;
-                        }
                     }
                 }
                 .stake-footer {
                     display: flex;
                     justify-content: flex-end;
-                    margin-top: 24px;
+                    margin-top: 20px;
                     .stake-wrap-more {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         width: 254px;
                         padding: 0px 36px;
-                        .stake-more {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            width: 80px;
-                            height: 16px;
-                            font-family: Roboto-medium;
-                            font-size: 12px;
-                            font-weight: normal;
-                            font-stretch: normal;
-                            font-style: normal;
-                            line-height: 1.33;
-                            letter-spacing: 0.4px;
-                            text-align: center;
-                            color: #ec2d44;
-                            cursor: pointer;
-                            div {
-                                font-size: 22px;
-                                height: 34px;
-                            }
-                        }
                     }
                 }
             }
@@ -547,6 +528,245 @@
             }
         }
     }
+    @media screen and (max-width: 420px) {
+        .background-image {
+            padding-top: 20px;
+            margin-top: 150px;
+            .title {
+                padding: 20px 0;
+                margin: -150px auto -30px;
+                width: 70%;
+                font-size: 36px;
+                text-align: center;
+            }
+            .connect-button {
+                margin: 0 auto;
+            }
+        }
+        .content-wrap {
+            height: 1200px;
+            background-size: contain;
+            .title-launch {
+                font-size: 40px;
+            }
+            .timer {
+                font-size: 60px;
+            }
+            .car-image {
+                height: 400px;
+                background-position: bottom;
+                background-size: contain;
+            }
+            .wrap-items {
+                width: auto;
+                flex-direction: column;
+                align-items: center;
+                height: 880px;
+                margin: -90px auto 0;
+            }
+        }
+        .stake-block {
+            .title {
+                height: auto;
+                width: 300px;
+                margin: 46px auto;
+                font-size: 36px;
+            }
+            .stake-panel {
+                display: none;
+            }
+            .stake-panel-mobile {
+                display: block;
+                margin: 10px;
+                padding: 20px;
+                display: block;
+                background-color: #242323;
+                .wrap-row {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    .stake-title {
+                        width: 142px;
+                        height: 16px;
+                        font-family: Roboto;
+                        font-size: 12px;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.33;
+                        letter-spacing: 0.4px;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+                    .stake-value {
+                        width: 142px;
+                        height: 30px;
+                        margin-top: 4px;
+                        font-family: Roboto;
+                        font-size: 24px;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.25;
+                        letter-spacing: normal;
+                        color: #ffffff;
+                    }
+                    .wrap-title-1 {
+                        width: 60%;
+                    }
+                    .wrap-title-2 {
+                        width: 40%;
+                    }
+                    margin-bottom: 15px;
+                    .stake-input-wrap {
+                        width: 45%;
+                        padding: 16px;
+                        background-color: rgba(255, 255, 255, 0.1);
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border-radius: 5px;
+                        .stake-input {
+                            background: transparent;
+                            outline: none;
+                            border: none;
+                            width: 70%;
+                            height: 24px;
+                            margin: 0 16px 0 0;
+                            font-family: Roboto;
+                            font-size: 16px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.5;
+                            letter-spacing: 0.15px;
+                            color: rgba(255, 255, 255, 0.6);
+                            &::placeholder {
+                                color: rgba(255, 255, 255, 0.6);
+                            }
+                        }
+                        .stake-type {
+                            width: 20px;
+                            height: 24px;
+                            margin: 0 0 0 16px;
+                            font-family: Roboto;
+                            font-size: 16px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.5;
+                            letter-spacing: 0.15px;
+                            text-align: center;
+                            color: #ffffff;
+                        }
+                    }
+                    .wrap-title-3 {
+                        margin: 0 auto;
+                        text-align: center;
+                    }
+                }
+                .stake-button {
+                    width: 100%;
+                    margin: 30px 0;
+                    height: 44px;
+                    background-image: url('../../assets/buttons/send-eth-x.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+                .stake-more {
+                    margin: 0 auto 10px;
+                }
+                .unstake-button {
+                    height: 46px;
+                    width: 100%;
+                    margin: 30px 0 20px;
+                    background-image: url('../../assets/buttons/unstake-mobile.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+            .stake-link {
+                margin: 30px auto 40px;
+            }
+        }
+        .game {
+            width: 420px;
+            padding: 0;
+            .game-header {
+                font-size: 38px;
+                padding: 36px 0 20px 0;
+                background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 90%);
+            }
+            .stb-wrapper {
+                display: flex;
+                flex-direction: column;
+                width: 100%!important;
+                height: 640px;
+                .stb-points {
+                    width: calc(100% - 60px);
+                    .game-title {
+                        width: 100%;
+                        margin: 0;
+                        font-size: 20px;
+                    }
+                    .coordinate-wrap {
+                        flex-direction: row;
+                        height: 40px;
+                        .coordinate {
+                            width: 48%;
+                        }
+                    }
+                    .game-points {
+                        display: inline-block;
+                        width: 50%;
+                    }
+                    .not-authorized {
+                        margin-top: 30px;
+                        .play-button {
+                            height: 48px;
+                            width: 100%;
+                            background-image: url('../../assets/buttons/send-eth-x.png');
+                        }
+                        .get-tokens-button {
+                            height: 48px;
+                            width: 100%;
+                            background-image: url('../../assets/buttons/send-eth-x.png');
+                        }
+                        .not-enough-button {
+                            height: 48px;
+                            width: 100%;
+                            background-image: url('../../assets/buttons/unstake-mobile.png');
+                        }
+                    }
+                }
+                .stb-image {
+                    width: 420px!important;
+                    height: 300px;
+                    .spot-ball-container {
+                        width: 420px!important;
+                        height: 300px!important;
+                        .main-image-container {
+                            width: 420px!important;
+                            height: 300px!important;
+                            .main-image-inner {
+                                width: 420px!important;
+                                height: 300px!important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .news-hardcore {
+            .wrap-items {
+                height: 900px;
+                flex-direction: column;
+                justify-content: space-between;
+                width: auto;
+                align-items: center;
+                margin: 80px auto 0;
+            }
+        }
+    }
 }
 
 .news-hardcore {
@@ -588,31 +808,39 @@
     }
     .button {
         background-image: url('../../assets/buttons/telegram.png');
-        width: 134px;
-        height: 46px;
+        width: 100px;
+        height: 30px;
         background-repeat: no-repeat;
     }
     @media screen and (max-width: 420px) {
-        height: 100px;
-        width: calc(100% - 40px);
-        padding: 0 20px;
+        display: block;
+        height: 140px;
+        padding: 20px;
+        width: 75%;
+        text-align: center;
+        margin: 30px auto;
         .question {
-            font-family: raleway, sans-serif;
-            font-size: 13px;
-            color: white;
+            margin-bottom: 25px;
         }
         .button {
-            padding: 4px 15px;
-            font-size: 14px;
+            height: 28px;
+            width: 260px;
+            margin: 0 auto;
+            background-image: url('../../assets/buttons/telegram-x.png');
+            background-size: contain;
         }
     }
+}
+
+.stake-panel-mobile {
+    display: none;
 }
 
 .wrap-items {
     display: flex;
     justify-content: space-between;
     width: 740px;
-    margin: 80px auto 0;
+    margin: -260px auto 0;
     .item {
         width: 200px;
         height: 230px;
@@ -664,7 +892,6 @@
         }
     }
     .button {
-        width: 162px;
         height: 36px;
         background-size: contain;
         background-repeat: no-repeat;
@@ -680,5 +907,8 @@
     }
     .medium {
         background-image: url('../../assets/buttons/button-m.png');
+    }
+    &.bottom {
+        margin: 80px auto 0
     }
 }
