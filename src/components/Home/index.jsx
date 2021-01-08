@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Game from '../SpotTheBall';
 import { connect } from 'react-redux';
-import { purchaseLP, claim, getLockedLP, stake, unStake, unStakePrevious } from '../../actions'
+import { getAuth, purchaseLP, claim, getLockedLP, stake, unStake, unStakePrevious } from '../../actions'
 import './style.scss';
 
 class Home extends PureComponent {
@@ -79,7 +79,7 @@ class Home extends PureComponent {
     render() {
         const { globalTime, inputEth } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
-        const { liquidVault: { maxStake, myPoints, HcoreLP }, unStake, unStakePrevious, authorized } = this.props;
+        const { liquidVault: { maxStake, myPoints, HcoreLP }, unStake, unStakePrevious, authorized, getAuth } = this.props;
         return (
             <main className='home-page'>
                 <section>
@@ -87,7 +87,7 @@ class Home extends PureComponent {
                     <div className='background-image'>
                         <div className='title'>Stake tokens to Win a Lambo</div>
                         {
-                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button'>CONNECT WALLET</div>
+                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT WALLET</div>
                         }
                     </div>
 
@@ -294,7 +294,10 @@ const mapDispatchToProps = dispatch => {
         },
         unStakePrevious: () => {
             dispatch(unStakePrevious())
-        }
+        },
+        getAuth: () => {
+            dispatch(getAuth());
+        },
     };
 };
 

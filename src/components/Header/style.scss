@@ -8,6 +8,9 @@
     padding: 0 230px;
     height: 72px;
     background: #000000;
+    &.mobile {
+        display: none;
+    }
     .logo {
         margin-left: -20px;
         width: 195px;
@@ -53,13 +56,6 @@
             }
         }
     }
-    @media screen and (max-width: 420px) {
-        width: calc(100% - 20px);
-        .navigation {
-            width: 280px;
-            font-size: 12px;
-        }
-    }
     .user-profile {
         display: flex;
         justify-content: space-between;
@@ -88,6 +84,104 @@
             line-height: 1.43;
             letter-spacing: 0.25px;
             color: #ffffff;
+        }
+    }
+    @media screen and (max-width: 420px) {
+        display: none;
+        &.mobile {
+            display: flex;
+            align-items: center;
+            height: 56px;
+            padding: 0 10px 0 30px;
+            width: calc(100% - 40px);
+            .logo {
+                width: 140px;
+                margin: 0;
+            }
+            .hamburger {
+                cursor: pointer;
+                width: 30px;
+                height: 24px;
+                position: absolute;
+                z-index: 1;
+                top: 15px;
+                right: 10px;
+            }
+            .hamburger .bar {
+                padding: 0;
+                width: 30px;
+                height: 3px;
+                background-color: rgb(199, 199, 199);
+                display: block;
+                border-radius: 3px;
+                transition: all 0.4s ease-in-out;
+                position: absolute;
+            }
+            .bar1 {
+                top: 0;
+            }
+            .bar2,
+            .bar3 {
+                top: 11px;
+            }
+            .bar3 {
+                right: 0;
+            }
+            .bar4 {
+                bottom: 0;
+            }
+            .checkbox.active {
+                .hamburger {
+                    .bar1 {
+                        transform: rotate(45deg);
+                        transform-origin: 5%;
+                        width: 34px
+                    }
+                    .bar2 {
+                        transform: translateX(-40px);
+                        background-color: transparent;
+                    }
+                    .bar3 {
+                        transform: translateX(40px);
+                        background-color: transparent;
+                    }
+                    .bar4 {
+                        transform-origin: 5%;
+                        transform: rotate(-45deg);
+                        width: 34px;
+                    }
+                }
+            }
+            .mobile-nav-body {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                width: 0;
+                position: absolute;
+                background-color: #171717;
+                top: 0;
+                right: 0;
+                transition: 0.3s;
+                &.active {
+                    width: 324px;
+                }
+                .user-profile {
+                    margin: 15px 0 15px 20px;
+                }
+                .navigation {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    width: 300px;
+                    height: 240px;
+                    padding-left: 24px;
+                    a {
+                        text-align: left;
+                    }
+                    .item.active {
+                        border: 0
+                    }
+                }
+            }
         }
     }
 }

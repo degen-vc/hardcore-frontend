@@ -33,11 +33,13 @@
         .block-row {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             align-items: center;
             margin-bottom: 10px;
         }
         .block-item {
             width: 110px;
+            margin-bottom: 15px;
             .block-item-header {
                 font-family: Roboto;
                 font-size: 16px;
@@ -71,7 +73,11 @@
         .block-2 {
             width: 400px;
         }
-        .block-3 {}
+        .block-3 {
+            .block-item {
+                width: 100%;
+            }
+        }
     }
     .team-section {
         padding: 80px 0 120px;
@@ -234,5 +240,112 @@
     }
     .question-block {
         margin: 80px auto;
+    }
+    @media screen and (max-width: 420px) {
+        .about-page-header {
+            padding-top: 100px;
+            background-image: radial-gradient(circle at 50% 71%, #ffffff, #000000 75%);
+        }
+        .tokenomics-panel {
+            width: calc(100% - 40px);
+            flex-direction: column;
+            .block-1 {
+                width: 100%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+                margin-bottom: 20px;
+                .block-row {
+                    flex-wrap: nowrap;
+                    .small {
+                        width: 50px;
+                    }
+                }
+            }
+            .block-2 {
+                width: 100%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+                margin-bottom: 20px;
+                .block-row {
+                    .block-item {
+                        width: 40%;
+                    }
+                }
+            }
+            .block-3 {
+                width: 100%;
+                .block-row {
+                    .block-item {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+        .about-section {
+            .header-about-section {
+                margin-top: 40px;
+                padding-top: 40px;
+                background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 120%);
+                font-size: 34px;
+            }
+            .about-section-description {
+                width: calc(100% - 48px);
+                padding: 0 24px;
+                div {
+                    font-size: 14px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.43;
+                    letter-spacing: 0.25px;
+                    text-align: justify;
+                    color: rgba(255, 255, 255, 0.6);
+                }
+            }
+            .button-about {
+                width: 280px;
+                height: 32px;
+                background-image: url('../../assets/buttons/medium-mob.png');
+                background-repeat: no-repeat;
+            }
+        }
+        .exotic-section {
+            height: 500px;
+            .clock-wrapper {
+                width: 100%;
+                background-position: center;
+                .exotic-header {
+                    width: 100%;
+                    height: 70px;
+                    text-align: center;
+                }
+                .exotic-description {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+            }
+        }
+        .team-section {
+            padding: 40px 0;
+            .team-section-header {
+                background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 70%);
+            }
+            .photos {
+                flex-direction: column;
+                width: 100%;
+                div {
+                    .photo {
+                        margin: 0 auto;
+                    }
+                    margin-bottom: 20px;
+                    .icon {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        .question-block {
+            margin: 20px auto;
+        }
     }
 }

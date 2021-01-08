@@ -542,6 +542,9 @@
             .connect-button {
                 margin: 0 auto;
             }
+            .play-button {
+                margin: 0 auto;
+            }
         }
         .content-wrap {
             height: 1200px;
@@ -773,7 +776,7 @@
     .news-title {
         margin-top: 100px;
         background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 80%);
-        font-family: Roboto;
+        font-family: Roboto-medium;
         font-size: 48px;
         font-weight: 900;
         font-stretch: normal;

@@ -89,7 +89,7 @@
         background: #242323;
     }
     .sell-button {
-        background-image: url('../../assets/buttons/sell.png');
+        background-image: url('../../assets/buttons/stake.png');
         width: 134px;
         height: 36px;
         background-size: cover;
@@ -122,5 +122,53 @@
             margin-top: -5px;
         }
     }
-    .block-3 {}
+    @media screen and (max-width: 420px) {
+        .block-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 94%;
+            height: 500px;
+            .block-1 {
+                width: calc(100% - 40px);
+                padding: 20px;
+                .block-row {
+                    .block-item {
+                        width: 50%;
+                    }
+                }
+                .block-header {
+                    text-align: center;
+                }
+                .block {
+                    flex-direction: column;
+                    .sell-button {
+                        width: 100%;
+                        margin: 20px auto 30px;
+                        background-image: url('../../assets/buttons/send-eth-x.png');
+                    }
+                    .stake-more {
+                        margin-left: 0
+                    }
+                }
+            }
+            .block-2 {
+                display: none;
+                .block-item {
+                    width: 50%;
+                }
+                a {
+                    width: 50%;
+                }
+                &.mobile {
+                    display: block;
+                    width: calc(100% - 40px);
+                    padding: 20px;
+                    .block-header {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
 }

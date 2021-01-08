@@ -11,7 +11,7 @@ class NFT extends PureComponent {
     }
 
     render() {
-        const {authorized} = this.props;
+        const { authorized } = this.props;
         return (
             <main>
                 <section className='About-page'>
@@ -28,12 +28,11 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">DEGEN.VC</div>
                                     <div className="block-item-value">15%</div>
                                 </div>
+                            <div className='block-item small'>
+                                <div className="block-item-header">Vault</div>
+                                <div className="block-item-value">15%</div>
+
                             </div>
-                            <div className='block-row'>
-                                <div className='block-item'>
-                                    <div className="block-item-header">Vault</div>
-                                    <div className="block-item-value">15%</div>
-                                </div>
                             </div>
                         </div>
 
@@ -52,8 +51,6 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">Burnable</div>
                                     <div className="block-item-value">Yes</div>
                                 </div>
-                            </div>
-                            <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">Token Symbol</div>
                                     <div className="block-item-value">HCORE</div>
@@ -66,7 +63,7 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">Token address</div>
                                     <div className="block-item-value">
                                         <span>0x0b9D...2e14</span>
-                                        <span className='copy' onClick={()=>{ navigator.clipboard.writeText(authorized)}}>Copy</span>
+                                        <span className='copy' onClick={() => { navigator.clipboard.writeText(authorized) }}>Copy</span>
                                     </div>
                                 </div>
                             </div>
@@ -78,8 +75,6 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">Vault</div>
                                     <div className="block-item-value">2%</div>
                                 </div>
-                            </div>
-                            <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">NFT Fund</div>
                                     <div className="block-item-value">3%</div>
@@ -106,7 +101,7 @@ class NFT extends PureComponent {
                         </div>
                         <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
 
-                        <div className="button-about"></div>
+                            <div className="button-about btn">MEDIUM</div>
                         </a>
                     </div>
                     <div className="exotic-section">

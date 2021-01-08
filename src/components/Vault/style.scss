@@ -36,6 +36,12 @@
             }
         }
     }
+    @media screen and (max-width: 420px) {
+        .stake-button.btn.mr.unique {
+            width: 100%!important;
+            height: 48px!important;
+        }
+    }
 }
 
 .stake-panel {

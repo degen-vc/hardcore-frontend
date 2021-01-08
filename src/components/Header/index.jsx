@@ -14,13 +14,10 @@ class Header extends PureComponent {
         super();
         this.state = {
             auth: false,
-            isProfileOpen: false
+            hamburgerIsOpen: false
         }
 
         this.toLogin = this.toLogin.bind(this)
-        this.closeModal = this.closeModal.bind(this)
-        this.openModal = this.openModal.bind(this)
-        this.renderModalBody = this.renderModalBody.bind(this)
     }
 
     componentDidMount() {
@@ -52,31 +49,12 @@ class Header extends PureComponent {
         }
     }
 
-    openModal() {
-        this.setState({ isProfileOpen: true })
-    }
-
-    renderModalBody() {
-        const { auth } = this.state;
-        return (
-            <Fragment>
-                <div className='modal-title'>Profile</div>
-                <div className='center'>Metamask id:</div>
-                <div className='info'>{auth}</div>
-            </Fragment>
-        )
-    }
-
     toLogin() {
         this.props.getAuth();
     }
 
-    closeModal() {
-        this.setState({ isProfileOpen: false })
-    }
-
     render() {
-        const { isProfileOpen, auth } = this.state;
+        const { auth, hamburgerIsOpen } = this.state;
         const { authorized } = this.props;
         const address = auth || authorized
         return (
@@ -89,7 +67,7 @@ class Header extends PureComponent {
                         <NavLink to='/vault' className='item'>VAULT</NavLink>
                         <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
                     </nav>
-                    {authorized || auth ? <div className='user-profile' onClick={()=>{ navigator.clipboard.writeText(authorized)}} >
+                    {authorized || auth ? <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
                         <div className='profile-logo'></div>
                         <div className='user-address'>
                             {`${address.slice(0, 6)}...${address.slice(-4)}`}
@@ -98,7 +76,33 @@ class Header extends PureComponent {
                         :
                         <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
                 </header>
-                {isProfileOpen ? <Modal children={this.renderModalBody()} onClose={this.closeModal} /> : null}
+                <header className='header mobile'>
+                    <img className='logo' src={logo} alt="" />
+                    <div className={`checkbox ${hamburgerIsOpen ? 'active' : ''}`} onClick={() => { this.setState({ hamburgerIsOpen: !hamburgerIsOpen }) }}>
+                        <div class="hamburger hamburger1">
+                            <span class="bar bar1"></span>
+                            <span class="bar bar2"></span>
+                            <span class="bar bar3"></span>
+                            <span class="bar bar4"></span>
+                        </div>
+                    </div>
+                    <div className={`mobile-nav-body ${hamburgerIsOpen ? 'active' : ''}`}>
+                        {authorized || auth ? <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
+                            <div className='profile-logo'></div>
+                            <div className='user-address'>
+                                {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                            </div>
+                        </div>
+                            :
+                            <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
+                        <nav className='navigation'>
+                            <NavLink to='/home' className='item'>HOME</NavLink>
+                            <NavLink to='/spot' className='item'>ABOUT</NavLink>
+                            <NavLink to='/vault' className='item'>VAULT</NavLink>
+                            <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
+                        </nav>
+                    </div>
+                </header>
             </Fragment>
         )
     }
@@ -115,7 +119,7 @@ const mapDispatchToProps = dispatch => {
         getAuth: () => {
             dispatch(getAuth());
         },
-        
+
     };
 };
 
