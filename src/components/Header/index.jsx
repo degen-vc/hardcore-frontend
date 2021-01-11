@@ -2,7 +2,6 @@ import React, { PureComponent, Fragment } from 'react'
 
 import { NavLink } from "react-router-dom";
 
-import Modal from '../../shared/Modal';
 import { connect } from 'react-redux';
 import { getAuth } from '../../actions'
 import logo from '../../assets/images/logo.png'
@@ -79,11 +78,11 @@ class Header extends PureComponent {
                 <header className='header mobile'>
                     <img className='logo' src={logo} alt="" />
                     <div className={`checkbox ${hamburgerIsOpen ? 'active' : ''}`} onClick={() => { this.setState({ hamburgerIsOpen: !hamburgerIsOpen }) }}>
-                        <div class="hamburger hamburger1">
-                            <span class="bar bar1"></span>
-                            <span class="bar bar2"></span>
-                            <span class="bar bar3"></span>
-                            <span class="bar bar4"></span>
+                        <div className="hamburger hamburger1">
+                            <span className="bar bar1"></span>
+                            <span className="bar bar2"></span>
+                            <span className="bar bar3"></span>
+                            <span className="bar bar4"></span>
                         </div>
                     </div>
                     <div className={`mobile-nav-body ${hamburgerIsOpen ? 'active' : ''}`}>

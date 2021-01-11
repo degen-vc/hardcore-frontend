@@ -1,18 +1,18 @@
 import NFTFundAbi from './abi/NFTFundAbi';
 import HcoreAbi from './abi/Hcore';
-import FeeDestAbi from './abi/FeeDestAbi'
+import FeeDistAbi from './abi/FeeDistAbi'
 import { getWeb3 } from "../utils";
 
 export const getEthAndHcoreBalance = () => {
     return async dispatch => {
         const HCORE = '0x49bc86b40237527ec19874aCA15bCb095B363f2E';
         const NFT_FUND_ADDRESS = '0x986766daed003748f7E9b896a837D2C17C74E40c';
-        const FeeDestrAddress = '0x3BE435C19FE14082c043A003561551abf64e4530'
+        const FeeDistrAddress = '0x3BE435C19FE14082c043A003561551abf64e4530'
         const web3 = await getWeb3();
         const hCoreContract = await new web3.eth.Contract(HcoreAbi, HCORE);
-        const feeDestContract = await new web3.eth.Contract(FeeDestAbi, FeeDestrAddress);
+        const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FeeDistrAddress);
 
-        let { burnPercentage, liquidVaultShare } = await feeDestContract.methods.recipients().call();
+        let { burnPercentage, liquidVaultShare } = await feeDistContract.methods.recipients().call();
         let dev = 100 - burnPercentage - liquidVaultShare;
 
         let ethBalance = await web3.eth.getBalance(NFT_FUND_ADDRESS);

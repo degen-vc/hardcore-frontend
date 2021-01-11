@@ -681,9 +681,6 @@ class SpotTheBall extends PureComponent {
                 show_points: true,
                 onChooseSpot: (e) => {
                     if (document.getElementsByClassName("main-image-point")[1]) {
-                        console.log(document.getElementsByClassName('spot-ball-container')[0])
-                        console.log(document.getElementsByClassName('main-image-point')[0])
-
                         document.getElementsByClassName('main-image-points-container')[0].removeChild(document.getElementsByClassName("main-image-point")[0])
                         document.getElementsByClassName('zoom-points-container')[0].removeChild(document.getElementsByClassName("zoom-point")[0])
                     }

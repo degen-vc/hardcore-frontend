@@ -79,7 +79,7 @@ class Home extends PureComponent {
     render() {
         const { globalTime, inputEth } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
-        const { liquidVault: { maxStake, myPoints, HcoreLP }, unStake, unStakePrevious, authorized, getAuth } = this.props;
+        const { liquidVault: { maxStake, myPoints, HcoreLP,myHcoreLp }, unStake, unStakePrevious, authorized, getAuth } = this.props;
         return (
             <main className='home-page'>
                 <section>
@@ -134,7 +134,7 @@ class Home extends PureComponent {
                                 <div className='stake-header'>
                                     <div className='wrap-title first'>
                                         <div className='stake-title'>Your $HCORE LP</div>
-                                        <div className='stake-value'>{HcoreLP}</div>
+                                        <div className='stake-value'>{myHcoreLp}</div>
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
@@ -146,7 +146,7 @@ class Home extends PureComponent {
                                     </div>
                                     <div className='wrap-title fourth'>
                                         <div className='stake-title'>Staked $HCORE LP</div>
-                                        <div className='stake-value'>{parseFloat(myPoints).toFixed(4)}</div>
+                                        <div className='stake-value'>{HcoreLP}</div>
                                     </div>
                                 </div>
                                 <div className='stake-body'>

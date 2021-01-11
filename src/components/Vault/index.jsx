@@ -69,7 +69,7 @@ class Vault extends PureComponent {
     }
 
     render() {
-        const { claim, liquidVault : {stakeDuration, notReadyTokens, tokens, balance} } = this.props;
+        const { claim, liquidVault : {stakeDuration, notReadyTokens, tokens, availableHcore} } = this.props;
         const { modalIsOpen, modalType, inputEth } = this.state;
         return (
             <React.Fragment>
@@ -83,7 +83,7 @@ class Vault extends PureComponent {
                             <div>
                                 <div className='wrap-title second'>
                                     <div className='header-text'>Available $HCORE</div>
-                                    <div className='stake-value'>{balance}</div>
+                                    <div className='stake-value'>{availableHcore}</div>
                                 </div>
                             </div>
                         </div>

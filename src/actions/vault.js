@@ -3,6 +3,7 @@ import liquidVaultAbi from './abi/LiquidVault';
 import HcoreAbi from './abi/Hcore';
 import LPGenesisPoolGame from './abi/LPGenesisPoolGameAbi';
 import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
+import FeeDistAbi from './abi/FeeDistAbi'
 
 export const purchaseLP = (value, balance) => {
     return async dispatch => {
@@ -16,7 +17,7 @@ export const purchaseLP = (value, balance) => {
             if (+balance >= +web3.utils.fromWei(hardCoreRequired)) {
                 await LiquidContract.methods.purchaseLP().send({ from: ethAddress[0], value: web3.utils.toWei(`${value}`) });
             } else {
-                alert('Not enough eth')
+                alert('Insufficient HardCore in LiquidVault')
             }
         } catch (error) {
             console.log(error)
@@ -54,12 +55,17 @@ export const getLockedLP = () => {
         const UniswapV2Pair = await new web3.eth.Contract(UniswapV2PairAbi, UniswapV2PairAddress);
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
         const HcoreContract = await new web3.eth.Contract(HcoreAbi, HCORE);
+        const FeeDistrAddress = '0x3BE435C19FE14082c043A003561551abf64e4530'
+        const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FeeDistrAddress);
 
         try {
             let tokens = 0;
             let notReadyTokens = 0;
             let balance = 0;
             let feeBalance = 0;
+            let myHcoreLp = 0;
+            let availableHcore = 0;
+
 
             let { purchaseFee, stakeDuration } = await LiquidContract.methods.config().call();
 
@@ -87,11 +93,17 @@ export const getLockedLP = () => {
             }
             balance = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
-            // burn = await HcoreContract.methods.burn().call();
+            myHcoreLp = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
+            let { liquidVaultShare } = await feeDistContract.methods.recipients().call();
+            const feeDistBalance = web3.utils.toBN(await HcoreContract.methods.balanceOf(FeeDistrAddress).call())
+            availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add((web3.utils.toBN(liquidVaultShare).mul(feeDistBalance)))
+            availableHcore = +web3.utils.fromWei(availableHcore + '') / 100
+            availableHcore = availableHcore.toFixed(3)
             let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
             let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
             let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
             HcoreLP = +web3.utils.fromWei(HcoreLP + '');
+            myHcoreLp = +web3.utils.fromWei(myHcoreLp + '');
             feeBalance = +web3.utils.fromWei(feeBalance + '')
             feeBalance = feeBalance.toFixed(2)
 
@@ -103,7 +115,7 @@ export const getLockedLP = () => {
             let maxStake = 2.02;
             stakeDuration = stakeDuration / 60 / 60 / 24
 
-            await dispatch({ type: "GET_LIQUID", payload: { myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
+            await dispatch({ type: "GET_LIQUID", payload: { availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
 
         } catch (error) {
             console.log(error)
