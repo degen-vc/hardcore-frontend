@@ -192,7 +192,6 @@
         }
         .car-image {
             height: 550px;
-            background-image: url('../../assets/images/black-car.png');
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -738,6 +737,10 @@
                             height: 48px;
                             width: 100%;
                             background-image: url('../../assets/buttons/unstake-mobile.png');
+                            cursor: auto;
+                            &:hover {
+                                opacity: 1!important;
+                            }
                         }
                     }
                 }

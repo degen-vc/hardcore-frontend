@@ -73,7 +73,7 @@ class Header extends PureComponent {
                         </div>
                     </div>
                         :
-                        <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
+                        <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>}
                 </header>
                 <header className='header mobile'>
                     <img className='logo' src={logo} alt="" />
@@ -93,7 +93,7 @@ class Header extends PureComponent {
                             </div>
                         </div>
                             :
-                            <div className='button' onClick={this.toLogin}>CONNECT WALLET</div>}
+                            <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>}
                         <nav className='navigation'>
                             <NavLink to='/home' className='item'>HOME</NavLink>
                             <NavLink to='/spot' className='item'>ABOUT</NavLink>

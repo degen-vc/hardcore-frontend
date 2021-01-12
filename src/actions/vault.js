@@ -65,6 +65,7 @@ export const getLockedLP = () => {
             let feeBalance = 0;
             let myHcoreLp = 0;
             let availableHcore = 0;
+            let myBalanceHcore = 0;
 
 
             let { purchaseFee, stakeDuration } = await LiquidContract.methods.config().call();
@@ -115,7 +116,10 @@ export const getLockedLP = () => {
             let maxStake = 2.02;
             stakeDuration = stakeDuration / 60 / 60 / 24
 
-            await dispatch({ type: "GET_LIQUID", payload: { availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
+            myBalanceHcore = await HcoreContract.methods.balanceOf(ethAddress[0]).call();
+
+
+            await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
 
         } catch (error) {
             console.log(error)

@@ -1,6 +1,7 @@
 import React, { PureComponent, } from 'react'
 import jQuery from "jquery";
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import { sendCoord, getBalance, getAuth } from '../../actions';
 import './style.scss';
 
@@ -764,17 +765,24 @@ class SpotTheBall extends PureComponent {
 
     }
 
-    renderPlayButton(balance, need, sendCoord) {
+    renderPlayButton(balance, need, sendCoord, myBalanceHcore, myHcoreLp) {
         const { x, y } = this.state;
         if (balance !== 0 && balance < need) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Be patient. Your points balance is growing</div>
-                <div className="not-enough-button btn" onClick={() => { window.scrollTo(0, 1450) }}>NOT ENOUGH POINTS</div>
+                <div className="not-enough-button btn">NOT ENOUGH POINTS</div>
             </div>
-        } else if (balance === 0) {
+        } else if (!balance && !myBalanceHcore && !myHcoreLp) {
             return <div className='not-authorized'>
                 <div className='auth-message'>HCORE tokens are needed to play</div>
-                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>GET TOKENS</div>
+                <Link to='/vault'>
+                <div className="get-tokens-button btn">GET TOKENS</div>
+                </Link>
+            </div>
+        }else if(balance === 0 && (myBalanceHcore || myHcoreLp)){
+            return <div className='not-authorized'>
+                <div className='auth-message'>Stake to earn points</div>
+                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>STAKE</div>
             </div>
         } else {
             return <div className='not-authorized'>
@@ -786,7 +794,7 @@ class SpotTheBall extends PureComponent {
 
     render() {
 
-        const { sendCoord, balance: { balance, need } } = this.props;
+        const { sendCoord, balance: { balance, need, myBalanceHcore, myHcoreLp } } = this.props;
 
         const { x, y } = this.state;
         const { authorized, getAuth } = this.props;
@@ -818,7 +826,7 @@ class SpotTheBall extends PureComponent {
                             <div className='stake-more'>Learn more <div>&#8250;</div></div>
                         </a>
                     </div>) : (
-                            this.renderPlayButton(balance, need, sendCoord)
+                            this.renderPlayButton(balance, need, sendCoord, myBalanceHcore, myHcoreLp)
                         )}
                 </div>
             </div>

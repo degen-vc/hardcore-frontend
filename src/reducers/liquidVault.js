@@ -17,7 +17,7 @@ const initialState = {
 export const liquidVault = function(state = initialState, action) {
     switch (action.type) {
         case "GET_LIQUID":
-            const { notReadyTokens, tokens, balance, myPoints, maxStake, purchaseFee, feeBalance, stakeDuration, myLpTokens, HcoreLP, myHcoreLp, availableHcore } = action.payload;
+            const { notReadyTokens, tokens, balance, myPoints, maxStake, purchaseFee, feeBalance, stakeDuration, myLpTokens, myBalanceHcore, HcoreLP, myHcoreLp, availableHcore } = action.payload;
             return {...state,
                 notReadyTokens,
                 tokens,
@@ -30,7 +30,8 @@ export const liquidVault = function(state = initialState, action) {
                 myLpTokens,
                 HcoreLP,
                 myHcoreLp,
-                availableHcore
+                availableHcore,
+                myBalanceHcore
             };
         case "GET_ETH_AND_HCORE_BALANCE":
             const { ethBalance, hCoreBalance, burnPercentage, dev, liquidVaultShare } = action.payload;

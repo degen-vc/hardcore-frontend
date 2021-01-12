@@ -87,7 +87,7 @@ class Home extends PureComponent {
                     <div className='background-image'>
                         <div className='title'>Stake tokens to Win a Lambo</div>
                         {
-                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT WALLET</div>
+                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
                         }
                     </div>
 
@@ -104,15 +104,15 @@ class Home extends PureComponent {
                         <div className='wrap-items'>
                             <div className='item'>
                                 <div className='number'>1</div>
-                                <div className='title'>Swap DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap'>
+                                <div className='title'>Swap ETH/DGVC on Uniswap</div>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x26E43759551333e57F073bb0772F50329A957b30'>
                                     <div className='button btn swap'>SWAP</div>
                                 </a>
                             </div>
                             <div className='item'>
                                 <div className='number'>2</div>
                                 <div className='title'>Pool DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x26E43759551333e57F073bb0772F50329A957b30'>
                                     <div className='button btn pool'>POOL</div>
                                 </a>
                             </div>
