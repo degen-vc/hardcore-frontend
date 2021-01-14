@@ -13,14 +13,36 @@ class Header extends PureComponent {
         super();
         this.state = {
             auth: false,
-            hamburgerIsOpen: false
+            hamburgerIsOpen: false,
+            popUp: false
         }
 
         this.toLogin = this.toLogin.bind(this)
+        this.getNetworkId = this.getNetworkId.bind(this)
     }
 
     componentDidMount() {
         this.checkAuth()
+    }
+
+    getNetworkId(id) {
+        switch (id) {
+            case '1':
+                return 'Ethereum'
+            case '2':
+                return 'Morden'
+            case '3':
+                return 'Ropsten'
+            case '4':
+                return 'Rinkeby'
+            case '5':
+                return 'Goerli'
+            case '42':
+                return 'Kovan'
+            case '1337':
+                return 'Private'
+            default: return 'Other'
+        }
     }
 
     checkAuth() {
@@ -53,9 +75,10 @@ class Header extends PureComponent {
     }
 
     render() {
-        const { auth, hamburgerIsOpen } = this.state;
+        const { auth, hamburgerIsOpen, popUp } = this.state;
         const { authorized } = this.props;
         const address = auth || authorized
+        this.networkName = this.getNetworkId(window.web3.version.network)
         return (
             <Fragment>
                 <header className='header'>
@@ -66,14 +89,22 @@ class Header extends PureComponent {
                         <NavLink to='/vault' className='item'>VAULT</NavLink>
                         <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
                     </nav>
-                    {authorized || auth ? <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
-                        <div className='profile-logo'></div>
-                        <div className='user-address'>
-                            {`${address.slice(0, 6)}...${address.slice(-4)}`}
-                        </div>
-                    </div>
-                        :
-                        <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>}
+                    
+                        {authorized || auth ? (
+                            <div className='network-user'>
+                                <div className='network-name'>
+                                    <div className='network-status' />
+                                    <div className='network-text'>{this.networkName}</div>
+                                </div>
+                                <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
+                                    <div className='profile-logo'></div>
+                                    <div className='user-address'>
+                                        {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                                    </div>
+                                </div>
+                            </div>
+                            ) : <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>
+                        }
                 </header>
                 <header className='header mobile'>
                     <img className='logo' src={logo} alt="" />
@@ -86,12 +117,18 @@ class Header extends PureComponent {
                         </div>
                     </div>
                     <div className={`mobile-nav-body ${hamburgerIsOpen ? 'active' : ''}`}>
-                        {authorized || auth ? <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
-                            <div className='profile-logo'></div>
-                            <div className='user-address'>
-                                {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                        {authorized || auth ? <div className='network-user'>
+                                <div className='network-name'>
+                                    <div className='network-status' />
+                                    <div className='network-text'>{this.networkName}</div>
+                                </div>
+                                <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
+                                    <div className='profile-logo'></div>
+                                    <div className='user-address'>
+                                        {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                             :
                             <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>}
                         <nav className='navigation'>
@@ -102,6 +139,16 @@ class Header extends PureComponent {
                         </nav>
                     </div>
                 </header>
+                {this.networkName !== 'Kovan' && !popUp && window.web3.version.network ? (
+                <div className='pop-up'>
+                    <div className='pop-up-body'>
+                        <div className='text-pop-up'>
+                            Your network has to be Kovan
+                        </div>
+                        <div className='pop-up-button' onClick={()=>{this.setState({popUp: true})}}>OK</div>
+                    </div>
+                </div>
+                ): null}
             </Fragment>
         )
     }

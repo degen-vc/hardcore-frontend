@@ -34,10 +34,12 @@
             background-repeat: no-repeat;
         }
         .connect-button {
-            width: 178px;
-            height: 40px;
+            width: 220px;
+            height: 28px;
             margin-left: 240px;
-            background-image: url('../../assets/buttons/connect-wallet.png');
+            background-image: url('../../assets/buttons/send-eth-x.png');
+            background-repeat: no-repeat;
+            background-size: contain;
         }
         .play-button {
             width: 142px;
@@ -691,7 +693,7 @@
             }
         }
         .game {
-            width: 420px;
+            width: 100%;
             padding: 0;
             .game-header {
                 font-size: 38px;
@@ -702,15 +704,16 @@
                 display: flex;
                 flex-direction: column;
                 width: 100%!important;
-                height: 640px;
+                height: 570px;
+                align-items: center;
                 .stb-points {
-                    width: calc(100% - 60px);
+                    width: 100%;
+                    background-color: #171717;
                     .game-title {
-                        width: 100%;
-                        margin: 0;
-                        font-size: 20px;
+                        display: none;
                     }
                     .coordinate-wrap {
+                        padding: 0 20px;
                         flex-direction: row;
                         height: 40px;
                         .coordinate {
@@ -732,6 +735,7 @@
                             height: 48px;
                             width: 100%;
                             background-image: url('../../assets/buttons/send-eth-x.png');
+                            background-position: center;
                         }
                         .not-enough-button {
                             height: 48px;

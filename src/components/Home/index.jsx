@@ -15,7 +15,7 @@ class Home extends PureComponent {
     }
 
     componentDidMount() {
-        this.setState({ globalTime: 1610236800 - (new Date().getTime() / 1000) })
+        this.setState({ globalTime: 1611236800 - (new Date().getTime() / 1000) })
         this.interval = setInterval(() => {
             let { globalTime } = this.state;
             globalTime--;
@@ -79,7 +79,7 @@ class Home extends PureComponent {
     render() {
         const { globalTime, inputEth } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
-        const { liquidVault: { maxStake, myPoints, HcoreLP,myHcoreLp }, unStake, unStakePrevious, authorized, getAuth } = this.props;
+        const { liquidVault: { maxStake, myPoints, HcoreLP, myHcoreLp }, unStake, unStakePrevious, authorized, getAuth } = this.props;
         return (
             <main className='home-page'>
                 <section>
