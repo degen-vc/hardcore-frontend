@@ -1,8 +1,7 @@
 import React, { PureComponent, } from 'react';
 import { TweenMax } from 'gsap';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
-import { sendCoord, getBalance, getAuth } from '../../actions';
+import { sendCoord, getAuth } from '../../actions';
 import './style.scss';
 
 class SpotTheBall extends PureComponent {
@@ -39,9 +38,9 @@ class SpotTheBall extends PureComponent {
         let x = clientX - this.offsetX;
         let y = clientY - this.offsetY;
         if (y < height && x < width && x > 0) {
-            this.setState({selectedX: x, selectedY: Math.floor(y)})
-            this.circle.style.left = `${x -9}px`;
-            this.circle.style.top = `${y-9}px`;
+            this.setState({ selectedX: Math.floor(this.mobile ? x * 2.155 : x), selectedY: Math.floor(this.mobile ? y * 2.155 : y) })
+            this.circle.style.left = `${x - 9}px`;
+            this.circle.style.top = `${y - 9}px`;
         }
     }
 
@@ -54,11 +53,11 @@ class SpotTheBall extends PureComponent {
     }
 
     moveCircle(e) {
-        if(!this.state.x){
-            this.setState({startPlay: !this.state.startPlay})
+        if (!this.state.x) {
+            this.setState({ startPlay: !this.state.startPlay })
         }
-        const width = this.mobile ? 360 : 778
-        const height = this.mobile ? 260 : 556
+        const width = this.mobile ? 360 : 778;
+        const height = this.mobile ? 260 : 556;
         const { pressButton } = this.state;
         const { clientX, clientY } = e;
         const x = clientX - this.offsetX;
@@ -80,10 +79,10 @@ class SpotTheBall extends PureComponent {
             this.circle.style.top = `${y - 7}px`;
         }
         if (x > 0 && y > 0 && x < width && y < height) {
-            this.setState({ x: Math.floor(x), y: Math.floor(y) })
-            TweenMax.to('.sight', 0.3, { x: e.clientX  - this.offsetX - 41.5, y: e.clientY - this.offsetY - 41.5});
-            TweenMax.to('#masker', 0.3, { attr: { cx: - this.offsetX + e.clientX, cy: -this.offsetY +  e.clientY } });
-            TweenMax.to('#imgZoom', 0.3, { attr: { x: this.offsetX * (this.scale - 1) -e.clientX * (this.scale - 1), y: this.offsetY * (this.scale - 1) - e.clientY * (this.scale - 1) } });
+            this.setState({ x: Math.floor(this.mobile ? x * 2.155 : x), y: Math.floor(this.mobile ? y * 2.155 : y) })
+            TweenMax.to('.sight', 0.3, { x: e.clientX - this.offsetX - 41.5, y: e.clientY - this.offsetY - 41.5 });
+            TweenMax.to('#masker', 0.3, { attr: { cx: - this.offsetX + e.clientX, cy: -this.offsetY + e.clientY } });
+            TweenMax.to('#imgZoom', 0.3, { attr: { x: this.offsetX * (this.scale - 1) - e.clientX * (this.scale - 1), y: this.offsetY * (this.scale - 1) - e.clientY * (this.scale - 1) } });
         }
     }
 
@@ -97,9 +96,7 @@ class SpotTheBall extends PureComponent {
         } else if (!balance && !myBalanceHcore && !myHcoreLp) {
             return <div className='not-authorized'>
                 <div className='auth-message'>HCORE tokens are needed to play</div>
-                <Link to='/vault'>
-                    <div className="get-tokens-button btn">GET TOKENS</div>
-                </Link>
+                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 2950) }}>GET TOKENS</div>
             </div>
         } else if (balance === 0 && (myBalanceHcore || myHcoreLp)) {
             return <div className='not-authorized'>
@@ -116,7 +113,8 @@ class SpotTheBall extends PureComponent {
 
     render() {
 
-        const { sendCoord, balance: { balance, need, myBalanceHcore, myHcoreLp } } = this.props;
+        const { sendCoord, liquidVault: { myBalanceHcore, myHcoreLp }, balance: { balance, need } } = this.props;
+
         const { selectedX, selectedY, x, y } = this.state;
         if (window.innerWidth <= 420) {
             this.mobile = true;
@@ -212,6 +210,7 @@ class SpotTheBall extends PureComponent {
 const mapStateToProps = state => {
     return {
         balance: state.getBalance,
+        liquidVault: state.liquidVault,
         authorized: state.auth.authorization
     };
 };
@@ -220,9 +219,6 @@ const mapDispatchToProps = dispatch => {
     return {
         sendCoord: (x, y) => {
             dispatch(sendCoord(x, y));
-        },
-        getBalance: () => {
-            dispatch(getBalance())
         },
         getAuth: () => {
             dispatch(getAuth());

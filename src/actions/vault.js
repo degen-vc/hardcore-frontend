@@ -6,6 +6,7 @@ import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
 import FeeDistAbi from './abi/FeeDistAbi'
 
 export const purchaseLP = (value, balance) => {
+
     return async dispatch => {
         const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3'
         const web3 = await getWeb3();
@@ -117,6 +118,7 @@ export const getLockedLP = () => {
             stakeDuration = stakeDuration / 60 / 60 / 24
 
             myBalanceHcore = await HcoreContract.methods.balanceOf(ethAddress[0]).call();
+            myBalanceHcore = +myBalanceHcore
 
 
             await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });

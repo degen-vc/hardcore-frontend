@@ -152,40 +152,7 @@ class Vault extends PureComponent {
                         </a>
                     </div>
                 </section>
-                {/* <main>
-                    <section className='vault'>
-                        <div className='description'>
-                            <h1>VAULT</h1>
-                            <h3>{`$HCORE TRANSFER FEES RECEIVED AND AVAILABLE NOW: ${liquidVault.feeBalance}`}</h3>
-                            <div className='description-item'>{`Sent ETH and receive $HCORE/ETH-UNI-V2-LP tokens claimable after ${liquidVault.stakeDuration} days`}</div>
-                            <br />
-                            <div className='description-item'>{`Current percentage of ETH: ${liquidVault.purchaseFee}%`}</div>
-                        </div>
-                        <div className='vault-button-wrap'>
-                             <div className='button-vault'>
-                                <h2>STAKE LP</h2>
-                                <div className='white-line'></div>
-                                <div className='hc-value'>{`YOUR POINTS: ${parseFloat(liquidVault.myPoints).toFixed(4)}`}</div>
-                                <div className='discriptrion-value'>{`MAX STAKE: ${liquidVault.maxStake}`}</div>
-                                <div className='button' onClick={() => this.changeModalStatus('stake')}>Stake</div>
-                                <div className='unstake' onClick={unStake}>Unstake</div>
-                            </div>
-                            <div className='button-vault'>
-                                <h2>SEND ETH</h2>
-                                <div className='white-line'></div>
-                                <div className='hc-value'>{`AVAILABLE $HCORE: ${liquidVault.balance}`}</div>
-                                <div className='button' onClick={() => this.changeModalStatus('send')}>Send ETH</div>
-                            </div>
-                            <div className='button-vault'>
-                                <h2>CLAIM LP</h2>
-                                <div className='white-line'></div>
-                                <div className='hc-value'>{`CLAIMABLE: ${liquidVault.tokens}`}</div>
-                                <div className='discriptrion-value'>{`NOT YET CLAIMABLE: ${liquidVault.notReadyTokens}`}</div>
-                                <div className='button' onClick={claim}>Claim LP</div>
-                            </div>
-                        </div>
-                    </section>
-                </main> */}
+              
                 {modalIsOpen ? (
                     <Modal confirmName='Send' name='vault' children={this.renderModalBody()} callback={modalType === 'send' ? this.sendEth : this.stakeLp} onClose={this.changeModalStatus} />
                 ) : null}

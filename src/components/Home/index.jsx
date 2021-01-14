@@ -30,7 +30,10 @@ class Home extends PureComponent {
 
     getExpiredTime(time) {
         let { globalTime } = this.state;
-        let days, hours, minutes, seconds;
+        let days = 0;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
         if (time / 86400 >= 1) {
             days = (time / 86400);
             days = Math.trunc(days)
@@ -56,7 +59,7 @@ class Home extends PureComponent {
         if ((!days && !hours && !minutes && !seconds) || globalTime <= 0) {
             return [0, 0, 0, 0]
         }
-
+        
         return [days, hours, minutes, seconds]
 
     }
@@ -97,7 +100,7 @@ class Home extends PureComponent {
 
                             <div className='title-launch'>Launch</div>
                             <div className='timer'>
-                                {`${days}D ${hours}:${minutes}:${seconds}`}
+                                {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0'+ hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0'+ minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`}
                             </div>
 
                         </div>
@@ -134,7 +137,7 @@ class Home extends PureComponent {
                                 <div className='stake-header'>
                                     <div className='wrap-title first'>
                                         <div className='stake-title'>Your $HCORE LP</div>
-                                        <div className='stake-value'>{myHcoreLp}</div>
+                                        <div className='stake-value'>{Number(myHcoreLp).toFixed(5)}</div>
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
@@ -146,7 +149,7 @@ class Home extends PureComponent {
                                     </div>
                                     <div className='wrap-title fourth'>
                                         <div className='stake-title'>Staked $HCORE LP</div>
-                                        <div className='stake-value'>{HcoreLP}</div>
+                                        <div className='stake-value'>{Number(HcoreLP).toFixed(5)}</div>
                                     </div>
                                 </div>
                                 <div className='stake-body'>
