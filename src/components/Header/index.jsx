@@ -143,7 +143,7 @@ class Header extends PureComponent {
                 <div className='pop-up'>
                     <div className='pop-up-body'>
                         <div className='text-pop-up'>
-                            Your network has to be Kovan
+                        Please use Ethereum Kovan test network via Metamask
                         </div>
                         <div className='pop-up-button' onClick={()=>{this.setState({popUp: true})}}>OK</div>
                     </div>

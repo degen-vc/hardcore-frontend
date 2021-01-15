@@ -95,8 +95,10 @@ class SpotTheBall extends PureComponent {
             </div>
         } else if (!balance && !myBalanceHcore && !myHcoreLp) {
             return <div className='not-authorized'>
-                <div className='auth-message'>HCORE tokens are needed to play</div>
-                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 2950) }}>GET TOKENS</div>
+                <div className='auth-message'>HCORE LP tokens are needed to play</div>
+                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b'>
+                    <div className="get-tokens-button btn" >GET TOKENS</div>
+                </a>
             </div>
         } else if (balance === 0 && (myBalanceHcore || myHcoreLp)) {
             return <div className='not-authorized'>

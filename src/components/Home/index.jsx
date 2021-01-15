@@ -108,14 +108,14 @@ class Home extends PureComponent {
                             <div className='item'>
                                 <div className='number'>1</div>
                                 <div className='title'>Swap ETH/DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x26E43759551333e57F073bb0772F50329A957b30'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x0da97804d98143d9fb33742Ab17bfa38e60c9751'>
                                     <div className='button btn swap'>SWAP</div>
                                 </a>
                             </div>
                             <div className='item'>
                                 <div className='number'>2</div>
                                 <div className='title'>Pool DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x26E43759551333e57F073bb0772F50329A957b30'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0'>
                                     <div className='button btn pool'>POOL</div>
                                 </a>
                             </div>
@@ -203,7 +203,7 @@ class Home extends PureComponent {
 
                             </div>
                             <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
-                            <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                            <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/stake-uni-v2-lp-hcore-eth-635d163c1a48'>
                                 <div className='stake-more'>Learn more <div>&#8250;</div></div>
                             </a>
                         </div>
@@ -215,7 +215,7 @@ class Home extends PureComponent {
                                 </div>
                             </div>
                             <div className='unstake-button btn' onClick={unStake}>UNSTAKE</div>
-                            <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                            <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/unstake-uni-v2-lp-hcore-eth-5a2af3c4b501'>
                                 <div className='stake-more'>Learn more <div>&#8250;</div></div>
                             </a>
                         </div>

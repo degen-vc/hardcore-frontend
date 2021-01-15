@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-
+import { Link } from "react-router-dom";
 
 import './style.scss'
 
@@ -16,13 +16,13 @@ class Footer extends PureComponent {
                         <a rel="noopener noreferrer" target="_blank" href='https://twitter.com/hcorefinance'>
                             <div className='icon twitter'></div>
                         </a>
-                        <a rel="noopener noreferrer" target="_blank" href='https://discord.com/invite/pPCuyYa'>
+                        <a rel="noopener noreferrer" target="_blank" href='https://discord.gg/NNf3RSR46x'>
                             <div className='icon discord'></div>
                         </a>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
                             <div className='icon telegram'></div>
                         </a>
-                        <a rel="noopener noreferrer" target="_blank" href='https://github.com/degen-vc/HardCore'>
+                        <a rel="noopener noreferrer" target="_blank" href='https://github.com/degen-vc'>
                             <div className='icon github'></div>
                         </a>
                         <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
@@ -30,9 +30,8 @@ class Footer extends PureComponent {
                         </a>
                     </div>
                     <div className='block-2'>
-                        <a rel="noopener noreferrer" target="_blank" href='https://info.uniswap.org/token/0x26e43759551333e57f073bb0772f50329a957b30'>
-                            <div className='icon medium3'></div>
-                        </a>
+                        <Link to='/spot'> <div className='icon medium3'></div></Link>
+       
                         {/* changed */}
                         <a rel="noopener noreferrer" target="_blank" href='https://www.coingecko.com/en/coins/degenvc'>
                             <div className='icon medium1'></div>

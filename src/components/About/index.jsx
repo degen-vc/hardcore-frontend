@@ -24,15 +24,15 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">ALPHADROP</div>
                                     <div className="block-item-value">85%</div>
                                 </div>
-                                <div className='block-item'>
-                                    <div className="block-item-header">DEGEN.VC</div>
-                                    <div className="block-item-value">15%</div>
-                                </div>
-                            <div className='block-item small'>
-                                <div className="block-item-header">Vault</div>
+                            <div className='block-item'>
+                                <div className="block-item-header">VAULT</div>
                                 <div className="block-item-value">15%</div>
 
                             </div>
+                                <div className='block-item small'>
+                                    <div className="block-item-header">DEGEN.VC</div>
+                                    <div className="block-item-value">15%</div>
+                                </div>
                             </div>
                         </div>
 
@@ -40,27 +40,27 @@ class NFT extends PureComponent {
                             <div className='block-header'>$HCORE TOKEN</div>
                             <div className='block-row'>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Token Name</div>
+                                    <div className="block-item-header">TOKEN NAME</div>
                                     <div className="block-item-value">HCORE.FINANCE</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Total Supply</div>
+                                    <div className="block-item-header">Total SUPPLY</div>
                                     <div className="block-item-value">30,000 (capped)</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Burnable</div>
+                                    <div className="block-item-header">BURNABLE</div>
                                     <div className="block-item-value">Yes</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Token Symbol</div>
+                                    <div className="block-item-header">TOKEN SYMBOL</div>
                                     <div className="block-item-value">HCORE</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Mintable</div>
+                                    <div className="block-item-header">MINTABLE</div>
                                     <div className="block-item-value">No</div>
                                 </div>
                                 <div className='block-item xl'>
-                                    <div className="block-item-header">Token address</div>
+                                    <div className="block-item-header">TOKEN address</div>
                                     <div className="block-item-value">
                                         <span>0x0b9D...2e14</span>
                                         <span className='copy' onClick={() => { navigator.clipboard.writeText(authorized) }}>Copy</span>
@@ -72,11 +72,11 @@ class NFT extends PureComponent {
                             <div className='block-header'>FEE ALLOCATION</div>
                             <div className='block-row'>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Vault</div>
+                                    <div className="block-item-header">VAULT</div>
                                     <div className="block-item-value">2%</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">NFT Fund</div>
+                                    <div className="block-item-header">NFT FUND</div>
                                     <div className="block-item-value">3%</div>
                                 </div>
                             </div>
