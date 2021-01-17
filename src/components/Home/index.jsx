@@ -15,7 +15,7 @@ class Home extends PureComponent {
     }
 
     componentDidMount() {
-        this.setState({ globalTime: 1611236800 - (new Date().getTime() / 1000) })
+        this.setState({ globalTime: 0 - (new Date().getTime() / 1000) })
         this.interval = setInterval(() => {
             let { globalTime } = this.state;
             globalTime--;
