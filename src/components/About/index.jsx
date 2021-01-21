@@ -112,56 +112,7 @@ class NFT extends PureComponent {
                         Sometimes we will mix things up, for example, by offering a Rolex watch as the prize instead of a sports car.</div>
                         </div>
                     </div>
-                    <div className='team-section'>
-
-                        <div className='team-section-header'>Our Team</div>
-
-                        <div className='photos'>
-                            <div>
-                                <div className='photo fraser'></div>
-                                <div className='name'>Fraser Brown</div>
-                                <div className='description-photo'>Co-founder • Degen.VC</div>
-                                <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://twitter.com/fraserbrown_org'>
-                                    <div className='icon twitter'></div>
-                                </a>
-                                    <a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/fraserbrown-org/'>
-                                        <b>In</b>
-                                    </a>
-                                </div>
-                            </div>
-                            <div>
-                                <div className='photo paul'></div>
-                                <div className='name'>Paul Scott</div>
-                                <div className='description-photo'>Co-founder • Degen.VC</div>
-                                <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://twitter.com/paulscott005'>
-                                    <div className='icon twitter'></div>
-                                </a>
-                                    <a rel="noopener noreferrer" target="_blank" href='https://www.linkedin.com/in/paulscott55/'>
-                                        <b>In</b>
-                                    </a>
-                                </div>
-                            </div>
-                            <div>
-                                <div className='photo justin'></div>
-                                <div className='name'>Justin Goro</div>
-                                <div className='description-photo'>Senior Dev • Degen.VC</div>
-                                <div className='social'><a rel="noopener noreferrer" target="_blank" href='https://github.com/gititGoro'>
-                                    <div className='icon github'></div>
-                                </a>
-                                </div>
-                            </div>
-                            <div>
-                                <div className='photo richard'></div>
-                                <div className='name'>Richard Parker</div>
-                                <div className='description-photo'>Community • Degen.VC</div>
-                                <div className='social'>
-                                    <a rel="noopener noreferrer" target="_blank" href='https://twitter.com/upspwnage'>
-                                        <div className='icon twitter'></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>

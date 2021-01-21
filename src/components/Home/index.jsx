@@ -108,14 +108,14 @@ class Home extends PureComponent {
                             <div className='item'>
                                 <div className='number'>1</div>
                                 <div className='title'>Swap ETH/DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x0da97804d98143d9fb33742Ab17bfa38e60c9751'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?outputCurrency=0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
                                     <div className='button btn swap'>SWAP</div>
                                 </a>
                             </div>
                             <div className='item'>
                                 <div className='number'>2</div>
                                 <div className='title'>Pool DGVC on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
                                     <div className='button btn pool'>POOL</div>
                                 </a>
                             </div>

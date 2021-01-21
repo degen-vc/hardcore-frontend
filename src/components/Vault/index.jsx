@@ -124,21 +124,21 @@ class Vault extends PureComponent {
 
 
                                 <div className='stake-button btn unique' onClick={()=>{this.sendEth()}}>SEND ETH</div>
-                                <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                         <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                     </a>
                                 <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div>
-                                    <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                         <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                     </a>
 
                             </div>
                             <div className='stake-footer'>
                                 <div className='stake-wrap-more'>
-                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                         <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                     </a>
-                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                    <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                         <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                     </a>
                                 </div>

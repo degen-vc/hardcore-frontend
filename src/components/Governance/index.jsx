@@ -35,7 +35,7 @@ class NFT extends PureComponent {
                             <div className='block'>
                                 <div className='sell-button btn' onClick={sellHcore}>SELL $HCORE</div>
 
-                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/governance-9c456098c699'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
 
@@ -62,7 +62,7 @@ class NFT extends PureComponent {
                                 </div>
                             </div>
                             <div className='block-row'>
-                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/governance-9c456098c699'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
                             </div>
@@ -79,14 +79,13 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">% FOT to vault</div>
                                     <div className="block-item-value">{`${liquidVaultShare}%`}</div>
                                 </div>
-                                
                             </div>
                             <div className='block-row'>
                             <div className='block-item'>
                                     <div className="block-item-header">% FOT to fund</div>
                                     <div className="block-item-value">{`${dev}%`}</div>
                                 </div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/governance-9c456098c699'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
                             </div>

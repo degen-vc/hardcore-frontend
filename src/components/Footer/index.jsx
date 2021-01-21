@@ -31,11 +31,12 @@ class Footer extends PureComponent {
                     </div>
                     <div className='block-2'>
                         <Link to='/spot'> <div className='icon medium3'></div></Link>
-       
+
                         {/* changed */}
-                        <a rel="noopener noreferrer" target="_blank" href='https://www.coingecko.com/en/coins/degenvc'>
+                        <Link to='/spot'>
                             <div className='icon medium1'></div>
-                        </a>
+                        </Link>
+
                     </div>
                 </div>
                 <div className='horizontal-line'></div>
