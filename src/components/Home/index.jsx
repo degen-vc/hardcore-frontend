@@ -236,7 +236,7 @@ class Home extends PureComponent {
                             <div className='item'>
                                 <div className='label-item arrows'></div>
                                 <div className='title'>Swap $HCORE on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
                                     <div className='button btn swap'>SWAP</div>
                                 </a>
                             </div>
@@ -244,7 +244,7 @@ class Home extends PureComponent {
                                 <div className='label-item money'></div>
                                 <div className='title'>Pool $HCORE on Uniswap</div>
 
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
                                     <div className='button btn pool'>POOL</div>
                                 </a>
                             </div>
