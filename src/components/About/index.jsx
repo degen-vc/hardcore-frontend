@@ -22,16 +22,16 @@ class NFT extends PureComponent {
                             <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">ALPHADROP</div>
-                                    <div className="block-item-value">85%</div>
+                                    <div className="block-item-value">TBC</div>
                                 </div>
                             <div className='block-item'>
                                 <div className="block-item-header">VAULT</div>
-                                <div className="block-item-value">15%</div>
+                                <div className="block-item-value">TBC</div>
 
                             </div>
                                 <div className='block-item small'>
                                     <div className="block-item-header">DEGEN.VC</div>
-                                    <div className="block-item-value">15%</div>
+                                    <div className="block-item-value">TBC</div>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +60,10 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">No</div>
                                 </div>
                                 <div className='block-item xl'>
-                                    <div className="block-item-header">TOKEN address</div>
+                                    <div className="block-item-header xl">TOKEN (KOVAN TESTNET)</div>
                                     <div className="block-item-value">
-                                        <span>0x0b9D...2e14</span>
-                                        <span className='copy' onClick={() => { navigator.clipboard.writeText(authorized) }}>Copy</span>
+                                        <span>{`${'0xe6f6E7e3F5771d6B078474697a47f876a05b9426'.slice(0, 6)}...${'0xe6f6E7e3F5771d6B078474697a47f876a05b9426'.slice(-4)}`}</span>
+                                        <span className='copy' onClick={() => { navigator.clipboard.writeText('0xe6f6E7e3F5771d6B078474697a47f876a05b9426') }}>Copy</span>
                                     </div>
                                 </div>
                             </div>

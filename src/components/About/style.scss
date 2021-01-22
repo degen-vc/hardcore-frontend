@@ -49,6 +49,9 @@
                 line-height: 1.5;
                 letter-spacing: 0.15px;
                 color: #ffffff;
+                &.xl {
+                    width: 115px;
+                }
             }
             .block-item-value {
                 display: flex;

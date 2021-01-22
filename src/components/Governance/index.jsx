@@ -47,18 +47,15 @@ class NFT extends PureComponent {
                             <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">$HCORE burn</div>
-                                    <div className="block-item-value">0%</div>
-                                    {/* <div className="block-item-value">{`${burnPercentage}%`}</div> */}
+                                    <div className="block-item-value">{`${burnPercentage}%`}</div>
                                 </div>
                                 <div className='block-item'>
                                     <div className="block-item-header">% FOT to vault</div>
-                                    <div className="block-item-value">40%</div>
-                                    {/* <div className="block-item-value">{`${liquidVaultShare}%`}</div> */}
+                                    <div className="block-item-value">{`${liquidVaultShare}%`}</div>
                                 </div>
                                 <div className='block-item'>
                                     <div className="block-item-header">% FOT to fund</div>
-                                    <div className="block-item-value">60%</div>
-                                    {/* <div className="block-item-value">{`${dev}%`}</div> */}
+                                    <div className="block-item-value">{`${dev}%`}</div>
                                 </div>
                             </div>
                             <div className='block-row'>
