@@ -198,7 +198,7 @@ class SpotTheBall extends PureComponent {
                     {!authorized ? (<div className='not-authorized'>
                         <div className='auth-message'>Please connect to Metamask</div>
                         <div className='button-connect' onClick={getAuth}></div>
-                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
                             <div className='stake-more'>Learn more <div>&#8250;</div></div>
                         </a>
                     </div>) : (

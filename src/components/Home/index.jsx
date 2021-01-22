@@ -162,10 +162,10 @@ class Home extends PureComponent {
                                 </div>
                                 <div className='stake-footer'>
                                     <div className='stake-wrap-more'>
-                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/stake-uni-v2-lp-hcore-eth-635d163c1a48'>
                                             <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                         </a>
-                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/hcore-supply-rewards-1eedf2aad99c'>
+                                        <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/unstake-uni-v2-lp-hcore-eth-5a2af3c4b501'>
                                             <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                         </a>
                                     </div>
