@@ -22,7 +22,8 @@ class Header extends PureComponent {
     }
 
     componentDidMount() {
-        this.checkAuth()
+        this.checkAuth();
+
     }
 
     getNetworkId(id) {
@@ -41,6 +42,8 @@ class Header extends PureComponent {
                 return 'Kovan'
             case '1337':
                 return 'Private'
+            case null:
+                return 'Error'
             default: return 'Other'
         }
     }
@@ -77,8 +80,12 @@ class Header extends PureComponent {
     render() {
         const { auth, hamburgerIsOpen, popUp } = this.state;
         const { authorized } = this.props;
-        const address = auth || authorized
-        this.networkName = this.getNetworkId(window.web3.version.network)
+        const address = auth || authorized;
+        if (window.ethereum) {   
+            this.networkName = this.getNetworkId(window.ethereum.networkVersion)
+        } else {
+            this.networkName = 'Error'
+        }
         return (
             <Fragment>
                 <header className='header'>
@@ -139,7 +146,7 @@ class Header extends PureComponent {
                         </nav>
                     </div>
                 </header>
-                {this.networkName !== 'Kovan' && !popUp && window.web3.version.network ? (
+                {this.networkName !== 'Kovan' && !popUp && this.networkName !== 'Error' ? (
                 <div className='pop-up'>
                     <div className='pop-up-body'>
                         <div className='text-pop-up'>
@@ -148,7 +155,7 @@ class Header extends PureComponent {
                         <div className='pop-up-button' onClick={()=>{this.setState({popUp: true})}}>OK</div>
                     </div>
                 </div>
-                ): null}
+                ) : null}
             </Fragment>
         )
     }

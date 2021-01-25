@@ -21,7 +21,7 @@ class NFT extends PureComponent {
 
                         <div className="block-1">
                             <div className="h-line"></div>
-                            <div className='block-header'>$HCORE Fund</div>
+                            <div className='block-header'>$HCORE NFT Fund</div>
                             <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">Fund $HCORE balance</div>
@@ -35,7 +35,7 @@ class NFT extends PureComponent {
                             <div className='block'>
                                 <div className='sell-button btn' onClick={sellHcore}>SELL $HCORE</div>
 
-                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/governance-9c456098c699'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/this-is-hardcore-dc3147eaafc'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
 

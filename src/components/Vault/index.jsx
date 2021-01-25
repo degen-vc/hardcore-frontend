@@ -74,7 +74,7 @@ class Vault extends PureComponent {
         return (
             <React.Fragment>
                 <section className='vault'>
-                    <div className='vault-page-title'>Vault</div>
+                    <div className='vault-page-title'>Vault (testnet)</div>
                     <div className='stake-panel'>
                         <div className='header-panel'>
                             <div className='header-text'>
@@ -99,7 +99,7 @@ class Vault extends PureComponent {
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Discount</div>
-                                    <div className='stake-value'>35%</div>
+                                    <div className='stake-value'>8.32%</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Burn</div>

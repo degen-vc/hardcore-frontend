@@ -99,16 +99,25 @@ class SpotTheBall extends PureComponent {
                 <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b'>
                     <div className="get-tokens-button btn" >GET TOKENS</div>
                 </a>
+                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
+                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                        </a>
             </div>
         } else if (balance === 0 && (myBalanceHcore || myHcoreLp)) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Stake to earn points</div>
                 <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>STAKE</div>
+                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
+                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                        </a>
             </div>
         } else {
             return <div className='not-authorized'>
                 <div className={`auth-message ${selectedX ? '' : 'error'}`}>{`${selectedX ? 'Claim these coordinates as an NFT' : 'Choose your coordinate before play'}`}</div>
                 {selectedX ? <div className="play-button btn" onClick={() => sendCoord(selectedX, selectedY)}>PLAY</div> : <div className="play-button btn">PLAY</div>}
+                <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
+                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                        </a>
             </div>
         }
     }
