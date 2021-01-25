@@ -1,7 +1,7 @@
 import React, { PureComponent, } from 'react';
 import { TweenMax } from 'gsap';
 import { connect } from 'react-redux';
-import { sendCoord, getAuth } from '../../actions';
+import { sendCoord, getAuth,getBalance } from '../../actions';
 import './style.scss';
 
 class SpotTheBall extends PureComponent {
@@ -22,6 +22,7 @@ class SpotTheBall extends PureComponent {
         this.setPosition = this.setPosition.bind(this);
     }
     componentDidMount() {
+        this.props.getBalance()
         this.myRef = this.myRef.current;
         this.circle = this.myRef.lastChild.firstChild;
         this.coordinateLine = this.myRef.lastChild.childNodes[1].firstChild;
@@ -233,6 +234,9 @@ const mapDispatchToProps = dispatch => {
         },
         getAuth: () => {
             dispatch(getAuth());
+        },
+        getBalance: () => {
+            dispatch(getBalance());
         },
     };
 };
