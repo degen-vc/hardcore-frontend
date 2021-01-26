@@ -141,7 +141,7 @@ class Home extends PureComponent {
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
-                                        <div className='stake-value'>1 Points / day</div>
+                                        <div className='stake-value'>1 Point / day</div>
                                     </div>
                                     <div className='wrap-title third'>
                                         <div className='stake-title'>Max stake</div>
@@ -180,7 +180,7 @@ class Home extends PureComponent {
 
                                 <div className='wrap-title-1'>
                                     <div className='stake-title'>Point rate</div>
-                                    <div className='stake-value'>1 Points / day</div>
+                                    <div className='stake-value'>1 Point / day</div>
                                 </div>
 
 
