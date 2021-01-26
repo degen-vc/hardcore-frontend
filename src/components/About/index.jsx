@@ -24,11 +24,11 @@ class NFT extends PureComponent {
                                     <div className="block-item-header">ALPHADROP</div>
                                     <div className="block-item-value">TBC</div>
                                 </div>
-                            <div className='block-item'>
-                                <div className="block-item-header">VAULT</div>
-                                <div className="block-item-value">TBC</div>
+                                <div className='block-item'>
+                                    <div className="block-item-header">VAULT</div>
+                                    <div className="block-item-value">TBC</div>
 
-                            </div>
+                                </div>
                                 <div className='block-item small'>
                                     <div className="block-item-header">DEGEN.VC</div>
                                     <div className="block-item-value">TBC</div>
@@ -95,8 +95,21 @@ class NFT extends PureComponent {
                                 These rewards are acquired by the NFT fund smart contract using the other 3% of the fee revenue.
                            </div>
                             <div>
-                                The Degen.VC approach is to #alphadrop (airdrop) tokens to the DGVC LP and let the Uniswap market do the rest.
-                                This innovation has been covered in notable publications such as: The Coin Tribune; Altcoin Buzz, and Irish Tech News.
+                                The <a rel="noopener noreferrer" target="_blank" href='https://www.degen.vc/'>
+                                    Degen.VC
+                                </a> approach is to #alphadrop (airdrop) tokens to the DGVC LP and let the Uniswap market do the rest.
+                                This innovation has been covered in notable publications such as:
+                                <a rel="noopener noreferrer" target="_blank" href='https://www.cointribune.com/actualites/fan-de-pepites-defi-en-route-pour-le-x20-degen-vc-vous-en-offre-gratuitement/'>
+                                    The Coin Tribune
+                                </a>
+                                <a rel="noopener noreferrer" target="_blank" href='https://www.altcoinbuzz.io/cryptocurrency-news/spotlight/degenvc-team-interview/'>
+                                    Altcoin Buzz
+                                </a>
+                               , and
+                                <a rel="noopener noreferrer" target="_blank" href='https://irishtechnews.ie/degen-labs-aims-to-replace-vcs-ercau-launch-soon/'>
+                                    Irish Tech News
+                                </a>
+                                .
                            </div>
                         </div>
                         <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore'>
@@ -112,7 +125,7 @@ class NFT extends PureComponent {
                         Sometimes we will mix things up, for example, by offering a Rolex watch as the prize instead of a sports car.</div>
                         </div>
                     </div>
-                   
+
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>

@@ -59,7 +59,7 @@ class Home extends PureComponent {
         if ((!days && !hours && !minutes && !seconds) || globalTime <= 0) {
             return [0, 0, 0, 0]
         }
-        
+
         return [days, hours, minutes, seconds]
 
     }
@@ -100,7 +100,7 @@ class Home extends PureComponent {
 
                             <div className='title-launch'>Launch</div>
                             <div className='timer'>
-                                {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0'+ hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0'+ minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`}
+                                {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`}
                             </div>
 
                         </div>
@@ -141,7 +141,7 @@ class Home extends PureComponent {
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
-                                        <div className='stake-value'>2 Points / day</div>
+                                        <div className='stake-value'>1 Points / day</div>
                                     </div>
                                     <div className='wrap-title third'>
                                         <div className='stake-title'>Max stake</div>
@@ -180,7 +180,7 @@ class Home extends PureComponent {
 
                                 <div className='wrap-title-1'>
                                     <div className='stake-title'>Point rate</div>
-                                    <div className='stake-value'>2 Points / day</div>
+                                    <div className='stake-value'>1 Points / day</div>
                                 </div>
 
 

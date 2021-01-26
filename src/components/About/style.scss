@@ -191,6 +191,11 @@
             div {
                 margin-top: 20px;
             }
+            a {
+                margin: 0 3px;
+                color: rgba(255, 255, 255, 0.6);
+                text-decoration: underline;
+            }
         }
         .button-about {
             background-image: url('../../assets/buttons/about-medium.png');
