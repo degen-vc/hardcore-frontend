@@ -17,7 +17,7 @@
     .tokenomics-panel {
         display: flex;
         justify-content: space-between;
-        width: 1100px;
+        width: 800px;
         margin: 36px auto 0;
         .block-header {
             margin-bottom: 20px;
@@ -260,6 +260,7 @@
                 margin-bottom: 20px;
                 .block-row {
                     flex-wrap: nowrap;
+                    width: 90%;
                     .small {
                         width: 50px;
                     }

@@ -10,8 +10,8 @@ class NFT extends PureComponent {
     }
 
     render() {
-        const { liquidVault: { ethBalance, hCoreBalance, burnPercentage, liquidVaultShare, dev }, sellHcore } = this.props;
-       
+        const { liquidVault: { ethBalance, hCoreBalance, burnPercentage, liquidVaultShare, dev, fot }, sellHcore } = this.props;
+
         return (
             <main>
                 <section className='Governance-page'>
@@ -50,6 +50,10 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">{`${burnPercentage}%`}</div>
                                 </div>
                                 <div className='block-item'>
+                                    <div className="block-item-header">% FOT</div>
+                                    <div className="block-item-value">{`${fot}%`}</div>
+                                </div>
+                                <div className='block-item'>
                                     <div className="block-item-header">% FOT to vault</div>
                                     <div className="block-item-value">{`${liquidVaultShare}%`}</div>
                                 </div>
@@ -73,22 +77,27 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">{`${burnPercentage}%`}</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">% FOT to vault</div>
-                                    <div className="block-item-value">{`${liquidVaultShare}%`}</div>
+                                    <div className="block-item-header">% FOT</div>
+                                    <div className="block-item-value">{`${fot}%`}</div>
                                 </div>
+                                
                             </div>
                             <div className='block-row'>
                             <div className='block-item'>
+                                    <div className="block-item-header">% FOT to vault</div>
+                                    <div className="block-item-value">{`${liquidVaultShare}%`}</div>
+                                </div>
+                                <div className='block-item'>
                                     <div className="block-item-header">% FOT to fund</div>
                                     <div className="block-item-value">{`${dev}%`}</div>
                                 </div>
+                            </div>
                                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/governance-9c456098c699'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
-                            </div>
                         </div>
                     </div>
-                    
+
                     <div className='question-block'>
                         <div className='question'>Any questions? Please head over to our telegram group</div>
                         <a rel="noopener noreferrer" target="_blank" href='https://t.me/hcorefinance'>
@@ -104,7 +113,7 @@ class NFT extends PureComponent {
 const mapStateToProps = state => {
     return {
         liquidVault: state.liquidVault,
-        
+
     };
 };
 

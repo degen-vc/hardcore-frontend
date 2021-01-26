@@ -68,7 +68,7 @@ class NFT extends PureComponent {
                                 </div>
                             </div>
                         </div>
-                        <div className="block-3">
+                        {/* <div className="block-3">
                             <div className='block-header'>FEE ALLOCATION</div>
                             <div className='block-row'>
                                 <div className='block-item'>
@@ -80,7 +80,7 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">3%</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='about-section'>
 

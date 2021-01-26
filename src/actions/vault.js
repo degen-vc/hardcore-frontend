@@ -1,6 +1,7 @@
 import { getWeb3 } from "../utils";
 import liquidVaultAbi from './abi/LiquidVault';
 import HcoreAbi from './abi/Hcore';
+import FeeApproverAbi from './abi/FeeApproverAbi';
 import LPGenesisPoolGame from './abi/LPGenesisPoolGameAbi';
 import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
 import FeeDistAbi from './abi/FeeDistAbi'
@@ -50,6 +51,7 @@ export const getLockedLP = () => {
         const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
         const FEE_DISTRIBUTOR = '0x3BE435C19FE14082c043A003561551abf64e4530';
         const UniswapV2PairAddress = '0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b';
+        const FeeApprover = '0x8C8dd8584F041BcB77d10D01F7F8152B6360DFA3'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
@@ -58,6 +60,7 @@ export const getLockedLP = () => {
         const HcoreContract = await new web3.eth.Contract(HcoreAbi, HCORE);
         const FeeDistrAddress = '0x3BE435C19FE14082c043A003561551abf64e4530'
         const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FeeDistrAddress);
+        const FeeApproverContract = await new web3.eth.Contract(FeeApproverAbi, FeeApprover);
 
         try {
             let tokens = 0;
@@ -67,6 +70,7 @@ export const getLockedLP = () => {
             let myHcoreLp = 0;
             let availableHcore = 0;
             let myBalanceHcore = 0;
+            let fot = 0;
 
 
             let { purchaseFee, stakeDuration } = await LiquidContract.methods.config().call();
@@ -93,13 +97,15 @@ export const getLockedLP = () => {
                 notReadyTokens = notReadyTokens !== 0 ? +web3.utils.fromWei(notReadyTokens + '') : 0;
                 notReadyTokens = parseFloat(notReadyTokens.toFixed(2));
             }
+            fot = await FeeApproverContract.methods.feePercentX100().call();
             balance = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
             myHcoreLp = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
             let { liquidVaultShare } = await feeDistContract.methods.recipients().call();
-            const feeDistBalance = web3.utils.toBN(await HcoreContract.methods.balanceOf(FeeDistrAddress).call())
-            availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add((web3.utils.toBN(liquidVaultShare).mul(feeDistBalance)))
-            availableHcore = +web3.utils.fromWei(availableHcore + '') / 100
+            const feeDistBalanceOnePercentage = web3.utils.toBN(await HcoreContract.methods.balanceOf(FeeDistrAddress).call() / 100);
+            liquidVaultShare = web3.utils.toBN(liquidVaultShare)
+            availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add(feeDistBalanceOnePercentage.mul(liquidVaultShare))
+            availableHcore = +web3.utils.fromWei(availableHcore)
             availableHcore = availableHcore.toFixed(3)
             let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
             let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
@@ -121,7 +127,7 @@ export const getLockedLP = () => {
             myBalanceHcore = +myBalanceHcore
 
 
-            await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP } });
+            await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP, fot } });
 
         } catch (error) {
             console.log(error)

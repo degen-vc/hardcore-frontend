@@ -148,9 +148,6 @@
                         margin: 20px auto 30px;
                         background-image: url('../../assets/buttons/send-eth-x.png');
                     }
-                    .stake-more {
-                        margin-left: 0
-                    }
                 }
             }
             .block-2 {
@@ -167,6 +164,9 @@
                     padding: 20px;
                     .block-header {
                         text-align: center;
+                    }
+                    .stake-more {
+                        margin: 0 auto;
                     }
                 }
             }
