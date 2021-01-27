@@ -102,7 +102,8 @@ export const getLockedLP = () => {
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
             myHcoreLp = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
             let { liquidVaultShare } = await feeDistContract.methods.recipients().call();
-            const feeDistBalanceOnePercentage = web3.utils.toBN(await HcoreContract.methods.balanceOf(FeeDistrAddress).call() / 100);
+            let feeDistBalanceOnePercentage = (await HcoreContract.methods.balanceOf(FeeDistrAddress).call() / 100).toFixed(0);
+            feeDistBalanceOnePercentage = web3.utils.toBN(feeDistBalanceOnePercentage)
             liquidVaultShare = web3.utils.toBN(liquidVaultShare)
             availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add(feeDistBalanceOnePercentage.mul(liquidVaultShare))
             availableHcore = +web3.utils.fromWei(availableHcore)
