@@ -81,7 +81,7 @@ class Header extends PureComponent {
         const { auth, hamburgerIsOpen, popUp } = this.state;
         const { authorized } = this.props;
         const address = auth || authorized;
-        if (window.ethereum) {   
+        if (window.ethereum) {
             this.networkName = this.getNetworkId(window.ethereum.networkVersion)
         } else {
             this.networkName = 'Error'
@@ -96,22 +96,22 @@ class Header extends PureComponent {
                         <NavLink to='/vault' className='item'>VAULT</NavLink>
                         <NavLink to='/nft' className='item'>GOVERNANCE</NavLink>
                     </nav>
-                    
-                        {authorized || auth ? (
-                            <div className='network-user'>
-                                <div className='network-name'>
-                                    <div className='network-status' />
-                                    <div className='network-text'>{this.networkName}</div>
-                                </div>
-                                <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
-                                    <div className='profile-logo'></div>
-                                    <div className='user-address'>
-                                        {`${address.slice(0, 6)}...${address.slice(-4)}`}
-                                    </div>
+
+                    {authorized || auth ? (
+                        <div className='network-user'>
+                            <div className='network-name'>
+                                <div className='network-status' />
+                                <div className='network-text'>{this.networkName}</div>
+                            </div>
+                            <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
+                                <div className='profile-logo'></div>
+                                <div className='user-address'>
+                                    {`${address.slice(0, 6)}...${address.slice(-4)}`}
                                 </div>
                             </div>
-                            ) : <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>
-                        }
+                        </div>
+                    ) : <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>
+                    }
                 </header>
                 <header className='header mobile'>
                     <img className='logo' src={logo} alt="" />
@@ -125,17 +125,17 @@ class Header extends PureComponent {
                     </div>
                     <div className={`mobile-nav-body ${hamburgerIsOpen ? 'active' : ''}`}>
                         {authorized || auth ? <div className='network-user'>
-                                <div className='network-name'>
-                                    <div className='network-status' />
-                                    <div className='network-text'>{this.networkName}</div>
-                                </div>
-                                <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
-                                    <div className='profile-logo'></div>
-                                    <div className='user-address'>
-                                        {`${address.slice(0, 6)}...${address.slice(-4)}`}
-                                    </div>
+                            <div className='network-name'>
+                                <div className='network-status' />
+                                <div className='network-text'>{this.networkName}</div>
+                            </div>
+                            <div className='user-profile' onClick={() => { navigator.clipboard.writeText(authorized) }} >
+                                <div className='profile-logo'></div>
+                                <div className='user-address'>
+                                    {`${address.slice(0, 6)}...${address.slice(-4)}`}
                                 </div>
                             </div>
+                        </div>
                             :
                             <div className='button' onClick={this.toLogin}>CONNECT METAMASK</div>}
                         <nav className='navigation'>
@@ -147,14 +147,14 @@ class Header extends PureComponent {
                     </div>
                 </header>
                 {this.networkName !== 'Kovan' && !popUp && this.networkName !== 'Error' ? (
-                <div className='pop-up'>
-                    <div className='pop-up-body'>
-                        <div className='text-pop-up'>
-                        Please use Ethereum Kovan test network via Metamask
+                    <div className='pop-up'>
+                        <div className='pop-up-body'>
+                            <div className='text-pop-up'>
+                                Please use Ethereum Kovan test network
                         </div>
-                        <div className='pop-up-button' onClick={()=>{this.setState({popUp: true})}}>OK</div>
+                            <div className='pop-up-button' onClick={() => { this.setState({ popUp: true }) }}>OK</div>
+                        </div>
                     </div>
-                </div>
                 ) : null}
             </Fragment>
         )

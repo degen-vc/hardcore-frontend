@@ -54,6 +54,7 @@ class SpotTheBall extends PureComponent {
     }
 
     moveCircle(e) {
+        
         if (!this.state.x) {
             this.setState({ startPlay: !this.state.startPlay })
         }
@@ -154,6 +155,7 @@ class SpotTheBall extends PureComponent {
                         onClick={this.setPosition}
                         onMouseDown={() => { this.setState({ pressButton: true }) }}
                         onMouseUp={() => { this.setState({ pressButton: false }) }}
+                        onTouchMove={this.moveCircle}
                     >
                         <img className="img grednsoledes" src="https://lambo.hcore.finance/wp-content/uploads/2020/10/soccer-2-withoutball.jpg" />
 
