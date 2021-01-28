@@ -1,7 +1,7 @@
 import React, { PureComponent, } from 'react';
 import { TweenMax } from 'gsap';
 import { connect } from 'react-redux';
-import { sendCoord, getAuth,getBalance } from '../../actions';
+import { sendCoord, getAuth, getBalance } from '../../actions';
 import './style.scss';
 
 class SpotTheBall extends PureComponent {
@@ -33,9 +33,11 @@ class SpotTheBall extends PureComponent {
     }
 
     setPosition(e) {
+        console.log('helo')
         const width = this.mobile ? 360 : 778
         const height = this.mobile ? 260 : 556
-        const { clientX, clientY } = e;
+        const clientX = this.mobile && e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+        const clientY = this.mobile && e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
         let x = clientX - this.offsetX;
         let y = clientY - this.offsetY;
         if (y < height && x < width && x > 0) {
@@ -54,14 +56,16 @@ class SpotTheBall extends PureComponent {
     }
 
     moveCircle(e) {
-        
         if (!this.state.x) {
             this.setState({ startPlay: !this.state.startPlay })
         }
         const width = this.mobile ? 360 : 778;
         const height = this.mobile ? 260 : 556;
-        const { pressButton } = this.state;
-        const { clientX, clientY } = e;
+        const  pressButton  = this.mobile ? true : this.state;
+        
+        const clientX = this.mobile && e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+        const clientY = this.mobile && e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+  
         const x = clientX - this.offsetX;
         const y = clientY - this.offsetY;
         if (x < 110) {
@@ -82,9 +86,9 @@ class SpotTheBall extends PureComponent {
         }
         if (x > 0 && y > 0 && x < width && y < height) {
             this.setState({ x: Math.floor(this.mobile ? x * 2.155 : x), y: Math.floor(this.mobile ? y * 2.155 : y) })
-            TweenMax.to('.sight', 0.3, { x: e.clientX - this.offsetX - 41.5, y: e.clientY - this.offsetY - 41.5 });
-            TweenMax.to('#masker', 0.3, { attr: { cx: - this.offsetX + e.clientX, cy: -this.offsetY + e.clientY } });
-            TweenMax.to('#imgZoom', 0.3, { attr: { x: this.offsetX * (this.scale - 1) - e.clientX * (this.scale - 1), y: this.offsetY * (this.scale - 1) - e.clientY * (this.scale - 1) } });
+            TweenMax.to('.sight', 0.3, { x: clientX - this.offsetX - 41.5, y: clientY - this.offsetY - 41.5 });
+            TweenMax.to('#masker', 0.3, { attr: { cx: - this.offsetX + clientX, cy: -this.offsetY + clientY } });
+            TweenMax.to('#imgZoom', 0.3, { attr: { x: this.offsetX * (this.scale - 1) - clientX * (this.scale - 1), y: this.offsetY * (this.scale - 1) - clientY * (this.scale - 1) } });
         }
     }
 
@@ -102,24 +106,24 @@ class SpotTheBall extends PureComponent {
                     <div className="get-tokens-button btn" >GET TOKENS</div>
                 </a>
                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
-                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                        </a>
+                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                </a>
             </div>
         } else if (balance === 0 && (myBalanceHcore || myHcoreLp)) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Stake to earn points</div>
                 <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>STAKE</div>
                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
-                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                        </a>
+                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                </a>
             </div>
         } else {
             return <div className='not-authorized'>
                 <div className={`auth-message ${selectedX ? '' : 'error'}`}>{`${selectedX ? 'Claim these coordinates as an NFT' : 'Choose your coordinate before play'}`}</div>
                 {selectedX ? <div className="play-button btn" onClick={() => sendCoord(selectedX, selectedY)}>PLAY</div> : <div className="play-button btn">PLAY</div>}
                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
-                            <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                        </a>
+                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                </a>
             </div>
         }
     }
@@ -155,6 +159,7 @@ class SpotTheBall extends PureComponent {
                         onClick={this.setPosition}
                         onMouseDown={() => { this.setState({ pressButton: true }) }}
                         onMouseUp={() => { this.setState({ pressButton: false }) }}
+                        onTouchEnd={this.setPosition}
                         onTouchMove={this.moveCircle}
                     >
                         <img className="img grednsoledes" src="https://lambo.hcore.finance/wp-content/uploads/2020/10/soccer-2-withoutball.jpg" />
