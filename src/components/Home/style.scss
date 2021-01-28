@@ -808,6 +808,24 @@
     }
 }
 
+.alphadrop-notification {
+    background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 80%);
+    font-family: Roboto-medium;
+    font-size: 28px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    a {
+        border-bottom: 1px solid white;
+    }
+}
+
 .question-block {
     display: flex;
     align-items: center;

@@ -93,7 +93,7 @@ class Home extends PureComponent {
                             authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
                         }
                     </div>
-
+                    <div className='alphadrop-notification'>Alphadrop: (TIMER) <a  rel="noopener noreferrer" target="_blank" href='https://www.degen.vc/'>Learn more</a></div>
                     <div className='content-wrap'>
                         <div className='car-image'>
 
@@ -129,7 +129,7 @@ class Home extends PureComponent {
                             </div>
                         </div>
                     </div>
-
+                    
                     <div className='stake-block'>
                         <div className='title'>Stake to earn points</div>
                         <div className='stake-panel'>
