@@ -6,10 +6,16 @@ import LPGenesisPoolGame from './abi/LPGenesisPoolGameAbi';
 import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
 import FeeDistAbi from './abi/FeeDistAbi'
 
+const LIQUID_VAULT = process.env.REACT_APP_LIQUID_VAULT;
+const HCORE = process.env.REACT_APP_HCORE_ADDRESS;
+const LPGenesisPoolGameAddress = process.env.REACT_APP_LP_POOL_ADDRESS;
+const FEE_DISTRIBUTOR = process.env.REACT_APP_FEE_DIST_ADDRESS;
+const UniswapV2PairAddress = process.env.REACT_APP_UNISWAP_PAIR_ADDRESS;
+const FeeApprover = process.env.REACT_APP_FEE_APPROVER;
+
 export const purchaseLP = (value, balance) => {
 
     return async dispatch => {
-        const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
@@ -29,7 +35,6 @@ export const purchaseLP = (value, balance) => {
 
 export const claim = () => {
     return async dispatch => {
-        const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
@@ -46,20 +51,14 @@ export const claim = () => {
 export const getLockedLP = () => {
     return async dispatch => {
 
-        const LIQUID_VAULT = '0xC7d5E6f15F963A7479176dD29ccd8E52e2526ea3';
-        const HCORE = '0xe6f6E7e3F5771d6B078474697a47f876a05b9426';
-        const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
-        const FEE_DISTRIBUTOR = '0x3BE435C19FE14082c043A003561551abf64e4530';
-        const UniswapV2PairAddress = '0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b';
-        const FeeApprover = '0x8C8dd8584F041BcB77d10D01F7F8152B6360DFA3'
+
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
         const UniswapV2Pair = await new web3.eth.Contract(UniswapV2PairAbi, UniswapV2PairAddress);
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
         const HcoreContract = await new web3.eth.Contract(HcoreAbi, HCORE);
-        const FeeDistrAddress = '0x3BE435C19FE14082c043A003561551abf64e4530'
-        const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FeeDistrAddress);
+        const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FEE_DISTRIBUTOR);
         const FeeApproverContract = await new web3.eth.Contract(FeeApproverAbi, FeeApprover);
 
         try {
@@ -102,7 +101,7 @@ export const getLockedLP = () => {
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
             myHcoreLp = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
             let { liquidVaultShare } = await feeDistContract.methods.recipients().call();
-            let feeDistBalanceOnePercentage = (await HcoreContract.methods.balanceOf(FeeDistrAddress).call() / 100).toFixed(0);
+            let feeDistBalanceOnePercentage = (await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call() / 100).toFixed(0);
             feeDistBalanceOnePercentage = web3.utils.toBN(feeDistBalanceOnePercentage)
             liquidVaultShare = web3.utils.toBN(liquidVaultShare)
             availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add(feeDistBalanceOnePercentage.mul(liquidVaultShare))
@@ -113,6 +112,7 @@ export const getLockedLP = () => {
             let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
             HcoreLP = +web3.utils.fromWei(HcoreLP + '');
             myHcoreLp = +web3.utils.fromWei(myHcoreLp + '');
+            myHcoreLp = myHcoreLp.toFixed(5)
             feeBalance = +web3.utils.fromWei(feeBalance + '')
             feeBalance = feeBalance.toFixed(2)
 
@@ -138,8 +138,6 @@ export const getLockedLP = () => {
 
 export const stake = (value) => {
     return async dispatch => {
-        const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
-        const UniswapV2PairAddress = '0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b'
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
@@ -165,7 +163,6 @@ export const stake = (value) => {
 
 export const unStake = () => {
     return async dispatch => {
-        const LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);
@@ -180,7 +177,6 @@ export const unStake = () => {
 
 export const unStakePrevious = () => {
     return async dispatch => {
-        let LPGenesisPoolGameAddress = '0xe35223Eb1DE581E7C80597EC248ABcd8b5f00eb0';
         const web3 = await getWeb3();
         const ethAddress = await web3.eth.getAccounts();
         const LPGenesisPoolGameContract = await new web3.eth.Contract(LPGenesisPoolGame, LPGenesisPoolGameAddress);

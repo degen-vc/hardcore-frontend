@@ -11,8 +11,10 @@ const initialState = {
     HcoreLP: 0,
     burnPercentage: 0,
     dev: 0,
+    fot: 0,
     liquidVaultShare: 0,
-    availableHcore: 0
+    availableHcore: 0,
+    myHcoreLp: 0
 }
 
 export const liquidVault = function(state = initialState, action) {
