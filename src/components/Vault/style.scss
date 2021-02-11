@@ -1,6 +1,6 @@
 .vault {
     .vault-page-title {
-        padding: 152px 0 36px;
+        padding: 152px 0 16px;
         background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 38%);
         font-family: Roboto-medium;
         font-size: 48px;
@@ -41,6 +41,35 @@
             width: 100%!important;
             height: 48px!important;
         }
+    }
+}
+
+.vault-notification {
+    background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 95%);
+    font-family: Roboto-medium;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    a {
+        margin-left: 10px;
+        border-bottom: 1px solid white;
+    }
+    @media screen and (max-width: 420px) {
+        background-image: radial-gradient(circle at 49% 85%, #ffffff, #000000 150%);
+        width: 350px;
+        margin: 10px auto;
+        font-size: 24px;
+    }
+    &.small {
+        margin-bottom: 5px;
     }
 }
 

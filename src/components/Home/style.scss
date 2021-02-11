@@ -53,10 +53,12 @@
                 opacity: 0.8;
             }
         }
+        @media screen and (min-width:420px) and (max-width: 1480px) {
+            height: 550px;
+        }
     }
     .content-wrap {
-        height: 664px;
-        // background-color: #171717;
+        height: 460px;
         background: #000000;
         .title-launch {
             height: 58px;
@@ -193,7 +195,7 @@
             }
         }
         .car-image {
-            height: 510px;
+            height: 310px;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -207,7 +209,7 @@
         .title {
             width: 442px;
             height: 56px;
-            margin: 176px auto 40px;
+            margin: 176px auto 20px;
             background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 190%);
             font-family: Roboto-medium;
             font-size: 48px;
@@ -553,7 +555,7 @@
             }
         }
         .content-wrap {
-            height: 1200px;
+            height: 1000px;
             background-size: contain;
             .title-launch {
                 font-size: 40px;
@@ -562,7 +564,7 @@
                 font-size: 50px;
             }
             .car-image {
-                height: 300px;
+                height: 140px;
                 background-position: bottom;
                 background-size: contain;
             }
@@ -579,7 +581,7 @@
             .title {
                 height: auto;
                 width: 300px;
-                margin: 46px auto;
+                margin: 46px auto 20px;
                 font-size: 36px;
             }
             .stake-panel {
@@ -713,8 +715,9 @@
                 height: 570px;
                 align-items: center;
                 .stb-points {
-                    width: 100%;
-                    background-color: #171717;
+                    height: 50px;
+                    width: 90%;
+                    background-color: #000000;
                     .game-title {
                         display: none;
                     }
@@ -809,8 +812,9 @@
 }
 
 .alphadrop-notification {
-    background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 80%);
+    background-image: radial-gradient(circle at 49% 50%, #ffffff, #000000 95%);
     font-family: Roboto-medium;
+    margin-bottom: 60px;
     font-size: 28px;
     font-weight: 600;
     font-stretch: normal;
@@ -822,7 +826,13 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     a {
+        margin-left: 10px;
         border-bottom: 1px solid white;
+    }
+    @media screen and (max-width: 420px) {
+        width: 300px;
+        margin: 40px auto;
+        font-size: 24px;
     }
 }
 
@@ -948,6 +958,19 @@
         background-image: url('../../assets/buttons/button-m.png');
     }
     &.bottom {
-        margin: 80px auto 0
+        margin: 30px auto 0
     }
+}
+
+.uniswap-notification {
+    margin: 8px 23px 24px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+    text-align: center;
+    color: #ffffff;
 }

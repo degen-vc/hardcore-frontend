@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { purchaseLP, claim, getLockedLP, stake, unStake } from '../../actions';
+import { purchaseLP, claim, getLockedLP, stake, unStake ,getEthAndHcoreBalance} from '../../actions';
 import Modal from '../../shared/Modal'
 import { connect } from 'react-redux';
 import './style.scss'
@@ -10,7 +10,9 @@ class Vault extends PureComponent {
         this.state = {
             modalIsOpen: false,
             inputEth: '',
-            modalType: ''
+            modalType: '',
+            globalTime: 0,
+            popupOpen: false
         }
 
         this.changeModalStatus = this.changeModalStatus.bind(this)
@@ -19,9 +21,23 @@ class Vault extends PureComponent {
         this.stakeLp = this.stakeLp.bind(this)
     }
 
+
+
     componentDidMount() {
         const { getLockedLP } = this.props;
-        getLockedLP()
+        const { getEthAndHcoreBalance } = this.props;
+        getEthAndHcoreBalance()
+    getLockedLP()
+    this.setState({ globalTime: 1613390400 - (new Date().getTime() / 1000) })
+    this.interval = setInterval(() => {
+        let { globalTime } = this.state;
+        globalTime--;
+        this.setState({ globalTime })
+    }, 1000);
+       
+    }
+    componentWillMount() {
+        clearInterval(this.interval)
     }
 
     sendEth() {
@@ -44,6 +60,42 @@ class Vault extends PureComponent {
     changeModalStatus(type) {
         let { modalIsOpen } = this.state;
         this.setState({ modalIsOpen: !modalIsOpen, inputEth: '', modalType: type })
+    }
+
+    getExpiredTime(time) {
+        let { globalTime } = this.state;
+        let days = 0;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (time / 86400 >= 1) {
+            days = (time / 86400);
+            days = Math.trunc(days)
+        }
+        if (days) {
+            time -= days * 86400;
+        }
+        if (time / 3600 >= 1) {
+            hours = time / 3600;
+            hours = Math.trunc(hours)
+        }
+        if (hours) {
+            time -= hours * 3600;
+        }
+        if (time / 60 >= 1) {
+            minutes = time / 60;
+            minutes = Math.trunc(minutes)
+        }
+        if (minutes) {
+            time -= minutes * 60;
+        }
+        seconds = Math.round(time);
+        if ((!days && !hours && !minutes && !seconds) || globalTime <= 0) {
+            return [0, 0, 0, 0]
+        }
+
+        return [days, hours, minutes, seconds]
+
     }
 
     renderModalBody() {
@@ -69,12 +121,14 @@ class Vault extends PureComponent {
     }
 
     render() {
-        const { claim, liquidVault : {stakeDuration, notReadyTokens, tokens, availableHcore} } = this.props;
-        const { modalIsOpen, modalType, inputEth } = this.state;
+        const { claim, liquidVault: { stakeDuration, notReadyTokens, tokens, availableHcore,maxEth,burnPercentage } } = this.props;
+        const { modalIsOpen, globalTime, modalType, inputEth, popupOpen } = this.state;
+        const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
         return (
             <React.Fragment>
                 <section className='vault'>
-                    <div className='vault-page-title'>Vault (testnet)</div>
+                    <div className='vault-page-title'>Vault</div>
+                    <div className='vault-notification'>Vault will be capitalised with HCORE in: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`}</div>
                     <div className='stake-panel'>
                         <div className='header-panel'>
                             <div className='header-text'>
@@ -91,7 +145,7 @@ class Vault extends PureComponent {
                             <div className='stake-header'>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>Max ETH</div>
-                                    <div className='stake-value'>00000000</div>
+                                    <div className='stake-value'>{maxEth}</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>Lock Period</div>
@@ -99,11 +153,11 @@ class Vault extends PureComponent {
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Discount</div>
-                                    <div className='stake-value'>8.32%</div>
+                                    <div className='stake-value'>16.35%</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Burn</div>
-                                    <div className='stake-value'>10%</div>
+                                    <div className='stake-value'>{burnPercentage}%</div>
                                 </div>
                                 <div className='second-block'>
                                     <div className='wrap-title second'>
@@ -123,14 +177,16 @@ class Vault extends PureComponent {
                                 </div>
 
 
-                                <div className='stake-button btn unique' onClick={()=>{this.sendEth()}}>SEND ETH</div>
+                                {/* <div className='stake-button btn unique' onClick={() => { this.sendEth() }}>SEND ETH</div> */}
+                                <div className='stake-button btn unique' onClick={()=>{this.setState({popupOpen: true})}}>SEND ETH</div>
                                 <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
-                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                                    </a>
-                                <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div>
-                                    <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
-                                        <div className='stake-more'>Learn more <div>&#8250;</div></div>
-                                    </a>
+                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                </a>
+                                {/* <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div> */}
+                                <div className='stake-button btn mr unique' onClick={()=>{this.setState({popupOpen: true})}}>CLAIM</div>
+                                <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
+                                    <div className='stake-more'>Learn more <div>&#8250;</div></div>
+                                </a>
 
                             </div>
                             <div className='stake-footer'>
@@ -152,7 +208,16 @@ class Vault extends PureComponent {
                         </a>
                     </div>
                 </section>
-              
+                {popupOpen ? (
+                    <div className='pop-up'>
+                        <div className='pop-up-body'>
+                            <div className='text-pop-up'>
+                            Will be live soon
+                        </div>
+                            <div className='pop-up-button' onClick={() => { this.setState({ popupOpen: false }) }}>OK</div>
+                        </div>
+                    </div>
+                ) : null}
                 {modalIsOpen ? (
                     <Modal confirmName='Send' name='vault' children={this.renderModalBody()} callback={modalType === 'send' ? this.sendEth : this.stakeLp} onClose={this.changeModalStatus} />
                 ) : null}
@@ -173,6 +238,9 @@ const mapDispatchToProps = dispatch => {
         },
         claim: () => {
             dispatch(claim());
+        },
+        getEthAndHcoreBalance: () => {
+            dispatch(getEthAndHcoreBalance());
         },
         getLockedLP: () => {
             dispatch(getLockedLP());

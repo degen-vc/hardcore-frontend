@@ -10,16 +10,19 @@ class Home extends PureComponent {
         this.state = {
             globalTime: 0,
             inputEth: '',
+            timeStake: 0,
+            popupOpen:false
         }
         this.stakeLp = this.stakeLp.bind(this)
     }
 
     componentDidMount() {
-        this.setState({ globalTime: 0 - (new Date().getTime() / 1000) })
+        this.setState({ globalTime: 1613058090 - (new Date().getTime() / 1000), timeStake:1614254400 - (new Date().getTime() / 1000) })
         this.interval = setInterval(() => {
-            let { globalTime } = this.state;
+            let { globalTime,timeStake } = this.state;
             globalTime--;
-            this.setState({ globalTime })
+            timeStake--
+            this.setState({ globalTime,timeStake })
         }, 1000);
         this.props.getLockedLP()
     }
@@ -29,7 +32,6 @@ class Home extends PureComponent {
     }
 
     getExpiredTime(time) {
-        let { globalTime } = this.state;
         let days = 0;
         let hours = 0;
         let minutes = 0;
@@ -56,7 +58,7 @@ class Home extends PureComponent {
             time -= minutes * 60;
         }
         seconds = Math.round(time);
-        if ((!days && !hours && !minutes && !seconds) || globalTime <= 0) {
+        if ((!days && !hours && !minutes && !seconds) || time <= 0) {
             return [0, 0, 0, 0]
         }
 
@@ -80,8 +82,9 @@ class Home extends PureComponent {
     }
 
     render() {
-        const { globalTime, inputEth } = this.state;
+        const { globalTime,timeStake, inputEth, popupOpen } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
+        const [days1, hours1, minutes1, seconds1] = this.getExpiredTime(timeStake);
         const { liquidVault: { maxStake, myPoints, HcoreLP, myHcoreLp }, unStake, unStakePrevious, authorized, getAuth } = this.props;
         return (
             <main className='home-page'>
@@ -90,18 +93,12 @@ class Home extends PureComponent {
                     <div className='background-image'>
                         <div className='title'>Stake tokens to Win a Lambo</div>
                         {
-                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2200) }}>PLAY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
+                            authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2020) }}>BUY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
                         }
                     </div>
-                    <div className='alphadrop-notification'>Alphadrop: (TIMER) <a  rel="noopener noreferrer" target="_blank" href='https://www.degen.vc/'>Learn more</a></div>
-                    <div className='content-wrap'>
+                    <div className='alphadrop-notification'>Alphadrop: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`} <a  rel="noopener noreferrer" target="_blank" href='https://t.me/degenvc'>Learn more</a></div>
+                    {/* <div className='content-wrap'>
                         <div className='car-image'>
-
-
-                            <div className='title-launch'>Launch</div>
-                            <div className='timer'>
-                                {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`}
-                            </div>
 
                         </div>
                         <div className='wrap-items'>
@@ -128,16 +125,17 @@ class Home extends PureComponent {
 
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     
                     <div className='stake-block'>
                         <div className='title'>Stake to earn points</div>
+                        <div className='vault-notification'>Game 1 starts: {`${days1}D ${hours1 === 0 ? '00' : hours1 < 10 ? '0' + hours1 : hours1}:${minutes1 === 0 ? '00' : minutes1 < 10 ? '0' + minutes1 : minutes1}:${seconds1 < 10 ? '0' + seconds1 : seconds1}`}</div>
                         <div className='stake-panel'>
                             <div className='stake'>
                                 <div className='stake-header'>
                                     <div className='wrap-title first'>
                                         <div className='stake-title'>Your $HCORE LP</div>
-                                        <div className='stake-value'>{Number(myHcoreLp).toFixed(5)}</div>
+                                        <div className='stake-value'>{myHcoreLp}</div>
                                     </div>
                                     <div className='wrap-title second'>
                                         <div className='stake-title'>Point rate</div>
@@ -157,8 +155,10 @@ class Home extends PureComponent {
                                         <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
                                         <div className='stake-type'>LP</div>
                                     </div>
-                                    <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
-                                    <div className='unstake-button btn' onClick={unStake}>UNSTAKE</div>
+                                    {/* <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
+                                    <div className='unstake-button btn' onClick={unStake}>UNSTAKE</div> */}
+                                    <div className='stake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>STAKE</div>
+                                    <div className='unstake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>UNSTAKE</div>
                                 </div>
                                 <div className='stake-footer'>
                                     <div className='stake-wrap-more'>
@@ -203,6 +203,7 @@ class Home extends PureComponent {
 
                             </div>
                             <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
+                            {/* <div className='stake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>STAKE</div> */}
                             <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/stake-uni-v2-lp-hcore-eth-635d163c1a48'>
                                 <div className='stake-more'>Learn more <div>&#8250;</div></div>
                             </a>
@@ -215,6 +216,7 @@ class Home extends PureComponent {
                                 </div>
                             </div>
                             <div className='unstake-button btn' onClick={unStake}>UNSTAKE</div>
+                            {/* <div className='unstake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>UNSTAKE</div> */}
                             <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/unstake-uni-v2-lp-hcore-eth-5a2af3c4b501'>
                                 <div className='stake-more'>Learn more <div>&#8250;</div></div>
                             </a>
@@ -223,6 +225,7 @@ class Home extends PureComponent {
 
 
                         <div className='stake-link' onClick={unStakePrevious}>Unstake from previous games <div>&#8250;</div></div>
+                        {/* <div className='stake-link' onClick={()=>{this.setState({popupOpen: true})}}>Unstake from previous games <div>&#8250;</div></div> */}
                     </div>
                     <div className='game'>
                         <div className='game-header'>
@@ -232,21 +235,24 @@ class Home extends PureComponent {
                     </div>
                     <div className='news-hardcore'>
                         <div className='news-title'>New to HARDCORE?</div>
+                        <div className='uniswap-notification'>Uniswap is LIVE! Set slippage tolerance to 5%</div>
                         <div className='wrap-items bottom'>
                             <div className='item'>
                                 <div className='label-item arrows'></div>
                                 <div className='title'>Swap $HCORE on Uniswap</div>
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x60a995cebcd44ca566ae22a9666ed28c67b598a1'>
                                     <div className='button btn swap'>SWAP</div>
                                 </a>
+                                {/* <div className='button btn swap' onClick={() => { this.setState({ popupOpen: true }) }}>SWAP</div> */}
                             </div>
                             <div className='item'>
                                 <div className='label-item money'></div>
                                 <div className='title'>Pool $HCORE on Uniswap</div>
 
-                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0xe6f6E7e3F5771d6B078474697a47f876a05b9426'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x60a995cebcd44ca566ae22a9666ed28c67b598a1'>
                                     <div className='button btn pool'>POOL</div>
                                 </a>
+                                {/* <div className='button btn pool' onClick={() => { this.setState({ popupOpen: true }) }}>POOL</div> */}
                             </div>
                             <div className='item'>
                                 <div className='label-item ask'></div>
@@ -265,6 +271,16 @@ class Home extends PureComponent {
                         </a>
                     </div>
                 </section>
+                {popupOpen ? (
+                    <div className='pop-up'>
+                        <div className='pop-up-body'>
+                            <div className='text-pop-up'>
+                            Will be live soon
+                        </div>
+                            <div className='pop-up-button' onClick={() => { this.setState({ popupOpen: false }) }}>OK</div>
+                        </div>
+                    </div>
+                ) : null}
             </main>
         )
     }

@@ -146,7 +146,7 @@ class Header extends PureComponent {
                         </nav>
                     </div>
                 </header>
-                {this.networkName !== 'Kovan' && !popUp && this.networkName !== 'Error' ? (
+                {/* {this.networkName !== 'Kovan' && !popUp && this.networkName !== 'Error' ? (
                     <div className='pop-up'>
                         <div className='pop-up-body'>
                             <div className='text-pop-up'>
@@ -155,7 +155,7 @@ class Header extends PureComponent {
                             <div className='pop-up-button' onClick={() => { this.setState({ popUp: true }) }}>OK</div>
                         </div>
                     </div>
-                ) : null}
+                ) : null} */}
             </Fragment>
         )
     }

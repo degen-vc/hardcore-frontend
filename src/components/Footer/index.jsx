@@ -30,7 +30,9 @@ class Footer extends PureComponent {
                         </a>
                     </div>
                     <div className='block-2'>
-                        <Link to='/spot'> <div className='icon medium3'></div></Link>
+                        <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/swap?inputCurrency=0x60a995cebcd44ca566ae22a9666ed28c67b598a1'>
+                            <div className='icon medium3'></div>
+                        </a>
 
                         {/* changed */}
                         <Link to='/spot'>

@@ -14,6 +14,7 @@ class SpotTheBall extends PureComponent {
             selectedY: 0,
             pressButton: false,
             startPlay: false,
+            timeStake: 0
         }
         this.myRef = React.createRef();
         this.moveCircle = this.moveCircle.bind(this);
@@ -30,10 +31,54 @@ class SpotTheBall extends PureComponent {
         this.scale = 1.5;
         this.leftPosition = true;
         this.topPositin = true;
+
+        this.setState({ timeStake:1614254400 - (new Date().getTime() / 1000) })
+        this.interval = setInterval(() => {
+            let { globalTime,timeStake } = this.state;
+            globalTime--;
+            timeStake--
+            this.setState({ globalTime,timeStake })
+        }, 1000);
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+    getExpiredTime(time) {
+        let days = 0;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (time / 86400 >= 1) {
+            days = (time / 86400);
+            days = Math.trunc(days)
+        }
+        if (days) {
+            time -= days * 86400;
+        }
+        if (time / 3600 >= 1) {
+            hours = time / 3600;
+            hours = Math.trunc(hours)
+        }
+        if (hours) {
+            time -= hours * 3600;
+        }
+        if (time / 60 >= 1) {
+            minutes = time / 60;
+            minutes = Math.trunc(minutes)
+        }
+        if (minutes) {
+            time -= minutes * 60;
+        }
+        seconds = Math.round(time);
+        if ((!days && !hours && !minutes && !seconds) || time <= 0) {
+            return [0, 0, 0, 0]
+        }
+
+        return [days, hours, minutes, seconds]
+
+    }
     setPosition(e) {
-        console.log('helo')
         const width = this.mobile ? 360 : 778
         const height = this.mobile ? 260 : 556
         const clientX = this.mobile && e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
@@ -61,8 +106,7 @@ class SpotTheBall extends PureComponent {
         }
         const width = this.mobile ? 360 : 778;
         const height = this.mobile ? 260 : 556;
-        const  pressButton  = this.mobile ? true : this.state;
-        
+        const  pressButton  = this.mobile ? true : this.state.pressButton;
         const clientX = this.mobile && e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const clientY = this.mobile && e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
   
@@ -132,7 +176,8 @@ class SpotTheBall extends PureComponent {
 
         const { sendCoord, liquidVault: { myBalanceHcore, myHcoreLp }, balance: { balance, need } } = this.props;
 
-        const { selectedX, selectedY, x, y } = this.state;
+        const { selectedX, selectedY, x, y, timeStake } = this.state;
+        const [days1, hours1, minutes1, seconds1] = this.getExpiredTime(timeStake);
         if (window.innerWidth <= 420) {
             this.mobile = true;
         } else {
@@ -212,15 +257,25 @@ class SpotTheBall extends PureComponent {
                         <div className='game-point-title'>Your points</div>
                         <div className='game-point-value'>{parseFloat(balance).toFixed(4)}</div>
                     </div>
-                    {!authorized ? (<div className='not-authorized'>
+                    <div className='not-authorized'>
+                    <div className='vault-notification small'>Game 1 starts:</div>
+                    <div className='vault-notification'> {`${days1}D ${hours1 === 0 ? '00' : hours1 < 10 ? '0' + hours1 : hours1}:${minutes1 === 0 ? '00' : minutes1 < 10 ? '0' + minutes1 : minutes1}:${seconds1 < 10 ? '0' + seconds1 : seconds1}`}</div>
+                    <a rel="noopener noreferrer" target="_blank" href='https://kovan.hcore.finance'>
+                        <div className='play-button btn'>Play on testnet</div>
+                    </a>
+                    </div>
+                    
+                    {/* {!authorized ? (
+                        <div className='not-authorized'>
                         <div className='auth-message'>Please connect to Metamask</div>
                         <div className='button-connect' onClick={getAuth}></div>
                         <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
                             <div className='stake-more'>Learn more <div>&#8250;</div></div>
                         </a>
-                    </div>) : (
+                        </div>
+                    ) : (
                             this.renderPlayButton(balance, need, sendCoord, myBalanceHcore, myHcoreLp)
-                        )}
+                        )} */}
                 </div>
             </div>
         )

@@ -16,6 +16,7 @@ export const getEthAndHcoreBalance = () => {
         let dev = 0;
         let { burnPercentage, liquidVaultShare } = await feeDistContract.methods.recipients().call();
         dev = 100 - burnPercentage - liquidVaultShare;
+        console.log(2222, burnPercentage)
         let ethBalance = await web3.eth.getBalance(NFT_FUND_ADDRESS);
         let hCoreBalance = await hCoreContract.methods.balanceOf(NFT_FUND_ADDRESS).call();
         ethBalance = (+web3.utils.fromWei(ethBalance)).toFixed(5);

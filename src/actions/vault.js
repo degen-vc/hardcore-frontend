@@ -5,6 +5,7 @@ import FeeApproverAbi from './abi/FeeApproverAbi';
 import LPGenesisPoolGame from './abi/LPGenesisPoolGameAbi';
 import UniswapV2PairAbi from './abi/UniswapV2PairAbi';
 import FeeDistAbi from './abi/FeeDistAbi'
+import OracleAbi from './abi/OracleAbi'
 
 const LIQUID_VAULT = process.env.REACT_APP_LIQUID_VAULT;
 const HCORE = process.env.REACT_APP_HCORE_ADDRESS;
@@ -12,6 +13,7 @@ const LPGenesisPoolGameAddress = process.env.REACT_APP_LP_POOL_ADDRESS;
 const FEE_DISTRIBUTOR = process.env.REACT_APP_FEE_DIST_ADDRESS;
 const UniswapV2PairAddress = process.env.REACT_APP_UNISWAP_PAIR_ADDRESS;
 const FeeApprover = process.env.REACT_APP_FEE_APPROVER;
+const OracleAddress = process.env.REACT_APP_ORACLE_ADDRESS;
 
 export const purchaseLP = (value, balance) => {
 
@@ -60,6 +62,7 @@ export const getLockedLP = () => {
         const HcoreContract = await new web3.eth.Contract(HcoreAbi, HCORE);
         const feeDistContract = await new web3.eth.Contract(FeeDistAbi, FEE_DISTRIBUTOR);
         const FeeApproverContract = await new web3.eth.Contract(FeeApproverAbi, FeeApprover);
+        const OracleContract = await new web3.eth.Contract(OracleAbi, OracleAddress);
 
         try {
             let tokens = 0;
@@ -70,7 +73,18 @@ export const getLockedLP = () => {
             let availableHcore = 0;
             let myBalanceHcore = 0;
             let fot = 0;
+            let maxEth = 0;
 
+            const HcoreBalanceLiquid = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
+
+            const HcoreBalanceFee = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
+
+            let consult = +(+web3.utils.fromWei(await OracleContract.methods.consult().call() + ''));
+
+
+            const sumBalances = +web3.utils.fromWei(web3.utils.toBN(HcoreBalanceLiquid).add(web3.utils.toBN(HcoreBalanceFee)) + '');
+
+            maxEth = (sumBalances * consult).toFixed(2);
 
             let { purchaseFee, stakeDuration } = await LiquidContract.methods.config().call();
 
@@ -81,7 +95,6 @@ export const getLockedLP = () => {
                 let data = await LiquidContract.methods.getLockedLP(ethAddress[0], length - 1).call();
                 tokens = data[1];
                 let count = 0;
-
                 if (stakeDuration < (new Date().getTime() / 1000) - data[2]) {
                     count++;
                 } else {
@@ -97,20 +110,31 @@ export const getLockedLP = () => {
                 notReadyTokens = parseFloat(notReadyTokens.toFixed(2));
             }
             fot = await FeeApproverContract.methods.feePercentX100().call();
+
             balance = await HcoreContract.methods.balanceOf(LIQUID_VAULT).call();
+
             feeBalance = await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call();
+
             myHcoreLp = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
+
             let { liquidVaultShare } = await feeDistContract.methods.recipients().call();
+
             let feeDistBalanceOnePercentage = (await HcoreContract.methods.balanceOf(FEE_DISTRIBUTOR).call() / 100).toFixed(0);
             feeDistBalanceOnePercentage = web3.utils.toBN(feeDistBalanceOnePercentage)
+
             liquidVaultShare = web3.utils.toBN(liquidVaultShare)
             availableHcore = web3.utils.toBN(await HcoreContract.methods.balanceOf(LIQUID_VAULT).call()).add(feeDistBalanceOnePercentage.mul(liquidVaultShare))
             availableHcore = +web3.utils.fromWei(availableHcore)
             availableHcore = availableHcore.toFixed(3)
-            let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
-            let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
-            let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
-            HcoreLP = +web3.utils.fromWei(HcoreLP + '');
+
+            let myPoints = 0
+                // let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
+
+            // let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
+            let myLpTokens = 0
+                // let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
+            let HcoreLP = 0
+                // HcoreLP = +web3.utils.fromWei(HcoreLP + '');
             myHcoreLp = +web3.utils.fromWei(myHcoreLp + '');
             myHcoreLp = myHcoreLp.toFixed(5)
             feeBalance = +web3.utils.fromWei(feeBalance + '')
@@ -119,8 +143,8 @@ export const getLockedLP = () => {
             balance = +web3.utils.fromWei(balance + '')
             balance = balance.toFixed(2);
             myPoints = +web3.utils.fromWei(myPoints + '')
-            myLpTokens = +web3.utils.fromWei(myLpTokens + '');
-            myLpTokens = myLpTokens.toFixed(2);
+                // myLpTokens = +web3.utils.fromWei(myLpTokens + '');
+                // myLpTokens = myLpTokens.toFixed(2);
             let maxStake = 2.02;
             stakeDuration = stakeDuration / 60 / 60 / 24
 
@@ -128,7 +152,7 @@ export const getLockedLP = () => {
             myBalanceHcore = +myBalanceHcore
 
 
-            await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP, fot } });
+            await dispatch({ type: "GET_LIQUID", payload: { myBalanceHcore, availableHcore, myHcoreLp, myLpTokens, stakeDuration, feeBalance, purchaseFee, notReadyTokens, tokens, balance, myPoints, maxStake, HcoreLP, fot, maxEth } });
 
         } catch (error) {
             console.log(error)
