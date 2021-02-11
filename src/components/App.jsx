@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import About from './About';
 import Governance from './Governance';
@@ -18,7 +18,7 @@ class App extends Component {
                 <Route path="/nft" exact component={Governance} />
                 <Route path="/vault" exact component={Vault} />
                 <Route path="/home" component={Home} />
-                <Route path="/"><Redirect to="/home" /></Route>
+                <Route exact path="/" component={Home} />
                 <Footer />  
           </div>
         );

@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import './style.scss'
 
 class NFT extends PureComponent {
+    state = {
+        popupOpen:false
+    }
     componentDidMount() {
         const { getEthAndHcoreBalance } = this.props;
         getEthAndHcoreBalance()
     }
 
     render() {
+        const { popupOpen } = this.state;
         const { liquidVault: { ethBalance, hCoreBalance, burnPercentage, liquidVaultShare, dev, fot }, sellHcore } = this.props;
 
         return (
@@ -33,7 +37,8 @@ class NFT extends PureComponent {
                                 </div>
                             </div>
                             <div className='block'>
-                                <div className='sell-button btn' onClick={sellHcore}>SELL $HCORE</div>
+                                {/* <div className='sell-button btn' onClick={sellHcore}>SELL $HCORE</div> */}
+                                <div className='sell-button btn' onClick={()=>{this.setState({popupOpen:true})}}>SELL $HCORE</div>
 
                                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/this-is-hardcore-dc3147eaafc'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
@@ -105,6 +110,16 @@ class NFT extends PureComponent {
                         </a>
                     </div>
                 </section>
+                {popupOpen ? (
+                    <div className='pop-up'>
+                        <div className='pop-up-body'>
+                            <div className='text-pop-up'>
+                            Will be live soon
+                        </div>
+                            <div className='pop-up-button' onClick={() => { this.setState({ popupOpen: false }) }}>OK</div>
+                        </div>
+                    </div>
+                ) : null}
             </main>
         )
     }

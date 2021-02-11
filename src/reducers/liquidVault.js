@@ -14,14 +14,32 @@ const initialState = {
     fot: 0,
     liquidVaultShare: 0,
     availableHcore: 0,
-    myHcoreLp: 0
-}
+    myHcoreLp: 0,
+    maxEth: 0,
+};
 
 export const liquidVault = function(state = initialState, action) {
     switch (action.type) {
         case "GET_LIQUID":
-            const { notReadyTokens, tokens, balance, myPoints, maxStake, purchaseFee, feeBalance, stakeDuration, myLpTokens, myBalanceHcore, HcoreLP, myHcoreLp, availableHcore, fot } = action.payload;
-            return {...state,
+            const {
+                notReadyTokens,
+                tokens,
+                balance,
+                myPoints,
+                maxStake,
+                purchaseFee,
+                feeBalance,
+                stakeDuration,
+                myLpTokens,
+                myBalanceHcore,
+                HcoreLP,
+                myHcoreLp,
+                availableHcore,
+                fot,
+                maxEth,
+            } = action.payload;
+            return {
+                ...state,
                 notReadyTokens,
                 tokens,
                 balance,
@@ -35,16 +53,24 @@ export const liquidVault = function(state = initialState, action) {
                 myHcoreLp,
                 availableHcore,
                 myBalanceHcore,
-                fot
+                fot,
+                maxEth,
             };
         case "GET_ETH_AND_HCORE_BALANCE":
-            const { ethBalance, hCoreBalance, burnPercentage, dev, liquidVaultShare } = action.payload;
-            return {...state,
+            const {
                 ethBalance,
                 hCoreBalance,
                 burnPercentage,
                 dev,
-                liquidVaultShare
+                liquidVaultShare,
+            } = action.payload;
+            return {
+                ...state,
+                ethBalance,
+                hCoreBalance,
+                burnPercentage,
+                dev,
+                liquidVaultShare,
             };
         default:
             return state;

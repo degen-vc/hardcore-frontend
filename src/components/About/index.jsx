@@ -11,7 +11,6 @@ class NFT extends PureComponent {
     }
 
     render() {
-        const { authorized } = this.props;
         return (
             <main>
                 <section className='About-page'>
@@ -22,16 +21,16 @@ class NFT extends PureComponent {
                             <div className='block-row'>
                                 <div className='block-item'>
                                     <div className="block-item-header">ALPHADROP</div>
-                                    <div className="block-item-value">TBC</div>
+                                    <div className="block-item-value">7,500</div>
                                 </div>
                                 <div className='block-item'>
                                     <div className="block-item-header">VAULT</div>
-                                    <div className="block-item-value">TBC</div>
+                                    <div className="block-item-value">17,395</div>
 
                                 </div>
                                 <div className='block-item small'>
                                     <div className="block-item-header">DEGEN.VC</div>
-                                    <div className="block-item-value">TBC</div>
+                                    <div className="block-item-value">3,600</div>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +59,10 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">No</div>
                                 </div>
                                 <div className='block-item xl'>
-                                    <div className="block-item-header xl">TOKEN (KOVAN TESTNET)</div>
+                                    <div className="block-item-header xl">TOKEN</div>
                                     <div className="block-item-value">
-                                        <span>{`${'0xe6f6E7e3F5771d6B078474697a47f876a05b9426'.slice(0, 6)}...${'0xe6f6E7e3F5771d6B078474697a47f876a05b9426'.slice(-4)}`}</span>
-                                        <span className='copy' onClick={() => { navigator.clipboard.writeText('0xe6f6E7e3F5771d6B078474697a47f876a05b9426') }}>Copy</span>
+                                        <span>{`${'0x60a995cebcd44ca566ae22a9666ed28c67b598a1'.slice(0, 6)}...${'0x60a995cebcd44ca566ae22a9666ed28c67b598a1'.slice(-4)}`}</span>
+                                        <span className='copy' onClick={() => { navigator.clipboard.writeText('0x60a995cebcd44ca566ae22a9666ed28c67b598a1') }}>Copy</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,12 +86,10 @@ class NFT extends PureComponent {
                         <div className='header-about-section'>About HARDCORE</div>
                         <div className="about-section-description">
                             <div>
-                                Breaking new ground, HARDCORE features a vault smart contract that receives 2% of the 5% Fee on Transfer (FOT) revenue and to which anyone can send ETH in
-                                order to receive UNI-V2 LP tokens (i.e. nearly 50% discounted), which are automatically locked for one month.
+                            Breaking new ground, HARDCORE features a Liquid Vault smart contract that receives 3% of the 5% Fee on Transfer (FOT) revenue and 58% of HCORE supply, and to which anyone can send ETH in order to receive UNI-V2 LP tokens at a 20% discount and locked for just 7 days. ETH fees together with the other 2% of the FOT capitalise the Fund.
                            </div>
-                            <div>
-                                What sets HARDCORE apart even more is that LP stakers can earn points with UNI-V2 LP that can be used to mine NFTs to win exotic cars.
-                                These rewards are acquired by the NFT fund smart contract using the other 3% of the fee revenue.
+                            <div className='bold'>
+                            HARDCORE forked MEME's smart contracts so that LP stakers can earn points to mine NFTs of spot the ball entries and win exotic cars.
                            </div>
                             <div>
                                 The <a rel="noopener noreferrer" target="_blank" href='https://www.degen.vc/'>
@@ -106,7 +103,7 @@ class NFT extends PureComponent {
                                     Altcoin Buzz
                                 </a>
                                , and
-                                <a rel="noopener noreferrer" target="_blank" href='https://irishtechnews.ie/degen-labs-aims-to-replace-vcs-ercau-launch-soon/'>
+                                <a rel="noopener noreferrer" target="_blank" href='https://irishtechnews.ie/degen-vc-delivers-alpha-fraser-brown-explains-more/'>
                                     Irish Tech News
                                 </a>
                                 .
