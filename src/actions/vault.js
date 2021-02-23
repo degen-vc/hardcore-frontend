@@ -22,13 +22,13 @@ export const purchaseLP = (value, balance) => {
         const ethAddress = await web3.eth.getAccounts();
         const LiquidContract = await new web3.eth.Contract(liquidVaultAbi, LIQUID_VAULT);
         try {
-            const { hardCoreRequired } = await LiquidContract.methods.calculateHardcoreRequired(web3.utils.toWei(value + '')).call()
+            await LiquidContract.methods.purchaseLP().send({ from: ethAddress[0], value: web3.utils.toWei(`${value}`) });
+            // const { hardCor÷eRequired } = await LiquidContract.methods.calculateHardcoreRequired(web3.utils.toWei(value + '')).call()
 
-            if (+balance >= +web3.utils.fromWei(hardCoreRequired)) {
-                await LiquidContract.methods.purchaseLP().send({ from: ethAddress[0], value: web3.utils.toWei(`${value}`) });
-            } else {
-                alert('Insufficient HardCore in LiquidVault')
-            }
+            // if (+balance >= +web3.utils.fromWei(hardCoreRequired)) {
+            // } else {
+            //     alert('Insufficient HardCore in LiquidVault')
+            // }
         } catch (error) {
             console.log(error)
         }
@@ -130,9 +130,9 @@ export const getLockedLP = () => {
             let myPoints = 0
                 // let myPoints = await LPGenesisPoolGameContract.methods.earned(ethAddress[0]).call()
 
-            // let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
-            let myLpTokens = 0
-                // let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
+            let myLpTokens = await UniswapV2Pair.methods.balanceOf(ethAddress[0]).call()
+
+            // let HcoreLP = await LPGenesisPoolGameContract.methods.balanceOf(ethAddress[0]).call()
             let HcoreLP = 0
                 // HcoreLP = +web3.utils.fromWei(HcoreLP + '');
             myHcoreLp = +web3.utils.fromWei(myHcoreLp + '');

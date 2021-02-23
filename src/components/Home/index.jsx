@@ -96,7 +96,7 @@ class Home extends PureComponent {
                             authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2020) }}>BUY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
                         }
                     </div>
-                    <div className='alphadrop-notification'>Alphadrop: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`} <a  rel="noopener noreferrer" target="_blank" href='https://t.me/degenvc'>Learn more</a></div>
+                    <div className='alphadrop-notification'>Liquid Vault: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`} <a  rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>Learn more</a></div>
                     {/* <div className='content-wrap'>
                         <div className='car-image'>
 

@@ -153,11 +153,11 @@ class Vault extends PureComponent {
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Discount</div>
-                                    <div className='stake-value'>16.35%</div>
+                                    <div className='stake-value'>30%</div>
                                 </div>
                                 <div className='wrap-title first'>
                                     <div className='stake-title'>LP Burn</div>
-                                    <div className='stake-value'>{burnPercentage}%</div>
+                                    <div className='stake-value'>5%</div>
                                 </div>
                                 <div className='second-block'>
                                     <div className='wrap-title second'>
@@ -177,8 +177,8 @@ class Vault extends PureComponent {
                                 </div>
 
 
-                                {/* <div className='stake-button btn unique' onClick={() => { this.sendEth() }}>SEND ETH</div> */}
-                                <div className='stake-button btn unique' onClick={()=>{this.setState({popupOpen: true})}}>SEND ETH</div>
+                                <div className='stake-button btn unique' onClick={() => { this.sendEth() }}>SEND ETH</div>
+                                {/* <div className='stake-button btn unique' onClick={()=>{this.setState({popupOpen: true})}}>SEND ETH</div> */}
                                 <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>

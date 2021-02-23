@@ -34,10 +34,10 @@ class Footer extends PureComponent {
                             <div className='icon medium3'></div>
                         </a>
 
-                        {/* changed */}
-                        <Link to='/spot'>
+                    
+                        <a rel="noopener noreferrer" target="_blank" href='https://www.coingecko.com/en/coins/hardcore-finance'>
                             <div className='icon medium1'></div>
-                        </Link>
+                        </a>
 
                     </div>
                 </div>
