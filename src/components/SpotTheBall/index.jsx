@@ -2,6 +2,7 @@ import React, { PureComponent, } from 'react';
 import { TweenMax } from 'gsap';
 import { connect } from 'react-redux';
 import { sendCoord, getAuth, getBalance } from '../../actions';
+import gameImage from '../../assets/gameImage.jpg'
 import './style.scss';
 
 class SpotTheBall extends PureComponent {
@@ -33,16 +34,16 @@ class SpotTheBall extends PureComponent {
         this.topPositin = true;
 
         this.setState({ timeStake:1614254400 - (new Date().getTime() / 1000) })
-        this.interval = setInterval(() => {
-            let { globalTime,timeStake } = this.state;
-            globalTime--;
-            timeStake--
-            this.setState({ globalTime,timeStake })
-        }, 1000);
+        // this.interval = setInterval(() => {
+        //     let { globalTime,timeStake } = this.state;
+        //     globalTime--;
+        //     timeStake--
+        //     this.setState({ globalTime,timeStake })
+        // }, 1000);
     }
 
     componentWillUnmount() {
-        clearInterval(this.interval);
+        // clearInterval(this.interval);
     }
     getExpiredTime(time) {
         let days = 0;
@@ -85,7 +86,7 @@ class SpotTheBall extends PureComponent {
         const clientY = this.mobile && e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
         let x = clientX - this.offsetX;
         let y = clientY - this.offsetY;
-        if (y < height && x < width && x > 0) {
+        if (y < height && y >=0 && x < width && x > 0) {
             this.setState({ selectedX: Math.floor(this.mobile ? x * 2.155 : x), selectedY: Math.floor(this.mobile ? y * 2.155 : y) })
             this.circle.style.left = `${x - 9}px`;
             this.circle.style.top = `${y - 9}px`;
@@ -104,6 +105,7 @@ class SpotTheBall extends PureComponent {
         if (!this.state.x) {
             this.setState({ startPlay: !this.state.startPlay })
         }
+        
         const width = this.mobile ? 360 : 778;
         const height = this.mobile ? 260 : 556;
         const  pressButton  = this.mobile ? true : this.state.pressButton;
@@ -138,12 +140,12 @@ class SpotTheBall extends PureComponent {
 
     renderPlayButton(balance, need, sendCoord, myBalanceHcore, myHcoreLp) {
         const { selectedX, selectedY } = this.state;
-        if (balance !== 0 && balance < need) {
+        if (+balance !== 0 && +balance < +need) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Be patient. Your points balance is growing</div>
                 <div className="not-enough-button btn">NOT ENOUGH POINTS</div>
             </div>
-        } else if (!balance && !myBalanceHcore && !myHcoreLp) {
+        } else if (!+balance && !+myHcoreLp) {
             return <div className='not-authorized'>
                 <div className='auth-message'>HCORE LP tokens are needed to play</div>
                 <a rel="noopener noreferrer" target="_blank" href='https://app.uniswap.org/#/add/ETH/0x740E9F161f4DF6D9027b35cB2AEc4A0137B5a36b'>
@@ -153,10 +155,10 @@ class SpotTheBall extends PureComponent {
                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                 </a>
             </div>
-        } else if (balance === 0 && (myBalanceHcore || myHcoreLp)) {
+        } else if (+balance === 0 &&  +myHcoreLp) {
             return <div className='not-authorized'>
                 <div className='auth-message'>Stake to earn points</div>
-                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 1450) }}>STAKE</div>
+                <div className="get-tokens-button btn" onClick={() => { window.scrollTo(0, 850) }}>STAKE</div>
                 <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/how-to-claim-a-spot-the-ball-nft-5fa99d3fc3e6'>
                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                 </a>
@@ -207,7 +209,7 @@ class SpotTheBall extends PureComponent {
                         onTouchEnd={this.setPosition}
                         onTouchMove={this.moveCircle}
                     >
-                        <img className="img grednsoledes" src="https://lambo.hcore.finance/wp-content/uploads/2020/10/soccer-2-withoutball.jpg" />
+                        <img className="img grednsoledes" src={gameImage} />
 
                         <div className="svgWrapper">
                             <div className='cross'>
@@ -232,7 +234,7 @@ class SpotTheBall extends PureComponent {
                                         <circle id="masker" cx="0" cy="0" r="40" fill="#fff" />
                                     </mask>
                                 </defs>
-                                <image id="imgZoom" mask="url(#m1)" x="0" y="0" width={width * 1.5} height={height * 1.5} href="https://lambo.hcore.finance/wp-content/uploads/2020/10/soccer-2-withoutball.jpg"></image>
+                                <image id="imgZoom" mask="url(#m1)" x="0" y="0" width={width * 1.5} height={height * 1.5} href={gameImage}></image>
                             </svg>
                         </div>
 
@@ -257,15 +259,15 @@ class SpotTheBall extends PureComponent {
                         <div className='game-point-title'>Your points</div>
                         <div className='game-point-value'>{parseFloat(balance).toFixed(4)}</div>
                     </div>
-                    <div className='not-authorized'>
+                    {/* <div className='not-authorized'>
                     <div className='vault-notification small'>Game 1 starts:</div>
                     <div className='vault-notification'> {`${days1}D ${hours1 === 0 ? '00' : hours1 < 10 ? '0' + hours1 : hours1}:${minutes1 === 0 ? '00' : minutes1 < 10 ? '0' + minutes1 : minutes1}:${seconds1 < 10 ? '0' + seconds1 : seconds1}`}</div>
                     <a rel="noopener noreferrer" target="_blank" href='https://kovan.hcore.finance'>
                         <div className='play-button btn'>Play on testnet</div>
                     </a>
-                    </div>
+                    </div> */}
                     
-                    {/* {!authorized ? (
+                    {!authorized ? (
                         <div className='not-authorized'>
                         <div className='auth-message'>Please connect to Metamask</div>
                         <div className='button-connect' onClick={getAuth}></div>
@@ -275,7 +277,7 @@ class SpotTheBall extends PureComponent {
                         </div>
                     ) : (
                             this.renderPlayButton(balance, need, sendCoord, myBalanceHcore, myHcoreLp)
-                        )} */}
+                        )}
                 </div>
             </div>
         )

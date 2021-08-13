@@ -11,19 +11,20 @@ class Home extends PureComponent {
             globalTime: 0,
             inputEth: '',
             timeStake: 0,
-            popupOpen:false
+            popupOpen: false
         }
         this.stakeLp = this.stakeLp.bind(this)
     }
 
     componentDidMount() {
-        this.setState({ globalTime: 1613058090 - (new Date().getTime() / 1000), timeStake:1614254400 - (new Date().getTime() / 1000) })
+        this.setState({ globalTime: 1613058090 - (new Date().getTime() / 1000), timeStake: 1614254400 - (new Date().getTime() / 1000) })
         this.interval = setInterval(() => {
-            let { globalTime,timeStake } = this.state;
-            globalTime--;
-            timeStake--
-            this.setState({ globalTime,timeStake })
-        }, 1000);
+            // let { globalTime, timeStake } = this.state;
+            // globalTime--;
+            // timeStake--
+            // this.setState({ globalTime, timeStake })
+            this.props.getLockedLP()
+        }, 60000);
         this.props.getLockedLP()
     }
 
@@ -82,7 +83,7 @@ class Home extends PureComponent {
     }
 
     render() {
-        const { globalTime,timeStake, inputEth, popupOpen } = this.state;
+        const { globalTime, timeStake, inputEth, popupOpen } = this.state;
         const [days, hours, minutes, seconds] = this.getExpiredTime(globalTime);
         const [days1, hours1, minutes1, seconds1] = this.getExpiredTime(timeStake);
         const { liquidVault: { maxStake, myPoints, HcoreLP, myHcoreLp }, unStake, unStakePrevious, authorized, getAuth } = this.props;
@@ -96,7 +97,7 @@ class Home extends PureComponent {
                             authorized ? <div className="play-button btn" onClick={() => { window.scrollTo(0, 2020) }}>BUY</div> : <div className='btn connect-button' onClick={getAuth}>CONNECT METAMASK</div>
                         }
                     </div>
-                    <div className='alphadrop-notification'>Liquid Vault: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`} <a  rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>Learn more</a></div>
+                    <div className='alphadrop-notification'>Liquid Vault: {`${days}D ${hours === 0 ? '00' : hours < 10 ? '0' + hours : hours}:${minutes === 0 ? '00' : minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`} <a rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>Learn more</a></div>
                     {/* <div className='content-wrap'>
                         <div className='car-image'>
 
@@ -126,7 +127,7 @@ class Home extends PureComponent {
                             </div>
                         </div>
                     </div> */}
-                    
+
                     <div className='stake-block'>
                         <div className='title'>Stake to earn points</div>
                         <div className='vault-notification'>Game 1 starts: {`${days1}D ${hours1 === 0 ? '00' : hours1 < 10 ? '0' + hours1 : hours1}:${minutes1 === 0 ? '00' : minutes1 < 10 ? '0' + minutes1 : minutes1}:${seconds1 < 10 ? '0' + seconds1 : seconds1}`}</div>
@@ -155,10 +156,14 @@ class Home extends PureComponent {
                                         <input className='stake-input' type='text' placeholder='Amount' onChange={(e) => this.changeInput(e)} value={inputEth} />
                                         <div className='stake-type'>LP</div>
                                     </div>
-                                    {/* <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
-                                    <div className='unstake-button btn' onClick={unStake}>UNSTAKE</div> */}
-                                    <div className='stake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>STAKE</div>
-                                    <div className='unstake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>UNSTAKE</div>
+                                    <div className='stake-button btn' onClick={this.stakeLp}>STAKE</div>
+                                    <div className={`unstake-button btn ${HcoreLP <= 0 ? 'disabled' : ''}`} onClick={() => {
+                                        if (HcoreLP > 0) {
+                                            unStake()
+                                        }
+                                    }}>UNSTAKE</div>
+                                    {/* <div className='stake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>STAKE</div>
+                                    <div className='unstake-button btn' onClick={()=>{this.setState({popupOpen: true})}}>UNSTAKE</div> */}
                                 </div>
                                 <div className='stake-footer'>
                                     <div className='stake-wrap-more'>
@@ -275,7 +280,7 @@ class Home extends PureComponent {
                     <div className='pop-up'>
                         <div className='pop-up-body'>
                             <div className='text-pop-up'>
-                            Will be live soon
+                                Will be live soon
                         </div>
                             <div className='pop-up-button' onClick={() => { this.setState({ popupOpen: false }) }}>OK</div>
                         </div>

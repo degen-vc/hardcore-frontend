@@ -962,6 +962,11 @@
     }
 }
 
+.unstake-button.disabled {
+    user-select: none;
+    opacity: 0.6;
+}
+
 .uniswap-notification {
     margin: 8px 23px 24px;
     font-family: Roboto;

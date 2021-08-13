@@ -182,8 +182,8 @@ class Vault extends PureComponent {
                                 <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
-                                {/* <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div> */}
-                                <div className='stake-button btn mr unique' onClick={()=>{this.setState({popupOpen: true})}}>CLAIM</div>
+                                <div className='stake-button btn mr unique' onClick={claim}>CLAIM</div>
+                                {/* <div className='stake-button btn mr unique' onClick={()=>{this.setState({popupOpen: true})}}>CLAIM</div> */}
                                 <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
                                 </a>
