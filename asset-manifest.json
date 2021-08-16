@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/hardcore-frontend/static/css/main.56a905a3.chunk.css",
-    "main.js": "/hardcore-frontend/static/js/main.8f11858d.chunk.js",
-    "main.js.map": "/hardcore-frontend/static/js/main.8f11858d.chunk.js.map",
+    "main.js": "/hardcore-frontend/static/js/main.fb30440e.chunk.js",
+    "main.js.map": "/hardcore-frontend/static/js/main.fb30440e.chunk.js.map",
     "runtime-main.js": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js",
     "runtime-main.js.map": "/hardcore-frontend/static/js/runtime-main.5f1ce0fd.js.map",
-    "static/js/2.5398fc31.chunk.js": "/hardcore-frontend/static/js/2.5398fc31.chunk.js",
-    "static/js/2.5398fc31.chunk.js.map": "/hardcore-frontend/static/js/2.5398fc31.chunk.js.map",
+    "static/js/2.1a0c84d7.chunk.js": "/hardcore-frontend/static/js/2.1a0c84d7.chunk.js",
+    "static/js/2.1a0c84d7.chunk.js.map": "/hardcore-frontend/static/js/2.1a0c84d7.chunk.js.map",
     "index.html": "/hardcore-frontend/index.html",
     "static/css/main.56a905a3.chunk.css.map": "/hardcore-frontend/static/css/main.56a905a3.chunk.css.map",
-    "static/js/2.5398fc31.chunk.js.LICENSE.txt": "/hardcore-frontend/static/js/2.5398fc31.chunk.js.LICENSE.txt",
+    "static/js/2.1a0c84d7.chunk.js.LICENSE.txt": "/hardcore-frontend/static/js/2.1a0c84d7.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/hardcore-frontend/static/media/home-car.a11b239d.png",
     "static/media/index.scss": "/hardcore-frontend/static/media/Roboto-Thin.c38fab23.ttf",
     "static/media/gameImage.ca52f435.jpg": "/hardcore-frontend/static/media/gameImage.ca52f435.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.5f1ce0fd.js",
-    "static/js/2.5398fc31.chunk.js",
+    "static/js/2.1a0c84d7.chunk.js",
     "static/css/main.56a905a3.chunk.css",
-    "static/js/main.8f11858d.chunk.js"
+    "static/js/main.fb30440e.chunk.js"
   ]
 }
