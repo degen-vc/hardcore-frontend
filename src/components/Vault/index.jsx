@@ -115,7 +115,7 @@ class Vault extends PureComponent {
                 <div className='title'>Enter Value</div>
                 <input type='number' value={inputEth} onChange={this.changeInput}></input>
                 <div>{`Amount to send: ${parseFloat(inputEth - inputEth / 100 * liquidVault.purchaseFee).toFixed(4)}`}</div>
-                <div>{`ETH fee: ${(inputEth / 100 * liquidVault.purchaseFee).toFixed(2)}`}</div>
+                <div>{`MATIC fee: ${(inputEth / 100 * liquidVault.purchaseFee).toFixed(2)}`}</div>
             </div>
         )
     }
@@ -132,7 +132,7 @@ class Vault extends PureComponent {
                     <div className='stake-panel'>
                         <div className='header-panel'>
                             <div className='header-text'>
-                                Send ETH. It is pooled with $HCORE. Your discounted LP is locked for a period.
+                                Send MATIC. It is pooled with $HCORE. Your discounted LP is locked for a period.
                             </div>
                             <div>
                                 <div className='wrap-title second'>
@@ -144,7 +144,7 @@ class Vault extends PureComponent {
                         <div className='stake'>
                             <div className='stake-header'>
                                 <div className='wrap-title first'>
-                                    <div className='stake-title'>Max ETH</div>
+                                    <div className='stake-title'>Max MATIC</div>
                                     <div className='stake-value'>{maxEth}</div>
                                 </div>
                                 <div className='wrap-title first'>
@@ -177,7 +177,7 @@ class Vault extends PureComponent {
                                 </div>
 
 
-                                <div className='stake-button btn unique' onClick={() => { this.sendEth() }}>SEND ETH</div>
+                                <div className='stake-button btn unique' onClick={() => { this.sendEth() }}>SEND MATIC</div>
                                 {/* <div className='stake-button btn unique' onClick={()=>{this.setState({popupOpen: true})}}>SEND ETH</div> */}
                                 <a className='mobile' rel="noopener noreferrer" target="_blank" href='https://medium.com/hcore/send-eth-to-the-liquid-vault-claim-lp-tokens-53327b815e9b'>
                                     <div className='stake-more'>Learn more <div>&#8250;</div></div>
