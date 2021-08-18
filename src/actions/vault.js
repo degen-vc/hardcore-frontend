@@ -118,7 +118,6 @@ export const getLockedLP = () => {
       const sumBalances = +web3.utils.fromWei(
         web3.utils.toBN(HcoreBalanceLiquid)
       );
-      console.log(1111111111, sumBalances, consult);
       maxEth = (sumBalances * consult).toFixed(4);
       let { purchaseFee, stakeDuration } = await LiquidContract.methods
         .config()

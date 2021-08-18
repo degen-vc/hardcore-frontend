@@ -324,6 +324,10 @@
                         background-image: url('../../assets/buttons/stake.png');
                         background-size: contain;
                         background-repeat: no-repeat;
+                        &.disabled{
+                            opacity: 0.7;
+                            cursor: not-allowed;
+                        }
                     }
                     .unstake-button {
                         width: 142px;
