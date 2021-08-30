@@ -5,14 +5,14 @@
         height: 78px;
     }
     .background-image {
-        height: 860px;
-        background-image: url("../../assets/images/home-car.png");
+        height: 400px;
         background-size: contain;
         background-repeat: no-repeat;
         .title {
-            width: 339px;
-            height: 114px;
-            padding: 160px 0 30px 240px;
+            width: 50%;
+            margin: 0 auto;
+            padding: 100px 0 30px 0;
+            text-align: center;
             background-image: radial-gradient(circle at 15% 81%, #ffffff, #636363 122%);
             font-family: Roboto-medium;
             font-size: 48px;
@@ -24,7 +24,14 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            @media screen and (max-width: 720px) {
+
+                .title{
+                    font-size: 38px; 
+                }
+            }
         }
+        
         @media screen and (max-width: 420px) {
             height: 250px;
             width: 100%;
@@ -44,7 +51,7 @@
         .play-button {
             width: 142px;
             height: 34px;
-            margin-left: 240px;
+            margin: 0 auto;
             background-image: url('../../assets/buttons/swap.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -54,7 +61,7 @@
             }
         }
         @media screen and (min-width:420px) and (max-width: 1480px) {
-            height: 550px;
+            height: 450px;
         }
     }
     .content-wrap {

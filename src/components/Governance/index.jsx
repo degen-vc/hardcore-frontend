@@ -32,7 +32,7 @@ class NFT extends PureComponent {
                                     <div className="block-item-value">{hCoreBalance}</div>
                                 </div>
                                 <div className='block-item'>
-                                    <div className="block-item-header">Fund ETH balance</div>
+                                    <div className="block-item-header">Fund MATIC balance</div>
                                     <div className="block-item-value">{ethBalance}</div>
                                 </div>
                             </div>

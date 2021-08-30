@@ -1,6 +1,5 @@
 .About-page {
     .about-page-header {
-        padding-top: 152px;
         background-image: radial-gradient(circle at 50% 71%, #ffffff, #000000 51%);
         font-family: Roboto-medium;
         font-size: 48px;
@@ -161,8 +160,7 @@
         background: #171717;
         height: 600px;
         .header-about-section {
-            margin-top: 140px;
-            padding-top: 110px;
+            padding-top: 160px;
             background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 116%);
             font-family: Roboto-medium;
             font-size: 48px;
@@ -256,7 +254,6 @@
     }
     @media screen and (max-width: 420px) {
         .about-page-header {
-            padding-top: 100px;
             background-image: radial-gradient(circle at 50% 71%, #ffffff, #000000 75%);
         }
         .tokenomics-panel {
@@ -297,7 +294,6 @@
         }
         .about-section {
             .header-about-section {
-                margin-top: 40px;
                 padding-top: 40px;
                 background-image: radial-gradient(circle at 50% 50%, #ffffff, #000000 120%);
                 font-size: 34px;

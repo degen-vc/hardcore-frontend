@@ -107,7 +107,7 @@ class Home extends PureComponent {
         <section>
           <div className="space"></div>
           <div className="background-image">
-            <div className="title">Stake tokens to Win a Lambo</div>
+            <div className="title">Stake LP Tokens to Win Exotic Prizes.</div>
             {authorized ? (
               <div
                 className="play-button btn"
@@ -123,7 +123,7 @@ class Home extends PureComponent {
               </div>
             )}
           </div>
-          <div className="alphadrop-notification">
+          {/* <div className="alphadrop-notification">
             Liquid Vault:{" "}
             {`${days}D ${
               hours === 0 ? "00" : hours < 10 ? "0" + hours : hours
@@ -137,7 +137,7 @@ class Home extends PureComponent {
             >
               Learn more
             </a>
-          </div>
+          </div> */}
           {/* <div className='content-wrap'>
                         <div className='car-image'>
 
@@ -345,7 +345,7 @@ class Home extends PureComponent {
           <div className="news-hardcore">
             <div className="news-title">New to HARDCORE?</div>
             <div className="uniswap-notification">
-              Uniswap is LIVE! Set slippage tolerance to 5%
+            Sushiswap is LIVE! Set slippage tolerance to 5%
             </div>
             <div className="wrap-items bottom">
               <div className="item">
